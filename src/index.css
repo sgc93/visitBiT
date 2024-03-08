@@ -8,5 +8,13 @@
 }
 
 :root {
-	--color-bg-main: black;
+	--color-bg-btn: rgba(0, 132, 255, 0.214);
+	--color-border: rgb(0, 132, 255);
+	--color-shadow: rgba(3, 36, 67, 0.527);
+}
+
+@layer components {
+	.glassmorphism {
+		@apply bg-[var(--color-bg-btn)] rounded-lg border-[1px] border-[var(--color-border)] px-8 py-2 backdrop-blur-sm shadow-lg shadow-[var(--color-shadow)];
+	}
 }
