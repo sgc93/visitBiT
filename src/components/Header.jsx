@@ -15,11 +15,7 @@ export default function Header() {
 			onHoverEnd={() => setIsDragIndicatorShown(false)}
 		>
 			<NavBar />
-			<DragIndicator
-				isShown={isDragIndicatorShow}
-				className={" text-[1.7rem] opacity-70"}
-				message={"draggable"}
-			/>
+			<DragIndicator isShown={isDragIndicatorShow} />
 		</motion.div>
 	);
 }
