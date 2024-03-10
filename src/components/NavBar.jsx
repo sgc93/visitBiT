@@ -1,3 +1,5 @@
+import Button from "./Button";
+
 const tabs = [
 	{
 		text: "Offices",
@@ -29,8 +31,8 @@ export default function NavBar() {
 	return (
 		<ul className=" flex items-center gap-4 ">
 			{tabs.map((tab) => (
-				<li className="glassmorphism" key={tab.text}>
-					<button className="lowercase font-sans text-lg">{tab.text}</button>
+				<li key={tab.text}>
+					<Button title={tab.text} />
 				</li>
 			))}
 		</ul>
