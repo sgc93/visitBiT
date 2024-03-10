@@ -27,10 +27,10 @@ const tabs = [
 
 export default function NavBar() {
 	return (
-		<ul className=" flex items-center gap-4 text-xl text-stone-900">
+		<ul className=" flex items-center gap-4 ">
 			{tabs.map((tab) => (
 				<li className="glassmorphism" key={tab.text}>
-					<button>{tab.text}</button>
+					<button className="lowercase font-sans text-lg">{tab.text}</button>
 				</li>
 			))}
 		</ul>
