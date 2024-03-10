@@ -15,7 +15,7 @@
 
 @layer components {
 	.glassmorphism {
-		@apply bg-[var(--color-bg-btn)] rounded-lg border-[1px] border-[var(--color-border)] backdrop-blur-sm shadow-lg shadow-[var(--color-shadow)];
+		@apply bg-[var(--color-bg-btn)] border-[1px] border-[var(--color-border)] backdrop-blur-sm shadow-lg shadow-[var(--color-shadow)];
 	}
 }
 
