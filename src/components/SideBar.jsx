@@ -1,12 +1,12 @@
+import { IoIosArrowBack } from "react-icons/io";
+import SearchResulBar from "./SearchResulBar";
+
 export default function SideBar() {
 	return (
-		<section className="glassmorphism h-[96%] w-[20%] absolute top-4 left-4 z-[999]">
-			<input
-				type="text"
-				placeholder="Search here ... "
-				className="w-[100%] rounded-lg border-none outline-none px-3 py-[0.35rem] text-stone-900 font-semibold placeholder:text-stone-500 placeholder:font-semibold focus:backdrop-blur-xl "
-			/>
-			SideBar
+		<section className="flex items-center gap-1 h-[96dvh] w-[30dvw] absolute top-4 left-0 z-[999]">
+			<section className="glassmorphism  w-[5dvw] h-full"></section>
+			<SearchResulBar />
+			<IoIosArrowBack className="glassmorphism text-[1.3rem] text-stone-600 rounded-sm" />
 		</section>
 	);
 }
