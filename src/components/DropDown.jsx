@@ -20,15 +20,15 @@ export default function DropDown({ tab }) {
 				/>
 			</div>
 			{isOpen && (
-				<div className="glassmorphism  rounded-b-lg flex flex-col gap-2">
+				<div className="glassmorphism p-1 rounded-b-lg flex flex-col gap-2">
 					{tab &&
 						tab.dropdowns.map((dropdown) => (
 							<div key={dropdown.text} className="flex flex-col gap-1">
-								<button className="px-[0.5rem] py-[0.1rem] flex items-center gap-1 hover:bg-blue-300">
+								<button className=" flex items-center gap-1 rounded-md border-b-[1px] border-blue-300 hover:bg-blue-300">
 									{dropdown.icon}
 									{dropdown.text}
 								</button>
-								<span className="w-full h-[1px] bg-blue-400"></span>
+								{/* <span className="w-full h-[1px] bg-blue-400"></span> */}
 							</div>
 						))}
 				</div>
