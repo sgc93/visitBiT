@@ -46,7 +46,7 @@ const tabs = [
 		icon: <IoWifi className={className} />,
 	},
 	{
-		text: "Where To Test?",
+		text: "Where To rest?",
 		dropdown: true, // male toilet , female toilet
 		icon: <FaRestroom className={className} />,
 		dropdowns: [
