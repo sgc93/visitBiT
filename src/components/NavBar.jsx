@@ -1,11 +1,24 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { FaHandHoldingWater, FaRestroom } from "react-icons/fa";
-import { GiArchiveRegister } from "react-icons/gi";
+import { FaHandHoldingWater, FaHandsWash, FaRestroom } from "react-icons/fa";
+import {
+	GiArchiveRegister,
+	GiClothes,
+	GiMoneyStack,
+	GiWaterBottle,
+} from "react-icons/gi";
+import { GrUserWorker } from "react-icons/gr";
 import { HiOfficeBuilding } from "react-icons/hi";
 import { HiMiniBuildingOffice2 } from "react-icons/hi2";
+import { IoIosRestaurant } from "react-icons/io";
 import { IoWifi } from "react-icons/io5";
-import { MdFoodBank, MdOutlineBedroomChild } from "react-icons/md";
+import {
+	MdEmojiFoodBeverage,
+	MdFoodBank,
+	MdOutlineBedroomChild,
+	MdSchool,
+} from "react-icons/md";
+import { PiBowlFood } from "react-icons/pi";
 import DragIndicator from "../components/DragIndicator";
 import Button from "./Button";
 import DropDown from "./DropDown";
@@ -31,7 +44,7 @@ const tabs = [
 			{
 				text: "finance",
 				multilevel: true,
-				icon: <HiOfficeBuilding className={className} />,
+				icon: <GiMoneyStack className={className} />,
 			},
 		],
 	},
@@ -51,19 +64,14 @@ const tabs = [
 		icon: <FaRestroom className={className} />,
 		dropdowns: [
 			{
-				text: "faculties",
+				text: "for students",
 				multilevel: true,
-				icon: <HiOfficeBuilding />,
+				icon: <MdSchool />,
 			},
 			{
-				text: "registrar",
+				text: "for employees",
 				multilevel: true,
-				icon: <HiOfficeBuilding />,
-			},
-			{
-				text: "finance",
-				multilevel: true,
-				icon: <HiOfficeBuilding />,
+				icon: <GrUserWorker />,
 			},
 		],
 	},
@@ -73,19 +81,19 @@ const tabs = [
 		icon: <MdFoodBank className={className} />,
 		dropdowns: [
 			{
-				text: "faculties",
+				text: "cafes",
 				multilevel: true,
-				icon: <HiOfficeBuilding />,
+				icon: <PiBowlFood />,
 			},
 			{
-				text: "registrar",
+				text: "launches",
 				multilevel: true,
-				icon: <HiOfficeBuilding />,
+				icon: <MdEmojiFoodBeverage />,
 			},
 			{
-				text: "finance",
+				text: "mother houses",
 				multilevel: true,
-				icon: <HiOfficeBuilding />,
+				icon: <IoIosRestaurant />,
 			},
 		],
 	},
@@ -95,19 +103,19 @@ const tabs = [
 		icon: <FaHandHoldingWater className={className} />,
 		dropdowns: [
 			{
-				text: "faculties",
+				text: "for drink",
 				multilevel: true,
-				icon: <HiOfficeBuilding />,
+				icon: <GiWaterBottle />,
 			},
 			{
-				text: "registrar",
+				text: "for hand wash",
 				multilevel: true,
-				icon: <HiOfficeBuilding />,
+				icon: <FaHandsWash />,
 			},
 			{
-				text: "finance",
+				text: "for cloth wash",
 				multilevel: true,
-				icon: <HiOfficeBuilding />,
+				icon: <GiClothes />,
 			},
 		],
 	},
