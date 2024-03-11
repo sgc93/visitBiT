@@ -6,7 +6,7 @@ export default function DropDown({ tab }) {
 	return (
 		<div className="flex flex-col gap-1">
 			<div
-				className={`glassmorphism  px-[0.5rem] py-[0.1rem] lowercase font-sans text-lg flex items-center ${
+				className={`glassmorphism  px-[0.5rem] py-[0.1rem] lowercase font-sans text-lg flex items-center gap-1 ${
 					isOpen ? "rounded-t-lg" : "rounded-lg"
 				}`}
 				onClick={() => setIsOpen((isOpen) => !isOpen)}
