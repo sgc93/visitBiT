@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MdMenu, MdSearch } from "react-icons/md";
+import { MdClose, MdMenu } from "react-icons/md";
 
 export default function SearchResulBar() {
 	const [query, setQuery] = useState("");
@@ -15,7 +15,12 @@ export default function SearchResulBar() {
 					value={query}
 					onChange={(e) => setQuery(e.target.value)}
 				/>
-				<MdSearch className="text-3xl" />
+				{query && (
+					<MdClose
+						className="text-2xl opacity-50 transition-all duration-300 hover:glassmorphism hover:rounded-md hover:opacity-70"
+						onClick={() => setQuery("")}
+					/>
+				)}
 			</div>
 			{query && (
 				<div
