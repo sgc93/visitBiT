@@ -15,10 +15,17 @@ export default function SearchResulBar({
 	return (
 		<section className="flex flex-col items-center gap-2 w-[18dvw]">
 			<div className="flex items-center gap-2">
-				<MdMenu
-					className={`opacity-50 ${className}`}
-					onClick={() => setShowSideBar((showSideBar) => !showSideBar)}
-				/>
+				{showSideBar ? (
+					<MdClose
+						className={`opacity-50 text-2xl glassmorphism rounded-md transition-all duration-300 hover:opacity-70`}
+						onClick={() => setShowSideBar(false)}
+					/>
+				) : (
+					<MdMenu
+						className={`opacity-50 ${className}`}
+						onClick={() => setShowSideBar(true)}
+					/>
+				)}
 				<input
 					type="text"
 					placeholder="Search here ... "
