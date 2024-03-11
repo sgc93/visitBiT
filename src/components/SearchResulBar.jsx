@@ -4,24 +4,30 @@ import { MdClose, MdMenu } from "react-icons/md";
 const className =
 	"text-2xl transition-all duration-300 hover:glassmorphism hover:rounded-md hover:opacity-70";
 
-export default function SearchResulBar() {
-	const [query, setQuery] = useState("");
+export default function SearchResulBar({
+	showSideBar,
+	setShowSideBar,
+	query,
+	setQuery,
+}) {
 	const [showSearchBar, setShowSearchBar] = useState(true);
-	const [showSideBar, setShowSideBar] = useState(false);
 
 	return (
 		<section className="flex flex-col items-center gap-2 w-[18dvw]">
 			<div className="flex items-center gap-2">
 				<MdMenu
 					className={`opacity-50 ${className}`}
-					onClick={() => setShowSearchBar((showSideBar) => !showSideBar)}
+					onClick={() => setShowSideBar((showSideBar) => !showSideBar)}
 				/>
 				<input
 					type="text"
 					placeholder="Search here ... "
 					className="w-55 rounded-lg border-none outline-none px-3 py-[0.35rem] text-stone-900 font-semibold placeholder:text-stone-500 placeholder:font-semibold focus:backdrop-blur-xl "
 					value={query}
-					onChange={(e) => setQuery(e.target.value)}
+					onChange={(e) => {
+						setQuery(e.target.value);
+						setShowSideBar(false);
+					}}
 				/>
 				<MdClose
 					className={`${query ? "opacity-50" : "opacity-0"} ${
@@ -30,7 +36,7 @@ export default function SearchResulBar() {
 					onClick={() => setQuery("")}
 				/>
 			</div>
-			{query && (
+			{query && !showSideBar && (
 				<div className="w-full h-[91.5dvh] flex items-center gap-1">
 					{showSearchBar && (
 						<div
