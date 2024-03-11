@@ -8,7 +8,7 @@ export default function Header() {
 
 	return (
 		<motion.div
-			className="absolute top-4 left-96 z-[999] flex items-center"
+			className="absolute top-4 left-96 z-[999] flex items-start"
 			drag
 			dragElastic={0.3}
 			onHoverStart={() => setIsDragIndicatorShown(true)}
