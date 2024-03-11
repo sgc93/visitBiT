@@ -1,44 +1,50 @@
+import { FaHandHoldingWater, FaRestroom } from "react-icons/fa";
+import { GiArchiveRegister } from "react-icons/gi";
 import { HiOfficeBuilding } from "react-icons/hi";
-import { RiArrowDropDownLine } from "react-icons/ri";
+import { HiMiniBuildingOffice2 } from "react-icons/hi2";
+import { IoWifi } from "react-icons/io5";
+import { MdFoodBank, MdOutlineBedroomChild } from "react-icons/md";
 import Button from "./Button";
 import DropDown from "./DropDown";
+const className = "opacity-50";
 
 const tabs = [
 	{
 		text: "Offices",
 		dropdown: true,
-		icon: <HiOfficeBuilding />,
-		dropdownIcon: <RiArrowDropDownLine />,
+		icon: <HiOfficeBuilding className={className} />,
 		dropdowns: [
 			{
 				text: "faculties",
 				multilevel: true,
-				icon: <HiOfficeBuilding />,
+				icon: <HiMiniBuildingOffice2 className={className} />,
 			},
 			{
 				text: "registrar",
 				multilevel: true,
-				icon: <HiOfficeBuilding />,
+				icon: <GiArchiveRegister className={className} />,
 			},
 			{
 				text: "finance",
 				multilevel: true,
-				icon: <HiOfficeBuilding />,
+				icon: <HiOfficeBuilding className={className} />,
 			},
 		],
 	},
 	{
 		text: "Dormitories",
 		dropdown: false,
+		icon: <MdOutlineBedroomChild className={className} />,
 	},
 	{
 		text: "Wifi Centers",
 		dropdown: false,
+		icon: <IoWifi className={className} />,
 	},
 	{
 		text: "Where To Test?",
 		dropdown: true, // male toilet , female toilet
-		dropdownIcon: <RiArrowDropDownLine />,
+		icon: <FaRestroom className={className} />,
 		dropdowns: [
 			{
 				text: "faculties",
@@ -60,7 +66,7 @@ const tabs = [
 	{
 		text: "Where To Eat?", // cafe, launch, mother houses
 		dropdown: true,
-		dropdownIcon: <RiArrowDropDownLine />,
+		icon: <MdFoodBank className={className} />,
 		dropdowns: [
 			{
 				text: "faculties",
@@ -82,7 +88,7 @@ const tabs = [
 	{
 		text: "Where To Drink?",
 		dropdown: true,
-		dropdownIcon: <RiArrowDropDownLine />,
+		icon: <FaHandHoldingWater className={className} />,
 		dropdowns: [
 			{
 				text: "faculties",
