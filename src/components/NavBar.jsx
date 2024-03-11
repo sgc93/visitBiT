@@ -1,11 +1,15 @@
+import { motion } from "framer-motion";
+import { useState } from "react";
 import { FaHandHoldingWater, FaRestroom } from "react-icons/fa";
 import { GiArchiveRegister } from "react-icons/gi";
 import { HiOfficeBuilding } from "react-icons/hi";
 import { HiMiniBuildingOffice2 } from "react-icons/hi2";
 import { IoWifi } from "react-icons/io5";
 import { MdFoodBank, MdOutlineBedroomChild } from "react-icons/md";
+import DragIndicator from "../components/DragIndicator";
 import Button from "./Button";
 import DropDown from "./DropDown";
+
 const className = "opacity-50";
 
 const tabs = [
@@ -109,13 +113,22 @@ const tabs = [
 	},
 ];
 
-export default function NavBar() {
+export default function NavBar({ dragConstraint }) {
+	const [isDragIndicatorShow, setIsDragIndicatorShown] = useState(false);
+
 	function handleClick(tab) {
 		console.log("clicked: " + tab);
 	}
 
 	return (
-		<ul className=" flex items-start gap-4 ">
+		<motion.ul
+			className=" flex items-start gap-4 ml-5"
+			drag
+			dragElastic={0.3}
+			dragConstraints={dragConstraint}
+			onHoverStart={() => setIsDragIndicatorShown(true)}
+			onHoverEnd={() => setIsDragIndicatorShown(false)}
+		>
 			{tabs.map((tab) =>
 				tab.dropdown ? (
 					<DropDown key={tab.text} tab={tab} />
@@ -132,6 +145,7 @@ export default function NavBar() {
 					</li>
 				)
 			)}
-		</ul>
+			<DragIndicator isShown={isDragIndicatorShow} />
+		</motion.ul>
 	);
 }
