@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { MapContainer, TileLayer, useMapEvents } from "react-leaflet";
 import CurrentLoc from "./CurrentLoc";
 import MapLayer from "./MapLayer";
@@ -6,22 +6,26 @@ import MapLayer from "./MapLayer";
 const subdomains = ["mt0", "mt1", "mt2", "mt3"];
 
 export default function Map() {
+	const [mapUrl, setMapUrl] = useState(
+		"http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}"
+	);
+
+	const dragConstraint = useRef();
 	const center = [11.5975972, 37.3941337];
 	const zoom = 40;
-	const dragConstraint = useRef();
 
 	return (
 		<div ref={dragConstraint} id="map" className="h-screen w-screen">
 			<MapContainer center={center} zoom={zoom} style={{ height: "100%" }}>
 				<TileLayer
 					attribution='&copy; <a href="http://www.stadiomaps.org/copyright">stadiomaps</a>'
-					url="http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}"
+					url={mapUrl}
 					subdomains={subdomains}
 				/>
 				<InteractWithMap />
 			</MapContainer>
 			<CurrentLoc dragConstraint={dragConstraint} />
-			<MapLayer />
+			<MapLayer setMapUrl={setMapUrl} />
 		</div>
 	);
 }
