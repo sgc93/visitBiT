@@ -1,5 +1,115 @@
+import { FaCode, FaCopyright, FaInfo, FaToggleOn } from "react-icons/fa";
+import { GiShare } from "react-icons/gi";
+import { MdContactPage, MdDragIndicator, MdPrint } from "react-icons/md";
+import getCurrentDateTime from "../services/helpers";
+import Button from "./Button";
+
+const className = "opacity-70 text-xl";
+
+const tabs = [
+	{
+		text: "Disable UI draggablity",
+		toggle: true,
+		icon: <MdDragIndicator className={className} />,
+		toggleIcon: <FaToggleOn className="text-2xl text-blue-900" />,
+	},
+	{
+		text: "Share Location",
+		toggle: false,
+		icon: <GiShare className={className} />,
+	},
+	{
+		text: "Print",
+		toggle: false,
+		icon: <MdPrint className={className} />,
+	},
+	{
+		text: "About",
+		false: true, // male toilet , female toilet
+		icon: <FaInfo className={className} />,
+	},
+	{
+		text: "Contact", // cafe, launch, mother houses
+		dropdown: true,
+		icon: <MdContactPage className={className} />,
+	},
+	{
+		text: "Code Overview",
+		dropdown: true,
+		icon: <FaCode className={className} />,
+	},
+];
+
 export default function SideBarBox() {
 	return (
-		<section className="glassmorphism rounded-r-lg w-[5dvw] h-[88.4dvh]"></section>
+		<section className="glassmorphism rounded-r-lg h-[88.4dvh] flex flex-col items-center justify-between">
+			<div className="w-full flex flex-col gap-2 p-1">
+				{tabs.map((tab, index) => {
+					if (tab.toggle) {
+						return (
+							<div
+								key={tab.text}
+								className="flex flex-col items-center gap-3 w-full"
+							>
+								<Button
+									className={
+										" w-full flex items-center justify-between transition-all duration-300 hover:border-blue-900 hover:text-stone-300"
+									}
+								>
+									<span className="flex items-center gap-2">
+										{tab.icon}
+										{tab.text}
+									</span>
+									{tab.toggleIcon}
+								</Button>
+								<span className="w-full h-[1px] bg-blue-600 opacity-70"></span>
+							</div>
+						);
+					} else {
+						if (index === 2 || index === 5) {
+							return (
+								<div
+									key={tab.text}
+									className="flex flex-col items-center gap-3 w-full"
+								>
+									<Button
+										key={tab.text}
+										className={
+											"w-full flex items-center gap-2 transition-all duration-300 hover:border-blue-900 hover:text-stone-300"
+										}
+									>
+										{tab.icon}
+										{tab.text}
+									</Button>
+									<span className="w-full h-[1px] bg-blue-600 opacity-70"></span>
+								</div>
+							);
+						} else {
+							return (
+								<Button
+									key={tab.text}
+									className={
+										"flex items-center gap-2 transition-all duration-300 hover:border-blue-900 hover:text-stone-300"
+									}
+								>
+									{tab.icon}
+									{tab.text}
+								</Button>
+							);
+						}
+					}
+				})}
+			</div>
+			<div className=" flex  flex-col items-center gap-2 pb-4">
+				<span className="w-full h-[1px] bg-blue-600 opacity-70"></span>
+				<span className="text-sm font-thin">since March 2024</span>
+				<span className="flex items-center gap-1">
+					<FaCopyright className="text-blue-800" />
+					<span className="text-blue-900 font-semibold">
+						{getCurrentDateTime()}
+					</span>
+				</span>
+			</div>
+		</section>
 	);
 }
