@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { MapContainer, TileLayer, useMapEvents } from "react-leaflet";
 import CurrentLoc from "./CurrentLoc";
+import MapLayer from "./MapLayer";
 
 const subdomains = ["mt0", "mt1", "mt2", "mt3"];
 
@@ -20,6 +21,7 @@ export default function Map() {
 				<InteractWithMap />
 			</MapContainer>
 			<CurrentLoc dragConstraint={dragConstraint} />
+			<MapLayer />
 		</div>
 	);
 }
