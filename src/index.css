@@ -20,14 +20,11 @@
 }
 
 .leaflet-control-zoom {
-	left: 89rem;
-	top: 42rem;
-	z-index: 999;
 	position: absolute;
-
-	@apply bg-[var(--color-bg-btn)] rounded-lg border-[1px] border-[var(--color-border)] px-8 py-2 backdrop-blur-sm shadow-lg shadow-[var(--color-shadow)];
+	top: 87dvh;
+	left: 96dvw;
 }
 
-.leaflet-bar {
-	background-color: transparent;
+.leaflet-bar a {
+	@apply text-stone-900 bg-[var(--color-bg-btn)] rounded-xl border-[1px] border-[var(--color-border)] backdrop-blur-sm shadow-lg transition-all duration-300 hover:bg-[var(--color-border)] hover:text-stone-200;
 }
