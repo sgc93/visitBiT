@@ -26,5 +26,5 @@
 }
 
 .leaflet-bar a {
-	@apply text-stone-900 bg-[var(--color-bg-btn)] rounded-xl border-[1px] border-[var(--color-border)] backdrop-blur-sm shadow-lg transition-all duration-300 hover:bg-[var(--color-border)] hover:text-stone-200;
+	@apply text-stone-900 bg-[var(--color-bg-btn)] rounded-xl border-[1px] border-[var(--color-border)] backdrop-blur-sm shadow-lg transition-all duration-300 hover:bg-blue-900 hover:text-stone-200;
 }
