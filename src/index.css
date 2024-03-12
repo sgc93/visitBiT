@@ -21,10 +21,10 @@
 
 .leaflet-control-zoom {
 	position: absolute;
-	top: 87dvh;
+	top: 83dvh;
 	left: 96dvw;
 }
 
 .leaflet-bar a {
-	@apply text-stone-900 bg-[var(--color-bg-btn)] rounded-xl border-[1px] border-[var(--color-border)] backdrop-blur-sm shadow-lg transition-all duration-300 hover:bg-blue-900 hover:text-stone-200;
+	@apply text-stone-900 bg-[var(--color-bg-btn)] rounded-lg border-[1px] border-[var(--color-border)] backdrop-blur-sm shadow-lg transition-all duration-300 hover:bg-blue-900 hover:text-stone-200;
 }
