@@ -1,4 +1,4 @@
-export default function getCurrentDateTime() {
+export default function getCurrentMonthYear() {
 	const date = new Date();
 	const options = {
 		month: "long",
@@ -6,7 +6,7 @@ export default function getCurrentDateTime() {
 		year: "numeric",
 	};
 
-	const today = date.toLocaleString(undefined, options);
+	const today = date.toLocaleString("en-US", options);
 
 	return today;
 }
