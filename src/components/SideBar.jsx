@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SearchResulBar from "./SearchResulBar";
+import SideBarBox from "./SideBarBox";
 
 export default function SideBar() {
 	const [query, setQuery] = useState("");
@@ -12,9 +13,7 @@ export default function SideBar() {
 				query={query}
 				setQuery={setQuery}
 			/>
-			{showSideBar && (
-				<section className="glassmorphism rounded-r-lg w-[5dvw] h-[90dvh]"></section>
-			)}
+			{showSideBar && <SideBarBox />}
 		</section>
 	);
 }
