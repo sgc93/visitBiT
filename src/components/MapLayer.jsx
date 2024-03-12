@@ -1,28 +1,25 @@
 import { useState } from "react";
-import { FaHandHoldingWater, FaRestroom, FaSatellite } from "react-icons/fa";
-import { GrLayer, GrLocation } from "react-icons/gr";
+import { GrLayer } from "react-icons/gr";
 import Button from "./Button";
-
-const className = "opacity-70";
 
 const tabs = [
 	{
 		text: "default",
-		icon: <GrLocation className={className} />,
 	},
 	{
 		text: "hybrid",
-		icon: <FaHandHoldingWater className={className} />,
 	},
 	{
 		text: "satellite",
-		icon: <FaSatellite className={className} />,
 	},
 	{
 		text: "terrain",
-		icon: <FaRestroom className={className} />,
 	},
 ];
+
+function LayerImg({ src }) {
+	return <img className="w-5 h-5" src={`/${src}_layer.png`} alt={src} />;
+}
 
 export default function MapLayer() {
 	const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +38,7 @@ export default function MapLayer() {
 								"flex items-center gap-2 transition-all duration-500 hover:bg-blue-900 hover:text-stone-100"
 							}
 						>
-							{tab.icon}
+							<LayerImg src={tab.text} />
 							{tab.text}
 						</Button>
 					))}
