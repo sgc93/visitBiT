@@ -34,6 +34,7 @@ export default function SearchResulBar({
 					onChange={(e) => {
 						setQuery(e.target.value);
 						setShowSideBar(false);
+						setShowSearchBar(true);
 					}}
 				/>
 				<MdClose
@@ -44,11 +45,11 @@ export default function SearchResulBar({
 				/>
 			</div>
 			{query && !showSideBar && (
-				<div className="w-full h-[91.5dvh] flex items-center gap-1">
+				<div className="w-full h-[91.5dvh] flex items-center gap-1 pb-4">
 					{showSearchBar && (
 						<div
 							className={`w-full glassmorphism rounded-r-lg px-2 py-2 ${
-								query ? "h-[90.4dvh]" : ""
+								query ? "h-[89dvh]" : ""
 							}`}
 						>
 							{query && (
