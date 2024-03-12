@@ -4,12 +4,15 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 export default function DropDown({ tab }) {
 	const [isOpen, setIsOpen] = useState(false);
 	return (
-		<div className="flex flex-col gap-1">
+		<div
+			className="flex flex-col gap-1"
+			onMouseEnter={() => setIsOpen(true)}
+			onMouseLeave={() => setIsOpen(false)}
+		>
 			<div
 				className={`glassmorphism  px-[0.5rem] py-[0.1rem] lowercase font-sans text-lg flex items-center gap-1 ${
 					isOpen ? "rounded-t-lg" : "rounded-lg"
 				}`}
-				onClick={() => setIsOpen((isOpen) => !isOpen)}
 			>
 				{tab.icon}
 				{tab.text}
