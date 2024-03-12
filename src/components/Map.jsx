@@ -1,18 +1,16 @@
+import { useRef } from "react";
 import { MapContainer, TileLayer, useMapEvents } from "react-leaflet";
+import CurrentLoc from "./CurrentLoc";
 
 const subdomains = ["mt0", "mt1", "mt2", "mt3"];
 
 export default function Map() {
 	const center = [11.5975972, 37.3941337];
 	const zoom = 40;
+	const dragConstraint = useRef();
 
 	return (
-		<div
-			id="map"
-			style={{
-				height: "100dvh",
-			}}
-		>
+		<div ref={dragConstraint} id="map" className="h-screen w-screen">
 			<MapContainer center={center} zoom={zoom} style={{ height: "100%" }}>
 				<TileLayer
 					attribution='&copy; <a href="http://www.stadiomaps.org/copyright">stadiomaps</a>'
@@ -21,6 +19,7 @@ export default function Map() {
 				/>
 				<InteractWithMap />
 			</MapContainer>
+			<CurrentLoc dragConstraint={dragConstraint} />
 		</div>
 	);
 }
