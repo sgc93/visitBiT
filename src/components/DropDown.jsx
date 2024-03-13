@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { RiArrowDropDownLine } from "react-icons/ri";
 
-export default function DropDown({ tab }) {
+export default function DropDown({ tab, handleClick }) {
 	const [isOpen, setIsOpen] = useState(false);
 	return (
 		<div
@@ -27,7 +27,10 @@ export default function DropDown({ tab }) {
 					{tab &&
 						tab.dropdowns.map((dropdown) => (
 							<div key={dropdown.text} className="flex flex-col gap-1">
-								<button className=" flex items-center gap-1 rounded-md border-b-[1px] border-blue-300 hover:bg-blue-300">
+								<button
+									className=" flex items-center gap-1 rounded-md border-b-[1px] border-blue-300 hover:bg-blue-300"
+									onClick={() => handleClick(dropdown)}
+								>
 									{dropdown.icon}
 									{dropdown.text}
 								</button>
