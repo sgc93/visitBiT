@@ -1,11 +1,30 @@
 import { useRef, useState } from "react";
-import { MapContainer, TileLayer, useMapEvents } from "react-leaflet";
+import { MapContainer, Polygon, TileLayer, useMapEvents } from "react-leaflet";
 import CurrentLoc from "./CurrentLoc";
 import DetailBox from "./DetailBox";
 import MapLayer from "./MapLayer";
 import PositionMarker from "./PositionMarker";
 
 const subdomains = ["mt0", "mt1", "mt2", "mt3"];
+const bit_borders = [
+	[11.5949517437591, 37.39396750992978],
+	[11.595104263890669, 37.39387103850565],
+	[11.60068893574915, 37.39706948532273],
+	[11.600060179446068, 37.39821357260628],
+	[11.599457191771728, 37.400297623781356],
+	[11.59764833249412, 37.40004739108627],
+	[11.596859189389615, 37.40034791596014],
+	[11.596596141192421, 37.40101336389521],
+	[11.59492314885836, 37.40105629602003],
+	[11.59491700034278, 37.39432222157943],
+];
+
+const border_style = {
+	color: "blue",
+	fillColor: "#0084ff66",
+	weight: 1.2,
+	opacity: 0.7,
+};
 
 export default function Map({ positions }) {
 	const [mapUrl, setMapUrl] = useState(
@@ -35,6 +54,7 @@ export default function Map({ positions }) {
 							setDetailedPlace={setDetailedPlace}
 						/>
 					))}
+				<Polygon positions={bit_borders} pathOptions={border_style} />
 				<InteractWithMap />
 			</MapContainer>
 			<DetailBox
