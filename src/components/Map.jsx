@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { MapContainer, TileLayer, useMapEvents } from "react-leaflet";
 import CurrentLoc from "./CurrentLoc";
+import DetailBox from "./DetailBox";
 import MapLayer from "./MapLayer";
 import PositionMarker from "./PositionMarker";
 
@@ -10,6 +11,8 @@ export default function Map({ positions }) {
 	const [mapUrl, setMapUrl] = useState(
 		"http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}"
 	);
+	const [showDetailBox, setShowDetailBox] = useState(false);
+	const [detailedPlace, setDetailedPlace] = useState("");
 
 	const dragConstraint = useRef();
 	const center = [11.597621756651337, 37.39551835806901];
@@ -24,9 +27,21 @@ export default function Map({ positions }) {
 					subdomains={subdomains}
 				/>
 				{positions &&
-					positions.map((pos) => <PositionMarker key={pos.name} pos={pos} />)}
+					positions.map((pos) => (
+						<PositionMarker
+							key={pos.name}
+							pos={pos}
+							setShowDetailBox={setShowDetailBox}
+							setDetailedPlace={setDetailedPlace}
+						/>
+					))}
 				<InteractWithMap />
 			</MapContainer>
+			<DetailBox
+				showDetailBox={showDetailBox}
+				setShowDetailBox={setShowDetailBox}
+				place={detailedPlace}
+			/>
 			<CurrentLoc dragConstraint={dragConstraint} />
 			<MapLayer setMapUrl={setMapUrl} />
 		</div>
