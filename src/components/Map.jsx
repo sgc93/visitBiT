@@ -1,13 +1,8 @@
 import { useRef, useState } from "react";
-import {
-	MapContainer,
-	Marker,
-	Popup,
-	TileLayer,
-	useMapEvents,
-} from "react-leaflet";
+import { MapContainer, TileLayer, useMapEvents } from "react-leaflet";
 import CurrentLoc from "./CurrentLoc";
 import MapLayer from "./MapLayer";
+import PositionMarker from "./PositionMarker";
 
 const subdomains = ["mt0", "mt1", "mt2", "mt3"];
 
@@ -29,13 +24,7 @@ export default function Map({ positions }) {
 					subdomains={subdomains}
 				/>
 				{positions &&
-					positions.map((pos) => (
-						<Marker position={pos.position} key={pos}>
-							<Popup>
-								<div className="glassmorphism">{pos.name}</div>
-							</Popup>
-						</Marker>
-					))}
+					positions.map((pos) => <PositionMarker key={pos.name} pos={pos} />)}
 				<InteractWithMap />
 			</MapContainer>
 			<CurrentLoc dragConstraint={dragConstraint} />
