@@ -35,6 +35,16 @@
 	@apply text-stone-900 bg-[var(--color-bg-btn)] rounded-lg border-[1px] border-[var(--color-border)] backdrop-blur-sm shadow-lg transition-all duration-300 hover:bg-blue-900 hover:text-stone-200;
 }
 
+/* scroll bar customizing */
+
+.scroll::-webkit-scrollbar {
+	@apply bg-transparent w-3 rounded-lg;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+	@apply bg-blue-400 rounded-md;
+}
+
 /* customize popup */
 
 .leaflet-popup-content-wrapper {
