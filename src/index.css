@@ -11,20 +11,40 @@
 	--color-bg-btn: #0084ff37;
 	--color-border: #0084ff;
 	--color-shadow: #03244386;
+	/* --color-bg-btn: #ffffff67;
+	--color-border: #ffffff;
+	--color-shadow: #7595b386; */
 }
 
 @layer components {
 	.glassmorphism {
 		@apply bg-[var(--color-bg-btn)] border-[1px] border-[var(--color-border)] backdrop-blur-sm shadow-lg;
 	}
+	.glassmorphism-white {
+		@apply bg-stone-50 border-[1px] border-[var(--color-border)] backdrop-blur-sm shadow-lg;
+	}
 }
 
+/* customize zoom controller */
+
 .leaflet-control-zoom {
-	position: absolute;
-	top: 83dvh;
-	left: 96dvw;
+	@apply absolute top-[83dvh] left-[96dvw];
 }
 
 .leaflet-bar a {
 	@apply text-stone-900 bg-[var(--color-bg-btn)] rounded-lg border-[1px] border-[var(--color-border)] backdrop-blur-sm shadow-lg transition-all duration-300 hover:bg-blue-900 hover:text-stone-200;
+}
+
+/* customize popup */
+
+.leaflet-popup-content-wrapper {
+	@apply glassmorphism font-semibold text-[0.6rem];
+}
+
+.leaflet-popup-tip {
+	@apply glassmorphism;
+}
+
+.leaflet-popup-content {
+	@apply text-blue-950;
 }
