@@ -1,7 +1,11 @@
 import { Marker, Popup } from "react-leaflet";
 import Button from "./Button";
 
-export default function PositionMarker({ pos }) {
+export default function PositionMarker({
+	pos,
+	setShowDetailBox,
+	setDetailedPlace,
+}) {
 	return (
 		<Marker position={pos.position}>
 			<Popup>
@@ -12,6 +16,10 @@ export default function PositionMarker({ pos }) {
 						className={
 							"bg-blue-400 text-sm items-center transition-all duration-300 hover:bg-blue-900 hover:text-stone-100"
 						}
+						handleClick={() => {
+							setShowDetailBox(true);
+							setDetailedPlace(pos);
+						}}
 					>
 						See More
 					</Button>
