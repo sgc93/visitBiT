@@ -1,18 +1,24 @@
 import { useRef, useState } from "react";
-import { MapContainer, TileLayer, useMapEvents } from "react-leaflet";
+import {
+	MapContainer,
+	Marker,
+	Popup,
+	TileLayer,
+	useMapEvents,
+} from "react-leaflet";
 import CurrentLoc from "./CurrentLoc";
 import MapLayer from "./MapLayer";
 
 const subdomains = ["mt0", "mt1", "mt2", "mt3"];
 
-export default function Map() {
+export default function Map({ positions }) {
 	const [mapUrl, setMapUrl] = useState(
 		"http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}"
 	);
 
 	const dragConstraint = useRef();
-	const center = [11.5975972, 37.3941337];
-	const zoom = 40;
+	const center = [11.597621756651337, 37.39551835806901];
+	const zoom = 15;
 
 	return (
 		<div ref={dragConstraint} id="map" className="h-screen w-screen">
@@ -22,6 +28,14 @@ export default function Map() {
 					url={mapUrl}
 					subdomains={subdomains}
 				/>
+				{positions &&
+					positions.map((pos) => (
+						<Marker position={pos.position} key={pos}>
+							<Popup>
+								<div className="glassmorphism">{pos.name}</div>
+							</Popup>
+						</Marker>
+					))}
 				<InteractWithMap />
 			</MapContainer>
 			<CurrentLoc dragConstraint={dragConstraint} />
