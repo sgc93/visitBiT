@@ -20,6 +20,7 @@ import {
 } from "react-icons/md";
 import { PiBowlFood } from "react-icons/pi";
 import DragIndicator from "../components/DragIndicator";
+import { cafes, dormitories, launches } from "../services/data";
 import Button from "./Button";
 import DropDown from "./DropDown";
 
@@ -121,11 +122,19 @@ const tabs = [
 	},
 ];
 
-export default function NavBar({ dragConstraint }) {
+export default function NavBar({ dragConstraint, setPositions }) {
 	const [isDragIndicatorShow, setIsDragIndicatorShown] = useState(false);
 
 	function handleClick(tab) {
-		console.log("clicked: " + tab);
+		let positions = "";
+		if (tab.text === "Dormitories") {
+			setPositions(dormitories);
+			positions = dormitories;
+		} else if (tab.text === "cafes") {
+			setPositions(cafes);
+		} else if (tab.text === "launches") {
+			setPositions(launches);
+		}
 	}
 
 	return (
@@ -139,7 +148,7 @@ export default function NavBar({ dragConstraint }) {
 		>
 			{tabs.map((tab) =>
 				tab.dropdown ? (
-					<DropDown key={tab.text} tab={tab} />
+					<DropDown key={tab.text} tab={tab} handleClick={handleClick} />
 				) : (
 					<li key={tab.text}>
 						<Button
@@ -148,7 +157,6 @@ export default function NavBar({ dragConstraint }) {
 						>
 							{tab.icon}
 							{tab.text}
-							{tab.dropdown && tab.dropdownIcon}
 						</Button>
 					</li>
 				)
