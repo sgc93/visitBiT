@@ -10,7 +10,7 @@ import { RiUserSharedFill } from "react-icons/ri";
 export default function DetailBox({ showDetailBox, setShowDetailBox, place }) {
 	return (
 		showDetailBox && (
-			<div className="absolute left-4 top-16 z-[999]">
+			<div className="absolute left-4 top-16 z-[998]">
 				<div className="scroll glassmorphism flex flex-col items-start gap-2 w-[18dvw] h-[90dvh] rounded-lg overflow-x-hidden overflow-y-scroll ">
 					<img src={place.img[1]} alt={place.name} className="rounded-t-lg" />
 					<div className="flex flex-col">
