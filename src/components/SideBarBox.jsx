@@ -1,7 +1,7 @@
 import { FaCode, FaCopyright, FaInfo, FaToggleOn } from "react-icons/fa";
 import { GiShare } from "react-icons/gi";
 import { MdContactPage, MdDragIndicator, MdPrint } from "react-icons/md";
-import getCurrentDateTime from "../services/helpers";
+import getCurrentDateTime, { getCurrentPos } from "../services/helpers";
 import Button from "./Button";
 
 const className = "opacity-70 text-xl";
@@ -14,7 +14,7 @@ const tabs = [
 		toggleIcon: <FaToggleOn className="text-2xl text-blue-900" />,
 	},
 	{
-		text: "Share Location",
+		text: "Share My Location",
 		toggle: false,
 		icon: <GiShare className={className} />,
 	},
@@ -25,80 +25,72 @@ const tabs = [
 	},
 	{
 		text: "About",
-		false: true, // male toilet , female toilet
+		toggle: false, // male toilet , female toilet
 		icon: <FaInfo className={className} />,
 	},
 	{
 		text: "Contact", // cafe, launch, mother houses
-		dropdown: true,
+		toggle: false,
 		icon: <MdContactPage className={className} />,
 	},
 	{
 		text: "Code Overview",
-		dropdown: true,
+		toggle: false,
 		icon: <FaCode className={className} />,
 	},
 ];
 
-export default function SideBarBox() {
+function Tab({ tab, handleClick, children }) {
+	return (
+		<div className="flex flex-col items-center gap-3 w-full">
+			<Button
+				className={
+					"w-full flex items-center gap-2 transition-all duration-300 hover:border-blue-900 hover:text-stone-300"
+				}
+				handleClick={handleClick}
+			>
+				{tab.toggle ? (
+					<>
+						<span className="flex  items-center gap-2">
+							{tab.icon}
+							{tab.text}
+						</span>
+						{tab.toggleIcon}
+					</>
+				) : (
+					<>
+						{tab.icon}
+						{tab.text}
+					</>
+				)}
+			</Button>
+			{children}
+		</div>
+	);
+}
+
+export default function SideBarBox({ setPosition }) {
 	return (
 		<section className="glassmorphism rounded-r-lg h-[88.4dvh] flex flex-col items-center justify-between">
 			<div className="w-full flex flex-col gap-2 p-1">
-				{tabs.map((tab, index) => {
-					if (tab.toggle) {
-						return (
-							<div
-								key={tab.text}
-								className="flex flex-col items-center gap-3 w-full"
-							>
-								<Button
-									className={
-										" w-full flex items-center justify-between transition-all duration-300 hover:border-blue-900 hover:text-stone-300"
-									}
-								>
-									<span className="flex items-center gap-2">
-										{tab.icon}
-										{tab.text}
-									</span>
-									{tab.toggleIcon}
-								</Button>
-								<span className="w-full h-[1px] bg-blue-600 opacity-70"></span>
-							</div>
-						);
-					} else {
-						if (index === 2 || index === 5) {
-							return (
-								<div
-									key={tab.text}
-									className="flex flex-col items-center gap-3 w-full"
-								>
-									<Button
-										key={tab.text}
-										className={
-											"w-full flex items-center gap-2 transition-all duration-300 hover:border-blue-900 hover:text-stone-300"
-										}
-									>
-										{tab.icon}
-										{tab.text}
-									</Button>
-									<span className="w-full h-[1px] bg-blue-600 opacity-70"></span>
-								</div>
-							);
-						} else {
-							return (
-								<Button
-									key={tab.text}
-									className={
-										"flex items-center gap-2 transition-all duration-300 hover:border-blue-900 hover:text-stone-300"
-									}
-								>
-									{tab.icon}
-									{tab.text}
-								</Button>
-							);
-						}
-					}
-				})}
+				<Tab tab={tabs[0]}>
+					<span className="w-full h-[1px] bg-blue-600 opacity-70"></span>
+				</Tab>
+				<Tab
+					tab={tabs[1]}
+					handleClick={() => {
+						setPosition(getCurrentPos());
+						console.log("locating user ..." + getCurrentPos());
+					}}
+				/>
+				<Tab tab={tabs[2]}>
+					<span className="w-full h-[1px] bg-blue-600 opacity-70"></span>
+				</Tab>
+				<Tab tab={tabs[3]} />
+				<Tab tab={tabs[4]} />
+				<Tab tab={tabs[5]}>
+					<span className="w-full h-[1px] bg-blue-600 opacity-70"></span>
+				</Tab>
 			</div>
 			<div className=" flex  flex-col items-center gap-2 pb-4">
 				<span className="w-full h-[1px] bg-blue-600 opacity-70"></span>
