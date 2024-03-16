@@ -29,7 +29,7 @@ export default function CurrentLoc({ dragConstraint }) {
 			drag
 			dragElastic={0.3}
 			dragConstraints={dragConstraint}
-			className="absolute bottom-[8.4rem] right-5 z-[999] flex flex-col items-end gap-1"
+			className="absolute bottom-[8.4rem] right-5 z-[998] flex flex-col items-end gap-1"
 			onMouseEnter={() => setIsOpen(true)}
 			onMouseLeave={() => setIsOpen(false)}
 		>
