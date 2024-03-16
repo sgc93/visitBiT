@@ -36,7 +36,7 @@ export default function MapLayer({ setMapUrl }) {
 
 	return (
 		<div
-			className="absolute bottom-4 right-5 z-[999] flex items-end gap-2"
+			className="absolute bottom-4 right-5 z-[998] flex items-end gap-2"
 			onMouseEnter={() => setIsOpen(true)}
 			onMouseLeave={() => setIsOpen(false)}
 		>
