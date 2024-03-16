@@ -1,11 +1,6 @@
-import {
-	MdClose,
-	MdContentCopy,
-	MdLocationPin,
-	MdPhone,
-	MdShare,
-} from "react-icons/md";
+import { MdClose, MdLocationPin, MdPhone, MdShare } from "react-icons/md";
 import { RiUserSharedFill } from "react-icons/ri";
+import Copy from "./Copy";
 
 export default function DetailBox({ showDetailBox, setShowDetailBox, place }) {
 	return (
@@ -24,13 +19,7 @@ export default function DetailBox({ showDetailBox, setShowDetailBox, place }) {
 							<span className="text-sm font-semibold">
 								{place.position[0]}, {place.position[1]}
 							</span>
-							<button
-								className={
-									"text-xl transition-all duration-300 glassmorphism hover:bg-blue-900 hover:text-stone-200 p-1 rounded-md"
-								}
-							>
-								<MdContentCopy />
-							</button>
+							<Copy value={`${place.position[0]}, ${place.position[1]}`} />
 						</div>
 						<div className="w-full flex items-center justify-between px-2 text-blue-900">
 							<div className="flex items-center gap-2">
@@ -40,13 +29,7 @@ export default function DetailBox({ showDetailBox, setShowDetailBox, place }) {
 								</span>
 							</div>
 							<div className="flex items-center gap-2">
-								<button
-									className={
-										"text-xl transition-all duration-300 glassmorphism hover:bg-blue-900 hover:text-stone-200 p-1 rounded-md"
-									}
-								>
-									<MdContentCopy />
-								</button>
+								<Copy value={`${place.phone[0]}`} />
 								<a
 									href={`callto:${place.phone[0]}`}
 									className={
@@ -60,7 +43,7 @@ export default function DetailBox({ showDetailBox, setShowDetailBox, place }) {
 						<div className="w-full flex items-center justify-between px-2 text-blue-900">
 							<div className="flex items-center gap-2">
 								<RiUserSharedFill className="text-2xl" />
-								<span className="text-lg font-base">share location</span>
+								<span className="text-lg font-base">share your location</span>
 							</div>
 							<button
 								className={
