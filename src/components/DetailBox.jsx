@@ -18,12 +18,14 @@ export default function DetailBox({
 						<span className=" font-semibold px-4">{place.description}</span>
 						<span className="h-[1px] bg-blue-900 m-2"></span>
 					</div>
-					<div className="flex flex-col gap-2">
-						<div className="flex items-center gap-2 px-2 text-blue-900">
-							<MdLocationPin className="text-4xl" />
-							<span className="text-sm font-semibold">
-								{place.position[0]}, {place.position[1]}
-							</span>
+					<div className="w-full flex flex-col gap-2">
+						<div className="w-full flex items-center justify-between gap-2 px-2 text-blue-900">
+							<div className="flex items-center gap-2">
+								<MdLocationPin className="text-4xl" />
+								<span className="text-sm font-semibold">
+									{place.position[0]}, <br /> {place.position[1]}
+								</span>
+							</div>
 							<Copy value={`${place.position[0]}, ${place.position[1]}`} />
 						</div>
 						<div className="w-full flex items-center justify-between px-2 text-blue-900">
@@ -48,7 +50,7 @@ export default function DetailBox({
 						<div className="w-full flex items-center justify-between px-2 text-blue-900">
 							<div className="flex items-center gap-2">
 								<RiUserSharedFill className="text-2xl" />
-								<span className="text-lg font-base">share your location</span>
+								<span className="text-lg font-base">share this location</span>
 							</div>
 							<button
 								className={
