@@ -32,7 +32,10 @@ export default function Map({ positions }) {
 		"http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}"
 	);
 	const [showDetailBox, setShowDetailBox] = useState(false);
-	const [showShareBox, setShowShareBox] = useState(false);
+	const [showShareBox, setShowShareBox] = useState({
+		type: "place",
+		isOpen: false,
+	});
 	const [detailedPlace, setDetailedPlace] = useState("");
 
 	const dragConstraint = useRef();
@@ -60,12 +63,13 @@ export default function Map({ positions }) {
 				<Polygon positions={bit_borders} pathOptions={border_style} />
 				<InteractWithMap />
 			</MapContainer>
-			{showShareBox && (
+			{showShareBox.isOpen && (
 				<ShareBox setShowShareBox={setShowShareBox} place={detailedPlace} />
 			)}
 			<DetailBox
 				showDetailBox={showDetailBox}
 				setShowDetailBox={setShowDetailBox}
+				setShowShareBox={setShowShareBox}
 				place={detailedPlace}
 			/>
 			<CurrentLoc dragConstraint={dragConstraint} />
