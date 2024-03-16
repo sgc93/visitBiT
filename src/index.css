@@ -28,7 +28,11 @@
 /* customize zoom controller */
 
 .leaflet-control-zoom {
-	@apply absolute top-[83dvh] left-[96dvw];
+	@apply absolute top-[83dvh] left-[96dvw] z-[998];
+}
+
+.leaflet-top {
+	@apply z-[998];
 }
 
 .leaflet-bar a {
