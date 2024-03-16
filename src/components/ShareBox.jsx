@@ -3,26 +3,6 @@ import Copy from "./Copy";
 
 export default function ShareBox({ place, setShowShareBox, showShareBox }) {
 	const isUserLoc = showShareBox.type === "user";
-	if (isUserLoc) {
-		if ("geolocation" in navigator) {
-			navigator.geolocation.getCurrentPosition(
-				(userPos) => {
-					console.log(userPos);
-					const { latitude, longitude } = userPos.coords;
-					place = {
-						position: [latitude, longitude],
-					};
-				},
-				(error) => {
-					throw new Error(
-						"Something went wrong while locating user : " + error
-					);
-				}
-			);
-		} else {
-			throw new Error("geolocation is not supported in this browser!");
-		}
-	}
 
 	return (
 		<div className=" w-[23rem] absolute z-[998] left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] glassmorphism px-2 pt-1 pb-4 rounded-lg">
