@@ -4,6 +4,7 @@ import CurrentLoc from "./CurrentLoc";
 import DetailBox from "./DetailBox";
 import MapLayer from "./MapLayer";
 import PositionMarker from "./PositionMarker";
+import ShareBox from "./ShareBox";
 
 const subdomains = ["mt0", "mt1", "mt2", "mt3"];
 const bit_borders = [
@@ -31,6 +32,7 @@ export default function Map({ positions }) {
 		"http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}"
 	);
 	const [showDetailBox, setShowDetailBox] = useState(false);
+	const [showShareBox, setShowShareBox] = useState(false);
 	const [detailedPlace, setDetailedPlace] = useState("");
 
 	const dragConstraint = useRef();
@@ -52,11 +54,15 @@ export default function Map({ positions }) {
 							pos={pos}
 							setShowDetailBox={setShowDetailBox}
 							setDetailedPlace={setDetailedPlace}
+							setShowShareBox={setShowShareBox}
 						/>
 					))}
 				<Polygon positions={bit_borders} pathOptions={border_style} />
 				<InteractWithMap />
 			</MapContainer>
+			{showShareBox && (
+				<ShareBox setShowShareBox={setShowShareBox} place={detailedPlace} />
+			)}
 			<DetailBox
 				showDetailBox={showDetailBox}
 				setShowDetailBox={setShowDetailBox}
