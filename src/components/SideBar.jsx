@@ -2,7 +2,7 @@ import { useState } from "react";
 import SideBarBox from "./SideBarBox";
 import SidebarHeader from "./SideBarHeader";
 
-export default function SideBar() {
+export default function SideBar({ setPosition }) {
 	const [query, setQuery] = useState("");
 	const [showSideBar, setShowSideBar] = useState(false);
 	return (
@@ -13,7 +13,7 @@ export default function SideBar() {
 				query={query}
 				setQuery={setQuery}
 			/>
-			{showSideBar && <SideBarBox />}
+			{showSideBar && <SideBarBox setPosition={setPosition} />}
 		</section>
 	);
 }
