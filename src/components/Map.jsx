@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { MapContainer, Polygon, TileLayer, useMapEvents } from "react-leaflet";
 import CurrentLoc from "./CurrentLoc";
 import DetailBox from "./DetailBox";
@@ -31,6 +31,8 @@ export default function Map({ positions }) {
 	const [mapUrl, setMapUrl] = useState(
 		"http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}"
 	);
+	const [center, setCenter] = [11.597621756651337, 37.39551835806901];
+
 	const [showDetailBox, setShowDetailBox] = useState(false);
 	const [showShareBox, setShowShareBox] = useState({
 		type: "place",
@@ -38,12 +40,10 @@ export default function Map({ positions }) {
 	});
 	const [detailedPlace, setDetailedPlace] = useState("");
 
-	const dragConstraint = useRef();
-	const center = [11.597621756651337, 37.39551835806901];
-	const zoom = 15;
+	const zoom = 17;
 
 	return (
-		<div ref={dragConstraint} id="map" className="h-screen w-screen">
+		<div id="map" className="h-screen w-screen">
 			<MapContainer center={center} zoom={zoom} style={{ height: "100%" }}>
 				<TileLayer
 					attribution='&copy; <a href="http://www.stadiomaps.org/copyright">stadiomaps</a>'
@@ -76,7 +76,7 @@ export default function Map({ positions }) {
 				setShowShareBox={setShowShareBox}
 				place={detailedPlace}
 			/>
-			<CurrentLoc dragConstraint={dragConstraint} />
+			<CurrentLoc setCenter={setCenter} />
 			<MapLayer setMapUrl={setMapUrl} />
 		</div>
 	);
