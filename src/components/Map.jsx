@@ -64,7 +64,11 @@ export default function Map({ positions }) {
 				<InteractWithMap />
 			</MapContainer>
 			{showShareBox.isOpen && (
-				<ShareBox setShowShareBox={setShowShareBox} place={detailedPlace} />
+				<ShareBox
+					setShowShareBox={setShowShareBox}
+					place={detailedPlace}
+					showShareBox={showShareBox}
+				/>
 			)}
 			<DetailBox
 				showDetailBox={showDetailBox}
