@@ -13,7 +13,7 @@ export default function HomePage() {
 			ref={dragConstraint}
 		>
 			<Header dragConstraint={dragConstraint} setPositions={setPositions} />
-			<SideBar />
+			<SideBar setPosition={setPositions} />
 			<Map positions={positions} />
 		</section>
 	);
