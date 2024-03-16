@@ -2,7 +2,12 @@ import { MdClose, MdLocationPin, MdPhone, MdShare } from "react-icons/md";
 import { RiUserSharedFill } from "react-icons/ri";
 import Copy from "./Copy";
 
-export default function DetailBox({ showDetailBox, setShowDetailBox, place }) {
+export default function DetailBox({
+	showDetailBox,
+	setShowDetailBox,
+	place,
+	setShowShareBox,
+}) {
 	return (
 		showDetailBox && (
 			<div className="absolute left-4 top-16 z-[998]">
@@ -48,6 +53,11 @@ export default function DetailBox({ showDetailBox, setShowDetailBox, place }) {
 							<button
 								className={
 									"text-xl transition-all duration-300 glassmorphism hover:bg-blue-900 hover:text-stone-200 p-1 rounded-md"
+								}
+								onClick={() =>
+									setShowShareBox((showShareBox) => {
+										return { ...showShareBox, type: "place", isOpen: true };
+									})
 								}
 							>
 								<MdShare />
