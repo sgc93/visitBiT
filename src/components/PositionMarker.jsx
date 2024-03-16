@@ -31,7 +31,9 @@ export default function PositionMarker({
 							}
 							handleClick={() => {
 								setDetailedPlace(pos);
-								setShowShareBox(true);
+								setShowShareBox((showShareBox) => {
+									return { ...showShareBox, isOpen: true };
+								});
 							}}
 						>
 							share
