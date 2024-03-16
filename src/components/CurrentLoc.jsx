@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FaHandHoldingWater, FaRestroom } from "react-icons/fa";
 import { GrLocation } from "react-icons/gr";
 import { MdOutlineMyLocation } from "react-icons/md";
+import { getCurrentPos } from "../services/helpers";
 import Button from "./Button";
 
 const className = "opacity-60";
@@ -21,14 +22,13 @@ const tabs = [
 		icon: <FaHandHoldingWater className={className} />,
 	},
 ];
-export default function CurrentLoc({ dragConstraint }) {
+export default function CurrentLoc({ setCenter }) {
 	const [isOpen, setIsOpen] = useState(false);
 
 	return (
 		<motion.div
 			drag
 			dragElastic={0.3}
-			dragConstraints={dragConstraint}
 			className="absolute bottom-[8.4rem] right-5 z-[998] flex flex-col items-end gap-1"
 			onMouseEnter={() => setIsOpen(true)}
 			onMouseLeave={() => setIsOpen(false)}
