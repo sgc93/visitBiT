@@ -11,8 +11,8 @@ export default function PositionMarker({
 		<Marker position={pos.position}>
 			<Popup>
 				<div className="flex flex-col gap-2">
-					<span>{pos.name}</span>
-					<img src={pos.img[1]} alt="kitaw_launch" />
+					{pos.name && <span>{pos.name}</span>}
+					{pos.img && <img src={pos.img[1]} alt={pos.name} />}
 					<div className="flex items-center gap-1">
 						<Button
 							className={
