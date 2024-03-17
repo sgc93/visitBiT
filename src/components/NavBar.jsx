@@ -122,18 +122,18 @@ const tabs = [
 	},
 ];
 
-export default function NavBar({ dragConstraint, setPositions }) {
+export default function NavBar({ dragConstraint, setMarkedPlace }) {
 	const [isDragIndicatorShow, setIsDragIndicatorShown] = useState(false);
 
 	function handleClick(tab) {
 		let positions = "";
 		if (tab.text === "Dormitories") {
-			setPositions(dormitories);
+			setMarkedPlace(dormitories);
 			positions = dormitories;
 		} else if (tab.text === "cafes") {
-			setPositions(cafes);
+			setMarkedPlace(cafes);
 		} else if (tab.text === "launches") {
-			setPositions(launches);
+			setMarkedPlace(launches);
 		}
 	}
 
