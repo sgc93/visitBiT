@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
 
 import { Polygon, useMapEvents } from "react-leaflet";
+import { getCenter } from "../services/helpers";
 import CurrentLoc from "./CurrentLoc";
 import DetailBox from "./DetailBox";
 import MapLayer from "./MapLayer";
@@ -42,6 +43,12 @@ export default function Map({ positions, setMarkedPlace }) {
 		isOpen: false,
 	});
 	const [detailedPlace, setDetailedPlace] = useState("");
+
+	useEffect(() => {
+		if (positions.length !== 0) {
+			setCenter(getCenter(positions));
+		}
+	}, [positions]);
 
 	return (
 		<div id="map" className="h-screen w-screen">
