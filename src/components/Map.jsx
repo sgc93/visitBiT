@@ -44,9 +44,12 @@ export default function Map({ positions, setMarkedPlace }) {
 	});
 	const [detailedPlace, setDetailedPlace] = useState("");
 
+	// handle finding center of given set of positions
 	useEffect(() => {
-		if (positions.length !== 0) {
+		if (positions.length > 1) {
 			setCenter(getCenter(positions));
+		} else if (positions.length === 1) {
+			setCenter(positions[0].position);
 		}
 	}, [positions]);
 
