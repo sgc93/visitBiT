@@ -23,7 +23,7 @@ const tabs = [
 	},
 ];
 
-export default function CurrentLoc({ setMarkedPlace, setCenter }) {
+export default function CurrentLoc({ setMarkedPlace }) {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 
