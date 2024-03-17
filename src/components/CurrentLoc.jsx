@@ -32,7 +32,6 @@ export default function CurrentLoc({ setMarkedPlace, setCenter }) {
 			setIsLoading(true);
 			const currentPos = await getCurrentPos();
 			setMarkedPlace(currentPos);
-			setCenter(currentPos[0].position);
 		} catch (error) {
 			throw new Error(error.message);
 		} finally {
