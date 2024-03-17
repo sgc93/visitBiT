@@ -23,6 +23,21 @@ const tabs = [
 	},
 ];
 
+function Tab({ tab, handleClick }) {
+	return (
+		<Button
+			key={tab.text}
+			className={
+				"flex items-center gap-2 transition-all duration-500 hover:bg-blue-900 hover:text-stone-100"
+			}
+			handleClick={handleClick}
+		>
+			{tab.icon}
+			{tab.text}
+		</Button>
+	);
+}
+
 export default function CurrentLoc({ setMarkedPlace }) {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
@@ -49,17 +64,9 @@ export default function CurrentLoc({ setMarkedPlace }) {
 		>
 			{isOpen && (
 				<div className="glassmorphism p-1 rounded-t-lg flex flex-col gap-1">
-					{tabs.map((tab) => (
-						<Button
-							key={tab.text}
-							className={
-								"flex items-center gap-2 transition-all duration-500 hover:bg-blue-900 hover:text-stone-100"
-							}
-						>
-							{tab.icon}
-							{tab.text}
-						</Button>
-					))}
+					<Tab tab={tabs[0]} handleClick={() => handleLocatingUser()} />
+					<Tab tab={tabs[1]} />
+					<Tab tab={tabs[2]} />
 				</div>
 			)}
 			<div
@@ -67,15 +74,7 @@ export default function CurrentLoc({ setMarkedPlace }) {
 					isOpen ? "rounded-b-lg" : "rounded-t-lg"
 				}`}
 			>
-				{isLoading ? (
-					"..."
-				) : (
-					<MdOutlineMyLocation
-						onClick={() => {
-							handleLocatingUser();
-						}}
-					/>
-				)}
+				{isLoading ? "..." : <MdOutlineMyLocation />}
 			</div>
 		</motion.div>
 	);
