@@ -1,5 +1,7 @@
-import { useState } from "react";
-import { MapContainer, Polygon, TileLayer, useMapEvents } from "react-leaflet";
+import { useEffect, useState } from "react";
+import { MapContainer, TileLayer, useMap } from "react-leaflet";
+
+import { Polygon, useMapEvents } from "react-leaflet";
 import CurrentLoc from "./CurrentLoc";
 import DetailBox from "./DetailBox";
 import MapLayer from "./MapLayer";
@@ -27,11 +29,12 @@ const border_style = {
 	opacity: 0.7,
 };
 
-export default function Map({ positions }) {
+export default function Map({ positions, setMarkedPlace }) {
 	const [mapUrl, setMapUrl] = useState(
 		"http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}"
 	);
-	const [center, setCenter] = [11.597621756651337, 37.39551835806901];
+	const [center, setCenter] = useState([11.597621756651337, 37.39551835806901]);
+	const [zoom, setZoom] = useState(17);
 
 	const [showDetailBox, setShowDetailBox] = useState(false);
 	const [showShareBox, setShowShareBox] = useState({
@@ -61,7 +64,9 @@ export default function Map({ positions }) {
 						/>
 					))}
 				<Polygon positions={bit_borders} pathOptions={border_style} />
-				<InteractWithMap />
+				{/* {flyToOptions && <FlyTo {...flyToOptions} />} */}
+				<InteractWithMap setCenter={setCenter} setZoom={setZoom} />
+				<FlyTo center={center} />
 			</MapContainer>
 			{showShareBox.isOpen && (
 				<ShareBox
@@ -76,20 +81,30 @@ export default function Map({ positions }) {
 				setShowShareBox={setShowShareBox}
 				place={detailedPlace}
 			/>
-			<CurrentLoc setCenter={setCenter} />
+			<CurrentLoc setMarkedPlace={setMarkedPlace} setCenter={setCenter} />
 			<MapLayer setMapUrl={setMapUrl} />
 		</div>
 	);
 }
 
-function InteractWithMap() {
-	function handleMapClick(event) {
-		console.log(event);
-	}
+function InteractWithMap({ setCenter, setZoom }) {
+	function handleMapClick(event) {}
 
-	useMapEvents({
-		click: handleMapClick,
+	const map = useMapEvents({
+		click: (e) => {
+			console.log(e);
+			setCenter(e.latlng);
+			map.flyTo(e.latlng, map.getZoom());
+		},
 	});
+}
+
+function FlyTo({ center }) {
+	const map = useMap();
+
+	useEffect(() => {
+		map.flyTo(center, 18);
+	}, [center, map]);
 }
 
 // stackoverflow
