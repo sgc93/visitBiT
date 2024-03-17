@@ -43,8 +43,6 @@ export default function Map({ positions, setMarkedPlace }) {
 	});
 	const [detailedPlace, setDetailedPlace] = useState("");
 
-	const zoom = 17;
-
 	return (
 		<div id="map" className="h-screen w-screen">
 			<MapContainer center={center} zoom={zoom} style={{ height: "100%" }}>
@@ -87,6 +85,8 @@ export default function Map({ positions, setMarkedPlace }) {
 	);
 }
 
+// a component to handle user's interaction with map
+
 function InteractWithMap({ setCenter, setZoom }) {
 	function handleMapClick(event) {}
 
@@ -98,6 +98,8 @@ function InteractWithMap({ setCenter, setZoom }) {
 		},
 	});
 }
+
+// a component used to flay from anywhere to a selected place
 
 function FlyTo({ center }) {
 	const map = useMap();
