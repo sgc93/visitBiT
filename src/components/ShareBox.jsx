@@ -20,12 +20,20 @@ export default function ShareBox({ place, setShowShareBox, showShareBox }) {
 			</div>
 			{!isUserLoc && (
 				<div className="p-2 flex items-start gap-2">
-					<img className="w-16 max-h-20" src={place.img[1]} alt={place.name} />
+					{place.img && (
+						<img
+							className="w-16 max-h-20"
+							src={place.img[1]}
+							alt={place.name}
+						/>
+					)}
 					<div className="flex flex-col">
 						<span className="text-sm text-blue-950">
 							{place.position[0]},{place.position[1]}
 						</span>
-						<span className="text-lg text-stone-500">{place.name}</span>
+						{place.name && (
+							<span className="text-lg text-stone-500">{place.name}</span>
+						)}
 					</div>
 				</div>
 			)}
