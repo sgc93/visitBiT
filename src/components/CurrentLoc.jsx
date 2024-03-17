@@ -22,8 +22,23 @@ const tabs = [
 		icon: <FaHandHoldingWater className={className} />,
 	},
 ];
-export default function CurrentLoc({ setCenter }) {
+
+export default function CurrentLoc({ setMarkedPlace, setCenter }) {
 	const [isOpen, setIsOpen] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
+
+	async function handleLocatingUser() {
+		try {
+			setIsLoading(true);
+			const currentPos = await getCurrentPos();
+			setMarkedPlace(currentPos);
+			setCenter(currentPos[0].position);
+		} catch (error) {
+			throw new Error(error.message);
+		} finally {
+			setIsLoading(false);
+		}
+	}
 
 	return (
 		<motion.div
@@ -53,7 +68,16 @@ export default function CurrentLoc({ setCenter }) {
 					isOpen ? "rounded-b-lg" : "rounded-t-lg"
 				}`}
 			>
-				<MdOutlineMyLocation />
+				{isLoading ? (
+					"..."
+				) : (
+					<MdOutlineMyLocation
+						onClick={(e) => {
+							e.stopPropagation();
+							handleLocatingUser();
+						}}
+					/>
+				)}
 			</div>
 		</motion.div>
 	);
