@@ -5,16 +5,21 @@ import Map from "../components/Map";
 import SideBar from "../components/SideBar";
 
 export default function HomePage() {
-	const [positions, setPositions] = useState([]);
+	const [position, setPosition] = useState([]);
 	const dragConstraint = useRef();
+
+	function setMarkedPlace(position) {
+		setPosition(position);
+	}
+
 	return (
 		<section
 			className="relative overflow-hidden w-screen h-screen"
 			ref={dragConstraint}
 		>
-			<Header dragConstraint={dragConstraint} setPositions={setPositions} />
-			<SideBar setPosition={setPositions} />
-			<Map positions={positions} />
+			<Header dragConstraint={dragConstraint} setMarkedPlace={setMarkedPlace} />
+			<SideBar setPosition={setMarkedPlace} />
+			<Map positions={position} setMarkedPlace={setMarkedPlace} />
 		</section>
 	);
 }
