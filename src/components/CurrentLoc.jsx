@@ -72,8 +72,7 @@ export default function CurrentLoc({ setMarkedPlace, setCenter }) {
 					"..."
 				) : (
 					<MdOutlineMyLocation
-						onClick={(e) => {
-							e.stopPropagation();
+						onClick={() => {
 							handleLocatingUser();
 						}}
 					/>
