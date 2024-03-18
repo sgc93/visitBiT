@@ -13,7 +13,7 @@ export default function DetailBox({
 			<div className="absolute left-4 top-16 z-[998]">
 				<div className="scroll glassmorphism flex flex-col items-start gap-2 w-[18dvw] h-[90dvh] rounded-lg overflow-x-hidden overflow-y-scroll ">
 					{place.img && (
-						<img src={place.img[1]} alt={place.name} className="rounded-t-lg" />
+						<img src={place.img[0]} alt={place.name} className="rounded-t-lg" />
 					)}
 					<div className="flex flex-col">
 						{place.name && (
@@ -39,7 +39,13 @@ export default function DetailBox({
 								<div className="flex items-center gap-2">
 									<MdPhone className="text-2xl" />
 									<span className="text-sm font-semibold">
-										{place.phone[0]}, <br /> {place.phone[0]}
+										{place.phone[0]}{" "}
+										{place.phone[1] && (
+											<>
+												, <br />
+												{place.phone[1]}
+											</>
+										)}
 									</span>
 								</div>
 								<div className="flex items-center gap-2">
