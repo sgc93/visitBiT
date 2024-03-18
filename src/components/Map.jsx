@@ -35,7 +35,7 @@ export default function Map({ positions, setMarkedPlace }) {
 		"http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}"
 	);
 	const [center, setCenter] = useState([11.597621756651337, 37.39551835806901]);
-	const [zoom, setZoom] = useState(17);
+	const zoom = 17;
 
 	const [showDetailBox, setShowDetailBox] = useState(false);
 	const [showShareBox, setShowShareBox] = useState({
@@ -118,7 +118,7 @@ function FlyTo({ center }) {
 	const map = useMap();
 
 	useEffect(() => {
-		map.flyTo(center, 18);
+		map.flyTo(center, map.getZoom());
 	}, [center, map]);
 }
 
