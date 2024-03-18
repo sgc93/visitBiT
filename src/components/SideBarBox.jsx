@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useReducer } from "react";
 import { FaCode, FaCopyright, FaInfo, FaToggleOn } from "react-icons/fa";
 import { GiShare } from "react-icons/gi";
 import { MdContactPage, MdDragIndicator, MdPrint } from "react-icons/md";
@@ -80,7 +80,16 @@ const initialState = {
 };
 
 function reducer(state, dispatch) {
-	console.log(state, dispatch);
+	switch (dispatch.type) {
+		case "showModal/print":
+			return { ...state, isAbout: false, isPrint: true, isContact: false };
+		case "showModal/about":
+			return { ...state, isAbout: true, isPrint: false, isContact: false };
+		case "showModal/contact":
+			return { ...state, isAbout: false, isPrint: false, isContact: true };
+		default:
+			return state;
+	}
 }
 
 export default function SideBarBox() {
@@ -88,11 +97,6 @@ export default function SideBarBox() {
 		reducer,
 		initialState
 	);
-	const [modal, setModal] = useState({
-		isAbout: false,
-		isContact: false,
-		isPrint: false,
-	});
 
 	return (
 		<section className=" flex items-center gap-1 justify-between">
@@ -104,44 +108,17 @@ export default function SideBarBox() {
 					<Tab tab={tabs[1]} />
 					<Tab
 						tab={tabs[2]}
-						handleClick={() =>
-							setModal((modal) => {
-								return {
-									...modal,
-									isAbout: false,
-									isContact: false,
-									isPrint: true,
-								};
-							})
-						}
+						handleClick={() => dispatch({ type: "showModal/print" })}
 					>
 						<span className="w-full h-[1px] bg-blue-600 opacity-70"></span>
 					</Tab>
 					<Tab
 						tab={tabs[3]}
-						handleClick={() =>
-							setModal((modal) => {
-								return {
-									...modal,
-									isAbout: true,
-									isContact: false,
-									isPrint: false,
-								};
-							})
-						}
+						handleClick={() => dispatch({ type: "showModal/about" })}
 					/>
 					<Tab
 						tab={tabs[4]}
-						handleClick={() =>
-							setModal((modal) => {
-								return {
-									...modal,
-									isAbout: false,
-									isContact: true,
-									isPrint: false,
-								};
-							})
-						}
+						handleClick={() => dispatch({ type: "showModal/contact" })}
 					/>
 					<Tab tab={tabs[5]}>
 						<span className="w-full h-[1px] bg-blue-600 opacity-70"></span>
@@ -159,9 +136,9 @@ export default function SideBarBox() {
 				</div>
 			</div>
 
-			{modal.isAbout && <About />}
-			{modal.isContact && <Contact />}
-			{modal.isPrint && <Print />}
+			{isAbout && <About />}
+			{isContact && <Contact />}
+			{isPrint && <Print />}
 		</section>
 	);
 }
