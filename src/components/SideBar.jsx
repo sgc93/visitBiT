@@ -1,18 +1,13 @@
 import { useState } from "react";
+import MenuIcon from "./MenuIcon";
 import SideBarBox from "./SideBarBox";
-import SidebarHeader from "./SideBarHeader";
 
 export default function SideBar({ setPosition }) {
-	const [query, setQuery] = useState("");
 	const [showSideBar, setShowSideBar] = useState(false);
+
 	return (
-		<section className="flex flex-col gap-3 absolute top-4 left-4 z-[998]">
-			<SidebarHeader
-				showSideBar={showSideBar}
-				setShowSideBar={setShowSideBar}
-				query={query}
-				setQuery={setQuery}
-			/>
+		<section className="flex flex-col gap-7 absolute top-4 left-4 z-[998]">
+			<MenuIcon showSideBar={showSideBar} setShowSideBar={setShowSideBar} />
 			{showSideBar && <SideBarBox setPosition={setPosition} />}
 		</section>
 	);
