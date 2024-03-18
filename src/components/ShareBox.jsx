@@ -23,7 +23,7 @@ export default function ShareBox({ place, setShowShareBox, showShareBox }) {
 					{place.img && (
 						<img
 							className="w-16 max-h-20"
-							src={place.img[1]}
+							src={place.img[0]}
 							alt={place.name}
 						/>
 					)}
