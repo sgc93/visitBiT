@@ -73,7 +73,7 @@ export default function Map({ positions, setMarkedPlace }) {
 					))}
 				<Polygon positions={bit_borders} pathOptions={border_style} />
 				{/* {flyToOptions && <FlyTo {...flyToOptions} />} */}
-				<InteractWithMap setCenter={setCenter} setZoom={setZoom} />
+				<InteractWithMap setMarkedPlace={setMarkedPlace} />
 				<FlyTo center={center} />
 			</MapContainer>
 			{showShareBox.isOpen && (
@@ -89,7 +89,7 @@ export default function Map({ positions, setMarkedPlace }) {
 				setShowShareBox={setShowShareBox}
 				place={detailedPlace}
 			/>
-			<CurrentLoc setMarkedPlace={setMarkedPlace} setCenter={setCenter} />
+			<CurrentLoc setMarkedPlace={setMarkedPlace} />
 			<MapLayer setMapUrl={setMapUrl} />
 		</div>
 	);
@@ -97,15 +97,18 @@ export default function Map({ positions, setMarkedPlace }) {
 
 // a component to handle user's interaction with map
 
-function InteractWithMap({ setCenter, setZoom }) {
-	function handleMapClick(event) {}
+function InteractWithMap({ setMarkedPlace }) {
+	function handleMapClick(e) {
+		const clickedPos = [
+			{
+				position: [e.latlng.lat, e.latlng.lng],
+			},
+		];
+		setMarkedPlace((pos) => clickedPos);
+	}
 
-	const map = useMapEvents({
-		click: (e) => {
-			console.log(e);
-			setCenter(e.latlng);
-			map.flyTo(e.latlng, map.getZoom());
-		},
+	useMapEvents({
+		click: handleMapClick,
 	});
 }
 
