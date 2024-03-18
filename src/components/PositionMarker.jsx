@@ -12,7 +12,7 @@ export default function PositionMarker({
 			<Popup>
 				<div className="flex flex-col gap-2">
 					{pos.name && <span>{pos.name}</span>}
-					{pos.img && <img src={pos.img[1]} alt={pos.name} />}
+					{pos.img && <img src={pos.img[0]} alt={pos.name} />}
 					<div className="flex items-center gap-1">
 						<Button
 							className={
