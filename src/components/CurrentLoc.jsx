@@ -3,7 +3,7 @@ import { useState } from "react";
 import { FaHandHoldingWater, FaRestroom } from "react-icons/fa";
 import { GrLocation } from "react-icons/gr";
 import { MdOutlineMyLocation } from "react-icons/md";
-import { getCurrentPos } from "../services/helpers";
+import { getCurrentPos, getDistance } from "../services/helpers";
 import Button from "./Button";
 
 const className = "opacity-60";
@@ -41,12 +41,29 @@ function Tab({ tab, handleClick }) {
 export default function CurrentLoc({ setMarkedPlace }) {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
+	const [userCoords, setUserCoords] = useState([]);
 
 	async function handleLocatingUser() {
 		try {
 			setIsLoading(true);
-			const currentPos = await getCurrentPos();
-			setMarkedPlace(currentPos);
+			const position = await getCurrentPos();
+			if (position.length !== 0) {
+				const userPos = [
+					{
+						name: "user",
+						position: position,
+					},
+				];
+				setMarkedPlace(userPos);
+				setUserCoords(position);
+				const d = getDistance(
+					position[0],
+					position[1],
+					11.597621756651337,
+					37.39551835806901
+				);
+				console.log(userCoords, position, d);
+			}
 		} catch (error) {
 			throw new Error(error.message);
 		} finally {
