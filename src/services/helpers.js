@@ -82,3 +82,23 @@ export function getDistance(lat1, lng1, lat2, lng2) {
 
 	return convertDistance(d);
 }
+
+export function getNearest(positions, userPos) {
+	let smallestD = Infinity;
+	let nearestPlace;
+
+	positions.forEach((pos) => {
+		const d = getDistance(
+			pos.position[0],
+			pos.position[1],
+			userPos[0],
+			userPos[1]
+		);
+		if (d < smallestD) {
+			smallestD = d;
+			nearestPlace = pos;
+		}
+	});
+
+	return nearestPlace;
+}
