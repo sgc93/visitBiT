@@ -52,6 +52,15 @@ function inRadian(angle) {
 	return angle * (Math.PI / 180);
 }
 
+// convert km into m if d < 1km  : and rounding
+function convertDistance(d) {
+	if (d < 1) {
+		return Math.round(d * 1000);
+	} else {
+		return Math.round(d);
+	}
+}
+
 // considering that earth is spherical : using Haversine Formula
 export function getDistance(lat1, lng1, lat2, lng2) {
 	const R = 6371; // radius of earth
@@ -70,6 +79,6 @@ export function getDistance(lat1, lng1, lat2, lng2) {
 
 	// calculate distance d = R * c
 	const d = R * c;
-	console.log("distance in km: " + d);
-	return d;
+
+	return convertDistance(d);
 }
