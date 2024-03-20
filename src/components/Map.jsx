@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MapContainer, TileLayer, useMap } from "react-leaflet";
+import { MapContainer, Polyline, TileLayer, useMap } from "react-leaflet";
 
 import { Polygon, useMapEvents } from "react-leaflet";
 import { getCenter } from "../services/helpers";
@@ -30,6 +30,12 @@ const border_style = {
 	opacity: 0.7,
 };
 
+const line_style = {
+	color: "red",
+	weight: 1.2,
+	dashArray: "3, 8",
+};
+
 export default function Map({ positions, setMarkedPlace }) {
 	const [mapUrl, setMapUrl] = useState(
 		"http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}"
@@ -43,6 +49,7 @@ export default function Map({ positions, setMarkedPlace }) {
 		isOpen: false,
 	});
 	const [detailedPlace, setDetailedPlace] = useState("");
+	const [connectedPositions, setConnectedPositions] = useState([]);
 
 	// handle finding center of given set of positions
 	useEffect(() => {
@@ -61,10 +68,10 @@ export default function Map({ positions, setMarkedPlace }) {
 					url={mapUrl}
 					subdomains={subdomains}
 				/>
-				{positions &&
-					positions.map((pos) => (
+				{positions.length > 0 &&
+					positions.map((pos, key) => (
 						<PositionMarker
-							key={pos.name}
+							key={key}
 							pos={pos}
 							setShowDetailBox={setShowDetailBox}
 							setDetailedPlace={setDetailedPlace}
@@ -72,7 +79,9 @@ export default function Map({ positions, setMarkedPlace }) {
 						/>
 					))}
 				<Polygon positions={bit_borders} pathOptions={border_style} />
-				{/* {flyToOptions && <FlyTo {...flyToOptions} />} */}
+				{connectedPositions && (
+					<Polyline positions={connectedPositions} pathOptions={line_style} />
+				)}
 				<InteractWithMap setMarkedPlace={setMarkedPlace} />
 				<FlyTo center={center} />
 			</MapContainer>
@@ -89,7 +98,10 @@ export default function Map({ positions, setMarkedPlace }) {
 				setShowShareBox={setShowShareBox}
 				place={detailedPlace}
 			/>
-			<CurrentLoc setMarkedPlace={setMarkedPlace} />
+			<CurrentLoc
+				setMarkedPlace={setMarkedPlace}
+				setConnectedPositions={setConnectedPositions}
+			/>
 			<MapLayer setMapUrl={setMapUrl} />
 		</div>
 	);
