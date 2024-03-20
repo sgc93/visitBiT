@@ -3,7 +3,8 @@ import { useState } from "react";
 import { FaHandHoldingWater, FaRestroom } from "react-icons/fa";
 import { GrLocation } from "react-icons/gr";
 import { MdOutlineMyLocation } from "react-icons/md";
-import { getCurrentPos, getDistance } from "../services/helpers";
+import { dormitories, launches } from "../services/data";
+import { getCurrentPos, getNearestPlace } from "../services/helpers";
 import Button from "./Button";
 
 const className = "opacity-60";
@@ -38,10 +39,11 @@ function Tab({ tab, handleClick }) {
 	);
 }
 
-export default function CurrentLoc({ setMarkedPlace }) {
+export default function CurrentLoc({ setMarkedPlace, setConnectedPositions }) {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const [userCoords, setUserCoords] = useState([]);
+	const [userLoc, setUserLoc] = useState([]);
 
 	async function handleLocatingUser() {
 		try {
@@ -55,19 +57,26 @@ export default function CurrentLoc({ setMarkedPlace }) {
 					},
 				];
 				setMarkedPlace(userPos);
+				setUserLoc(userPos);
 				setUserCoords(position);
-				const d = getDistance(
-					position[0],
-					position[1],
-					11.597621756651337,
-					37.39551835806901
-				);
-				console.log(userCoords, position, d);
+				return true;
 			}
 		} catch (error) {
 			throw new Error(error.message);
 		} finally {
 			setIsLoading(false);
+		}
+	}
+
+	async function locateNearest(places) {
+		try {
+			const nearest = await getNearestPlace(places);
+			console.log(nearest);
+			setMarkedPlace(nearest);
+			const x = nearest.map((place) => place.position);
+			setConnectedPositions(x);
+		} catch (error) {
+			throw new Error(error.message);
 		}
 	}
 
@@ -82,8 +91,8 @@ export default function CurrentLoc({ setMarkedPlace }) {
 			{isOpen && (
 				<div className="glassmorphism p-1 rounded-t-lg flex flex-col gap-1">
 					<Tab tab={tabs[0]} handleClick={() => handleLocatingUser()} />
-					<Tab tab={tabs[1]} />
-					<Tab tab={tabs[2]} />
+					<Tab tab={tabs[1]} handleClick={() => locateNearest(dormitories)} />
+					<Tab tab={tabs[2]} handleClick={() => locateNearest(launches)} />
 				</div>
 			)}
 			<div
