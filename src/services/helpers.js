@@ -44,7 +44,6 @@ export function getCenter(positions) {
 	}
 
 	const center = [(minLat + maxLat) / 2, (minLng + maxLng) / 2];
-	console.log(center);
 	return center;
 }
 
@@ -55,9 +54,9 @@ function inRadian(angle) {
 // convert km into m if d < 1km  : and rounding
 function convertDistance(d) {
 	if (d < 1) {
-		return Math.round(d * 1000);
+		return [Math.round(d * 1000), "Meters"];
 	} else {
-		return Math.round(d);
+		return [Math.round(d), "Kms"];
 	}
 }
 
@@ -84,7 +83,7 @@ export function getDistance(lat1, lng1, lat2, lng2) {
 }
 
 export function getNearest(positions, userPos) {
-	let smallestD = Infinity;
+	let smallestD = [Infinity, "meters"];
 	let nearestPlace;
 
 	positions.forEach((pos) => {
@@ -94,13 +93,16 @@ export function getNearest(positions, userPos) {
 			userPos[0],
 			userPos[1]
 		);
-		if (d < smallestD) {
+		// d = [magnitude, unit]
+		if (d[0] < smallestD[0]) {
 			smallestD = d;
 			nearestPlace = pos;
 		}
 	});
 
-	return nearestPlace;
+	console.log(smallestD);
+
+	return [nearestPlace, smallestD];
 }
 
 export function getNearestPlace(positions) {
@@ -109,13 +111,17 @@ export function getNearestPlace(positions) {
 			navigator.geolocation.getCurrentPosition(
 				(userPos) => {
 					const { latitude, longitude } = userPos.coords;
+					const nearest = getNearest(positions, [latitude, longitude]);
 
 					resolve([
-						{
-							name: "user",
-							position: [latitude, longitude],
-						},
-						getNearest(positions, [latitude, longitude]),
+						[
+							{
+								name: "user",
+								position: [latitude, longitude],
+							},
+							nearest[0],
+						],
+						nearest[1],
 					]);
 				},
 				(error) => {
