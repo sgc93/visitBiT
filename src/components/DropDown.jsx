@@ -5,13 +5,15 @@ export default function DropDown({ tab, handleClick }) {
 	const [isOpen, setIsOpen] = useState(false);
 	return (
 		<div
-			className="flex flex-col gap-1"
+			className="flex flex-col gap-1 "
 			onMouseEnter={() => setIsOpen(true)}
 			onMouseLeave={() => setIsOpen(false)}
 		>
 			<div
 				className={`glassmorphism  px-[0.5rem] py-[0.1rem] lowercase font-sans text-lg flex items-center gap-1 ${
-					isOpen ? "rounded-t-lg" : "rounded-lg"
+					isOpen
+						? "rounded-t-lg transition-all duration-300 bg-blue-900 text-stone-100"
+						: "rounded-lg"
 				}`}
 			>
 				{tab.icon}
