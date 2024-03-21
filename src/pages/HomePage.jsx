@@ -30,12 +30,7 @@ export default function HomePage() {
 		>
 			<Header dragConstraint={dragConstraint} setMarkedPlace={setMarkedPlace} />
 			<SideBar setPosition={setMarkedPlace} />
-			<Map
-				positions={position}
-				setMarkedPlace={setMarkedPlace}
-				connectedPositions={connectedPositions}
-				setConnectedPositions={setConnectedPositions}
-			/>
+			<Map positions={position} setMarkedPlace={setMarkedPlace} />
 		</section>
 	);
 }
