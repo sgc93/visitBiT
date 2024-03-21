@@ -50,6 +50,25 @@ export default function ShareBox({ place, setShowShareBox, showShareBox }) {
 						value={`http//:local:7153/lat=${place.position[0]}&lng=${place.position[1]}`}
 					/>
 				</div>
+				<div className="flex items-center gap-2 px-2">
+					<input
+						type="text"
+						className=" px-2 py-1 rounded-md bg-stone-300 text-blue-950 text-sm font-semibold"
+						value={`https://www.google.com/maps/@${place.position[0]},${place.position[1]}z`}
+						disabled
+					/>
+					<Copy
+						value={`https://www.google.com/maps/@${place.position[0]},${place.position[1]}z`}
+					/>
+					<a
+						className=" text-sm p-1 text-stone-100 font-semibold transition-all duration-300 hover:text-blue-900"
+						href={`https://www.google.com/maps/@${place.position[0]},${place.position[1]}z`}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						open in google
+					</a>
+				</div>
 			</div>
 		</div>
 	);
