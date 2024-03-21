@@ -67,9 +67,9 @@ export default function CurrentLoc({ setMarkedPlace, setConnectedPositions }) {
 		try {
 			setIsLoading(true);
 			const nearest = await getNearestPlace(places);
-			setMarkedPlace([nearest, "line"]);
-			const lineCoords = nearest.map((place) => place.position);
-			setConnectedPositions(lineCoords);
+			setMarkedPlace([nearest[0], "line"]);
+			const lineCoords = nearest[0].map((place) => place.position);
+			setConnectedPositions([lineCoords, nearest[1]]);
 		} catch (error) {
 			throw new Error(error.message);
 		} finally {
