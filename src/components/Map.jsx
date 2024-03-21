@@ -81,16 +81,13 @@ export default function Map({ positions, setMarkedPlace }) {
 					url={mapUrl}
 					subdomains={subdomains}
 				/>
-				{positions[0].length > 0 &&
-					positions[0].map((pos, key) => (
-						<PositionMarker
-							key={key}
-							pos={pos}
-							setShowDetailBox={setShowDetailBox}
-							setDetailedPlace={setDetailedPlace}
-							setShowShareBox={setShowShareBox}
-						/>
-					))}
+				<PositionMarker
+					positions={positions}
+					setShowDetailBox={setShowDetailBox}
+					setDetailedPlace={setDetailedPlace}
+					setShowShareBox={setShowShareBox}
+				/>
+
 				<Polygon positions={bit_borders} pathOptions={border_style} />
 				{connectedPositions.length > 0 && (
 					<Polyline
