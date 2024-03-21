@@ -62,3 +62,9 @@
 .leaflet-popup-content {
 	@apply text-blue-950;
 }
+
+/* customize tooltips */
+
+.leaflet-tooltip-pane {
+	@apply font-semibold;
+}
