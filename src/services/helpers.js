@@ -100,8 +100,6 @@ export function getNearest(positions, userPos) {
 		}
 	});
 
-	console.log(smallestD);
-
 	return [nearestPlace, smallestD];
 }
 
