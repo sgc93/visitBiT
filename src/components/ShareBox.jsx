@@ -54,15 +54,16 @@ export default function ShareBox({ place, setShowShareBox, showShareBox }) {
 					<input
 						type="text"
 						className=" px-2 py-1 rounded-md bg-stone-300 text-blue-950 text-sm font-semibold"
-						value={`https://www.google.com/maps/@${place.position[0]},${place.position[1]}z`}
+						value={`https://www.google.com/maps?q=${place.position[0]},${place.position[1]}`}
 						disabled
 					/>
 					<Copy
-						value={`https://www.google.com/maps/@${place.position[0]},${place.position[1]}z`}
+						value={`https://www.google.com/maps?q=${place.position[0]},${place.position[1]}`}
 					/>
 					<a
 						className=" text-sm p-1 text-stone-100 font-semibold transition-all duration-300 hover:text-blue-900"
-						href={`https://www.google.com/maps/@${place.position[0]},${place.position[1]}z`}
+						href={`https://www.google.com/maps?q=${place.position[0]},${place.position[1]}
+`}
 						target="_blank"
 						rel="noopener noreferrer"
 					>
