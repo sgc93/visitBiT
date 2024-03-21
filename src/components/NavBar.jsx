@@ -7,16 +7,18 @@ import {
 	GiMoneyStack,
 	GiWaterBottle,
 } from "react-icons/gi";
-import { GrUserWorker } from "react-icons/gr";
-import { HiOfficeBuilding } from "react-icons/hi";
+import { GrMore, GrUserWorker } from "react-icons/gr";
+import { HiLibrary, HiOfficeBuilding } from "react-icons/hi";
 import { HiMiniBuildingOffice2 } from "react-icons/hi2";
 import { IoIosRestaurant } from "react-icons/io";
 import { IoWifi } from "react-icons/io5";
 import {
 	MdEmojiFoodBeverage,
 	MdFoodBank,
+	MdMeetingRoom,
 	MdOutlineBedroomChild,
 	MdSchool,
+	MdSports,
 } from "react-icons/md";
 import { PiBowlFood } from "react-icons/pi";
 import DragIndicator from "../components/DragIndicator";
@@ -117,6 +119,33 @@ const tabs = [
 				text: "for cloth wash",
 				multilevel: true,
 				icon: <GiClothes />,
+			},
+		],
+	},
+	{
+		text: "more",
+		dropdown: true,
+		icon: <GrMore className={className} />,
+		dropdowns: [
+			{
+				text: "Library",
+				multilevel: true,
+				icon: <HiLibrary />,
+			},
+			{
+				text: "Classrooms",
+				multilevel: true,
+				icon: <MdSchool />,
+			},
+			{
+				text: "Sport centers",
+				multilevel: true,
+				icon: <MdSports />,
+			},
+			{
+				text: "Halls",
+				multilevel: true,
+				icon: <MdMeetingRoom />,
 			},
 		],
 	},
