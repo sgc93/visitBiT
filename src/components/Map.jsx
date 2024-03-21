@@ -51,12 +51,19 @@ export default function Map({ positions, setMarkedPlace }) {
 	const [detailedPlace, setDetailedPlace] = useState("");
 	const [connectedPositions, setConnectedPositions] = useState([]);
 
+	// removing connecting line when not needed anymore
+	useEffect(() => {
+		if (positions[1] === "mark") {
+			setConnectedPositions([]);
+		}
+	}, [positions[1]]);
+
 	// handle finding center of given set of positions
 	useEffect(() => {
 		if (positions.length > 1) {
-			setCenter(getCenter(positions));
+			setCenter(getCenter(positions[0]));
 		} else if (positions.length === 1) {
-			setCenter(positions[0].position);
+			setCenter(positions[0][0].position);
 		}
 	}, [positions]);
 
@@ -68,8 +75,8 @@ export default function Map({ positions, setMarkedPlace }) {
 					url={mapUrl}
 					subdomains={subdomains}
 				/>
-				{positions.length > 0 &&
-					positions.map((pos, key) => (
+				{positions[0].length > 0 &&
+					positions[0].map((pos, key) => (
 						<PositionMarker
 							key={key}
 							pos={pos}
@@ -116,7 +123,7 @@ function InteractWithMap({ setMarkedPlace }) {
 				position: [e.latlng.lat, e.latlng.lng],
 			},
 		];
-		setMarkedPlace((pos) => clickedPos);
+		setMarkedPlace([clickedPos, "mark"]);
 	}
 
 	useMapEvents({
