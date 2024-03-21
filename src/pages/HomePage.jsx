@@ -16,7 +16,7 @@ const bit = [
 ];
 
 export default function HomePage() {
-	const [position, setPosition] = useState(bit);
+	const [position, setPosition] = useState([bit, "mark"]);
 	const dragConstraint = useRef();
 
 	function setMarkedPlace(position) {
@@ -30,7 +30,12 @@ export default function HomePage() {
 		>
 			<Header dragConstraint={dragConstraint} setMarkedPlace={setMarkedPlace} />
 			<SideBar setPosition={setMarkedPlace} />
-			<Map positions={position} setMarkedPlace={setMarkedPlace} />
+			<Map
+				positions={position}
+				setMarkedPlace={setMarkedPlace}
+				connectedPositions={connectedPositions}
+				setConnectedPositions={setConnectedPositions}
+			/>
 		</section>
 	);
 }

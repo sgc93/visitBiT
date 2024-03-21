@@ -127,11 +127,11 @@ export default function NavBar({ dragConstraint, setMarkedPlace }) {
 
 	function handleClick(tab) {
 		if (tab.text === "Dormitories") {
-			setMarkedPlace(dormitories);
+			setMarkedPlace([dormitories, "mark"]);
 		} else if (tab.text === "cafes") {
-			setMarkedPlace(cafes);
+			setMarkedPlace([cafes, "mark"]);
 		} else if (tab.text === "launches") {
-			setMarkedPlace(launches);
+			setMarkedPlace([launches, "mark"]);
 		}
 	}
 
