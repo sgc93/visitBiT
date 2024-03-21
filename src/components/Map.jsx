@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
-import { MapContainer, Polyline, TileLayer, useMap } from "react-leaflet";
+import {
+	MapContainer,
+	Polyline,
+	Popup,
+	TileLayer,
+	useMap,
+} from "react-leaflet";
 
 import { Polygon, useMapEvents } from "react-leaflet";
 import { getCenter } from "../services/helpers";
@@ -86,8 +92,14 @@ export default function Map({ positions, setMarkedPlace }) {
 						/>
 					))}
 				<Polygon positions={bit_borders} pathOptions={border_style} />
-				{connectedPositions && (
-					<Polyline positions={connectedPositions} pathOptions={line_style} />
+				{connectedPositions.length > 0 && (
+					<Polyline
+						positions={connectedPositions[0]}
+						pathOptions={line_style}
+					/>
+				)}
+				{connectedPositions.length > 0 && (
+					<Distance center={center} connectedPositions={connectedPositions} />
 				)}
 				<InteractWithMap setMarkedPlace={setMarkedPlace} />
 				<FlyTo center={center} />
@@ -139,6 +151,15 @@ function FlyTo({ center }) {
 	useEffect(() => {
 		map.flyTo(center, map.getZoom());
 	}, [center, map]);
+}
+
+// display a distance between to places
+function Distance({ center, connectedPositions }) {
+	return (
+		<Popup
+			position={center}
+		>{`${connectedPositions[1][0]} ${connectedPositions[1][1]}`}</Popup>
+	);
 }
 
 // stackoverflow
