@@ -29,8 +29,13 @@ export function getCurrentPos() {
 	});
 }
 
-export function getCenter(positions) {
-	const latLng = positions.map((pos) => pos.position);
+export function getCenter(positions, type) {
+	let latLng;
+	if (type === "bounds") {
+		latLng = positions;
+	} else {
+		latLng = positions.map((pos) => pos.position);
+	}
 	let minLat = Infinity;
 	let maxLat = -Infinity;
 	let minLng = Infinity;
