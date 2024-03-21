@@ -42,8 +42,6 @@ function Tab({ tab, handleClick }) {
 export default function CurrentLoc({ setMarkedPlace, setConnectedPositions }) {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
-	const [userCoords, setUserCoords] = useState([]);
-	const [userLoc, setUserLoc] = useState([]);
 
 	async function handleLocatingUser() {
 		try {
@@ -57,9 +55,6 @@ export default function CurrentLoc({ setMarkedPlace, setConnectedPositions }) {
 					},
 				];
 				setMarkedPlace(userPos);
-				setUserLoc(userPos);
-				setUserCoords(position);
-				return true;
 			}
 		} catch (error) {
 			throw new Error(error.message);
@@ -70,13 +65,16 @@ export default function CurrentLoc({ setMarkedPlace, setConnectedPositions }) {
 
 	async function locateNearest(places) {
 		try {
+			setIsLoading(true);
 			const nearest = await getNearestPlace(places);
 			console.log(nearest);
 			setMarkedPlace(nearest);
-			const x = nearest.map((place) => place.position);
-			setConnectedPositions(x);
+			const lineCoords = nearest.map((place) => place.position);
+			setConnectedPositions(lineCoords);
 		} catch (error) {
 			throw new Error(error.message);
+		} finally {
+			setIsLoading(false);
 		}
 	}
 
