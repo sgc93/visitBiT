@@ -82,3 +82,5 @@ export const bitParts = [
 		},
 	},
 ];
+
+export const allPlaces = [...dormitories, ...launches, ...cafes];
