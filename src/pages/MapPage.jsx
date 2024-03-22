@@ -22,7 +22,7 @@ export default function MapPage() {
 
 	const initial = searchParams.size > 0 ? [{ position: coords }] : bit;
 
-	const [positions, setPositions] = useState([initial, "mark"]);
+	const [positions, setPositions] = useState([initial, "init"]);
 	const [showShareBox, setShowShareBox] = useState(false);
 	const [detailedPlace, setDetailedPlace] = useState("");
 
