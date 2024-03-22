@@ -42,7 +42,14 @@ const line_style = {
 	dashArray: "3, 8",
 };
 
-export default function Map({ positions, setMarkedPlace }) {
+export default function Map({
+	positions,
+	setMarkedPlace,
+	detailedPlace,
+	setDetailedPlace,
+	showShareBox,
+	setShowShareBox,
+}) {
 	const [mapUrl, setMapUrl] = useState(
 		"http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}"
 	);
@@ -50,11 +57,6 @@ export default function Map({ positions, setMarkedPlace }) {
 	const zoom = 17;
 
 	const [showDetailBox, setShowDetailBox] = useState(false);
-	const [showShareBox, setShowShareBox] = useState({
-		type: "place",
-		isOpen: false,
-	});
-	const [detailedPlace, setDetailedPlace] = useState("");
 	const [connectedPositions, setConnectedPositions] = useState([]);
 
 	// removing connecting line when not needed anymore
@@ -101,7 +103,7 @@ export default function Map({ positions, setMarkedPlace }) {
 				<InteractWithMap setMarkedPlace={setMarkedPlace} />
 				<FlyTo center={center} />
 			</MapContainer>
-			{showShareBox.isOpen && (
+			{showShareBox && (
 				<ShareBox
 					setShowShareBox={setShowShareBox}
 					place={detailedPlace}
