@@ -151,9 +151,17 @@ export function searchFor(query) {
 		});
 
 		if (matchedPlace.length > 0) {
-			resolve(matchedPlace);
+			resolve(matchedPlace.sort(sortPlaces));
 		} else {
 			reject("Place Not Found!");
 		}
 	});
+}
+
+// sort given array of places based on their name
+
+function sortPlaces(place1, place2) {
+	const name1 = place1.name.toLowerCase();
+	const name2 = place2.name.toLowerCase();
+	return name1.localeCompare(name2);
 }
