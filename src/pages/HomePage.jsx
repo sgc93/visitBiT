@@ -1,49 +1,18 @@
-import "leaflet/dist/leaflet.css";
-import { useRef, useState } from "react";
-import Header from "../components/Header";
-import Map from "../components/Map";
-import SideBar from "../components/SideBar";
+import { useNavigate } from "react-router-dom";
+import Button from "../components/Button";
 
-const bit = [
-	{
-		name: "Bahir Dar Institute Of Technology",
-		description:
-			"a campus of engineering in Bahir Dar University. historically, it is the oldest one - originated in 1963 by Emperor HaileSelassie",
-		position: [11.597621756651337, 37.39551835806901],
-		phone: ["058 220 9338"],
-		img: ["/bit/img1.jpg"],
-	},
-];
+const pos = [11.597925500052817, 37.397444149178554];
 
 export default function HomePage() {
-	const [position, setPosition] = useState([bit, "mark"]);
-	const [showShareBox, setShowShareBox] = useState(false);
-	const [detailedPlace, setDetailedPlace] = useState("");
-
-	const dragConstraint = useRef();
-
-	function setMarkedPlace(position) {
-		setPosition(position);
-	}
-
+	const navigateTo = useNavigate();
 	return (
-		<section
-			className="relative overflow-hidden w-screen h-screen"
-			ref={dragConstraint}
-		>
-			<Header dragConstraint={dragConstraint} setMarkedPlace={setMarkedPlace} />
-			<SideBar
-				setShowShareBox={setShowShareBox}
-				setDetailedPlace={setDetailedPlace}
-			/>
-			<Map
-				positions={position}
-				setMarkedPlace={setMarkedPlace}
-				detailedPlace={detailedPlace}
-				setDetailedPlace={setDetailedPlace}
-				showShareBox={showShareBox}
-				setShowShareBox={setShowShareBox}
-			/>
-		</section>
+		<div className="w-screen h-screen glassmorphism flex flex-col gap-4 items-center justify-center">
+			<h1 className="text-5xl uppercase font-thin tracking-wide">visit BiT</h1>
+			<Button
+				handleClick={() => navigateTo(`/map?lat=${pos[0]}&lng=${pos[1]}`)}
+			>
+				start exploring
+			</Button>
+		</div>
 	);
 }
