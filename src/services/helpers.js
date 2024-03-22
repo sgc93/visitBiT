@@ -1,3 +1,5 @@
+import { allPlaces } from "./data";
+
 export default function getCurrentMonthYear() {
 	const date = new Date();
 	const options = {
@@ -133,6 +135,25 @@ export function getNearestPlace(positions) {
 			);
 		} else {
 			throw new Error("geolocation is not supported in this browser!");
+		}
+	});
+}
+
+// customized searching
+
+export function searchFor(query) {
+	return new Promise((resolve, reject) => {
+		let matchedPlace = [];
+		allPlaces.forEach((place) => {
+			if (place.name.toLowerCase().includes(query.toLowerCase())) {
+				matchedPlace.push(place);
+			}
+		});
+
+		if (matchedPlace.length > 0) {
+			resolve(matchedPlace);
+		} else {
+			reject("Place Not Found!");
 		}
 	});
 }
