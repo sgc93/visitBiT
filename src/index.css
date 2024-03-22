@@ -68,3 +68,22 @@
 .leaflet-tooltip-pane {
 	@apply font-semibold;
 }
+
+/* small loader rotating icon */
+
+.small-loader {
+	@apply rounded-full border-t-2 border-b-2 border-blue-900 w-5 h-5;
+
+	animation-name: rotate;
+	animation-duration: 0.9s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg) scale(1);
+	}
+	100% {
+		transform: rotate(360deg) scale(0.5);
+	}
+}
