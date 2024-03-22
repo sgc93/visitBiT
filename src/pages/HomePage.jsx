@@ -8,11 +8,7 @@ export default function HomePage() {
 	return (
 		<div className="w-screen h-screen glassmorphism flex flex-col gap-4 items-center justify-center">
 			<h1 className="text-5xl uppercase font-thin tracking-wide">visit BiT</h1>
-			<Button
-				handleClick={() => navigateTo(`/map?lat=${pos[0]}&lng=${pos[1]}`)}
-			>
-				start exploring
-			</Button>
+			<Button handleClick={() => navigateTo(`/map`)}>start exploring</Button>
 		</div>
 	);
 }
