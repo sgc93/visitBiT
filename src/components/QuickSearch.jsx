@@ -10,13 +10,16 @@ export default function QuickSearch() {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const [isQNotFound, setIsQNotFound] = useState(false);
+	const [matchPlaces, setMatchPlaces] = useState([]);
 
 	useEffect(() => {
 		async function getPlace() {
 			try {
 				setIsQNotFound(false);
+				setMatchPlaces([]);
 				setIsLoading(true);
 				const matchPlaces = await searchFor(query);
+				setMatchPlaces(matchPlaces);
 				console.log(matchPlaces);
 			} catch (error) {
 				setIsQNotFound(true);
@@ -24,7 +27,11 @@ export default function QuickSearch() {
 				setIsLoading(false);
 			}
 		}
-		if (query.length > 0) getPlace();
+		if (query.length > 0) {
+			getPlace();
+		} else {
+			setMatchPlaces([]);
+		}
 	}, [query]);
 
 	return (
@@ -70,11 +77,9 @@ export default function QuickSearch() {
 									)}
 									{isLoading && <span className="small-loader mr-3"></span>}
 								</div>
-								<div className="flex flex-col pl-3">
-									<span>E. Kitaw Cafe</span>
-									<span>digital library </span>
-									<span>bit stadium</span>
-								</div>
+								{matchPlaces.length > 0 && (
+									<SearchResults matchPlaces={matchPlaces} />
+								)}
 							</div>
 							<div className="flex flex-col gap-1">
 								<Button>
@@ -120,5 +125,27 @@ function QueryIndicator({ query }) {
 				{query}
 			</span>
 		</span>
+	);
+}
+
+function SearchResults({ matchPlaces }) {
+	return (
+		<div className="flex flex-col pl-3 gap-1">
+			{matchPlaces.map((place, key) => (
+				<button
+					className="flex items-center gap-2 px-2 py-1 opacity-70 bg-blue-900 text-stone-100 font-semibold rounded-md transition-all duration-300 hover:opacity-100"
+					key={key}
+				>
+					{place.img && (
+						<img
+							src={place.img[0]}
+							alt={place.name}
+							className="w-5 h-5 rounded-full"
+						/>
+					)}
+					<span>{place.name}</span>
+				</button>
+			))}
+		</div>
 	);
 }
