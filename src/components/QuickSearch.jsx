@@ -1,12 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GrDown } from "react-icons/gr";
 import { IoCloseCircle } from "react-icons/io5";
 import { MdClose, MdSearch } from "react-icons/md";
+import { searchFor } from "../services/helpers";
 import Button from "./Button";
 
 export default function QuickSearch() {
 	const [query, setQuery] = useState("");
 	const [isOpen, setIsOpen] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
+	const [isQNotFound, setIsQNotFound] = useState(false);
+
+	useEffect(() => {
+		async function getPlace() {
+			try {
+				setIsQNotFound(false);
+				setIsLoading(true);
+				const matchPlaces = await searchFor(query);
+				console.log(matchPlaces);
+			} catch (error) {
+				setIsQNotFound(true);
+			} finally {
+				setIsLoading(false);
+			}
+		}
+		if (query.length > 0) getPlace();
+	}, [query]);
+
 	return (
 		<div className=" flex items-start gap-1">
 			<div
@@ -41,8 +61,15 @@ export default function QuickSearch() {
 									<MdClose onClick={() => setQuery("")} />
 								</span>
 							</div>
-							<div className=" w-full flex flex-col">
-								<span>results for {query}</span>
+							<div className=" w-full flex flex-col pt-2">
+								<div className="py-1 flex items-center justify-between">
+									{isQNotFound ? (
+										<NotFound />
+									) : (
+										<QueryIndicator query={query} />
+									)}
+									{isLoading && <span className="small-loader mr-3"></span>}
+								</div>
 								<div className="flex flex-col pl-3">
 									<span>E. Kitaw Cafe</span>
 									<span>digital library </span>
@@ -71,5 +98,27 @@ export default function QuickSearch() {
 				</div>
 			)}
 		</div>
+	);
+}
+
+// assistant components
+
+function NotFound() {
+	return (
+		<div className="w-full flex flex-col items-center">
+			<span className="text-stone-700">Sorry🙏🏻!</span>
+			<span className="text-blue-900">Place Not Found!</span>
+		</div>
+	);
+}
+
+function QueryIndicator({ query }) {
+	return (
+		<span className="text-stone-600">
+			results for{" "}
+			<span className="text-stone-100 lowercase w-20 overflow-clip">
+				{query}
+			</span>
+		</span>
 	);
 }
