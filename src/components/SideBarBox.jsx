@@ -1,8 +1,8 @@
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import { FaCode, FaCopyright, FaInfo, FaToggleOn } from "react-icons/fa";
 import { GiShare } from "react-icons/gi";
 import { MdContactPage, MdDragIndicator, MdPrint } from "react-icons/md";
-import getCurrentDateTime from "../services/helpers";
+import getCurrentDateTime, { getCurrentPos } from "../services/helpers";
 import About from "./About";
 import Button from "./Button";
 import Contact from "./Contact";
@@ -13,38 +13,38 @@ const className = "opacity-70 text-xl";
 const tabs = [
 	{
 		text: "Disable UI draggablity",
-		toggle: true,
+		type: "toggle",
 		icon: <MdDragIndicator className={className} />,
 		toggleIcon: <FaToggleOn className="text-2xl text-blue-900" />,
 	},
 	{
 		text: "Share My Location",
-		toggle: false,
+		type: "loading",
 		icon: <GiShare className={className} />,
 	},
 	{
 		text: "Print",
-		toggle: false,
+		type: "",
 		icon: <MdPrint className={className} />,
 	},
 	{
 		text: "About",
-		toggle: false, // male toilet , female toilet
+		type: "", // male toilet , female toilet
 		icon: <FaInfo className={className} />,
 	},
 	{
 		text: "Contact", // cafe, launch, mother houses
-		toggle: false,
+		type: "",
 		icon: <MdContactPage className={className} />,
 	},
 	{
 		text: "Code Overview",
-		toggle: false,
+		type: "",
 		icon: <FaCode className={className} />,
 	},
 ];
 
-function Tab({ tab, handleClick, children }) {
+function Tab({ tab, handleClick, children, isLoading }) {
 	return (
 		<div className="flex flex-col items-center gap-3 w-full">
 			<Button
@@ -53,13 +53,21 @@ function Tab({ tab, handleClick, children }) {
 				}
 				handleClick={handleClick}
 			>
-				{tab.toggle ? (
+				{tab.type === "toggle" ? (
 					<>
 						<span className="flex  items-center gap-2">
 							{tab.icon}
 							{tab.text}
 						</span>
 						{tab.toggleIcon}
+					</>
+				) : tab.type === "loading" ? (
+					<>
+						<span className="flex items-center gap-2">
+							{tab.icon}
+							{tab.text}
+						</span>
+						{isLoading && <span className="small-loader"></span>}
 					</>
 				) : (
 					<>
@@ -92,11 +100,30 @@ function reducer(state, dispatch) {
 	}
 }
 
-export default function SideBarBox() {
+export default function SideBarBox({ setShowShareBox, setDetailedPlace }) {
 	const [{ isAbout, isContact, isPrint }, dispatch] = useReducer(
 		reducer,
 		initialState
 	);
+	const [isLoading, setIsLoading] = useState(false);
+
+	async function handleSharingLoc() {
+		try {
+			setIsLoading(true);
+			const currentPos = await getCurrentPos();
+			const currentLoc = {
+				name: "User Location",
+				position: currentPos,
+			};
+
+			setDetailedPlace(currentLoc);
+			setShowShareBox(true);
+		} catch (error) {
+			throw new Error(error.message);
+		} finally {
+			setIsLoading(false);
+		}
+	}
 
 	return (
 		<section className=" flex items-center gap-1 justify-between">
@@ -105,7 +132,11 @@ export default function SideBarBox() {
 					<Tab tab={tabs[0]}>
 						<span className="w-full h-[1px] bg-blue-600 opacity-70"></span>
 					</Tab>
-					<Tab tab={tabs[1]} />
+					<Tab
+						tab={tabs[1]}
+						isLoading={isLoading}
+						handleClick={() => handleSharingLoc()}
+					/>
 					<Tab
 						tab={tabs[2]}
 						handleClick={() => dispatch({ type: "showModal/print" })}
