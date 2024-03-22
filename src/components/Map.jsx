@@ -64,7 +64,7 @@ export default function Map({
 		if (positions[1] === "mark") {
 			setConnectedPositions([]);
 		}
-	}, [positions[1]]);
+	}, [positions]);
 
 	// handle finding center of given set of positions
 	useEffect(() => {
