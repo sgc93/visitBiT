@@ -61,7 +61,7 @@ export default function Map({
 
 	// removing connecting line when not needed anymore
 	useEffect(() => {
-		if (positions[1] === "mark") {
+		if (positions[1] !== "line") {
 			setConnectedPositions([]);
 		}
 	}, [positions]);
@@ -89,6 +89,14 @@ export default function Map({
 					setDetailedPlace={setDetailedPlace}
 					setShowShareBox={setShowShareBox}
 				/>
+
+				{positions[1] === "init" && (
+					<Popup position={positions[0][0].position}>
+						{positions[0][0].name
+							? positions[0][0].name
+							: positions[0][0].position}
+					</Popup>
+				)}
 
 				<Polygon positions={bit_borders} pathOptions={border_style} />
 				{connectedPositions.length > 0 && (
