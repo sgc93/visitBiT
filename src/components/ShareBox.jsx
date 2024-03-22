@@ -32,11 +32,11 @@ export default function ShareBox({ place, setShowShareBox, showShareBox }) {
 					<input
 						type="text"
 						className="w-full px-2 py-1 rounded-md bg-stone-50 text-blue-950 text-sm font-semibold"
-						value={`http//:local:7153/lat=${place.position[0]}&lng=${place.position[1]}`}
+						value={`http://localhost:5173/map?lat=${place.position[0]}&lng=${place.position[1]}`}
 						disabled
 					/>
 					<Copy
-						value={`http//:local:7153/lat=${place.position[0]}&lng=${place.position[1]}`}
+						value={`http://localhost:5173/map?lat=${place.position[0]}&lng=${place.position[1]}`}
 					/>
 				</div>
 				<div className="flex items-center gap-2 px-2">
