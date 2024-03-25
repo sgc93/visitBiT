@@ -64,6 +64,11 @@ export default function Map({
 		if (positions[1] !== "line") {
 			setConnectedPositions([]);
 		}
+
+		if (positions[1] === "detail") {
+			setDetailedPlace(positions[0][0]);
+			setShowDetailBox(true);
+		}
 	}, [positions]);
 
 	// handle finding center of given set of positions
