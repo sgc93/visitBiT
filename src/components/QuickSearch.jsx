@@ -5,7 +5,7 @@ import { MdClose, MdSearch } from "react-icons/md";
 import { searchFor } from "../services/helpers";
 import Button from "./Button";
 
-export default function QuickSearch() {
+export default function QuickSearch({ setMarkedPlace }) {
 	const [query, setQuery] = useState("");
 	const [isOpen, setIsOpen] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
@@ -45,6 +45,7 @@ export default function QuickSearch() {
 					isLoading={isLoading}
 					matchPlaces={matchPlaces}
 					setIsOpen={setIsOpen}
+					setMarkedPlace={setMarkedPlace}
 				/>
 			)}
 		</div>
@@ -73,6 +74,7 @@ function SearchBox({
 	isLoading,
 	matchPlaces,
 	setIsOpen,
+	setMarkedPlace,
 }) {
 	return (
 		<div className="absolute left-[-4rem] top-[-1rem] z-[999] w-screen  h-screen backdrop-blur-[3px]">
@@ -87,7 +89,11 @@ function SearchBox({
 							{isLoading && <span className="small-loader mr-3"></span>}
 						</div>
 						{matchPlaces.length > 0 && (
-							<SearchResults matchPlaces={matchPlaces} />
+							<SearchResults
+								matchPlaces={matchPlaces}
+								setMarkedPlace={setMarkedPlace}
+								setIsOpen={setIsOpen}
+							/>
 						)}
 					</div>
 					<span className="w-full h-[1px] bg-blue-200 m-4"></span>
@@ -159,13 +165,18 @@ function QueryIndicator({ query }) {
 	);
 }
 
-function SearchResults({ matchPlaces }) {
+function SearchResults({ matchPlaces, setMarkedPlace, setIsOpen }) {
+	function handleClick(place) {
+		setMarkedPlace(() => [[place], "detail"]);
+		setIsOpen(false);
+	}
 	return (
 		<div className="flex flex-col pl-3 gap-1">
 			{matchPlaces.map((place, key) => (
 				<button
 					className="flex items-center gap-2 px-2 py-1 opacity-70 bg-blue-900 text-stone-100 font-semibold rounded-md transition-all duration-300 hover:opacity-100"
 					key={key}
+					onClick={() => handleClick(place)}
 				>
 					{place.img && (
 						<img
