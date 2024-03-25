@@ -41,12 +41,17 @@
 
 /* scroll bar customizing */
 
-.scroll::-webkit-scrollbar {
+.scroll::-webkit-scrollbar,
+.story-scroll::-webkit-scrollbar {
 	@apply bg-transparent w-3 rounded-lg;
 }
 
 .scroll::-webkit-scrollbar-thumb {
 	@apply bg-blue-400 rounded-md;
+}
+
+.story-scroll::-webkit-scrollbar-thumb {
+	@apply bg-stone-700 rounded-md;
 }
 
 /* customize popup */
