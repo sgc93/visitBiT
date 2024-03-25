@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { IoIosCloseCircle } from "react-icons/io";
 import Button from "../components/Button";
+import StoryMap from "../components/story/StoryMap";
 import { story } from "../services/bitStory";
 
 export default function StoryTeller() {
@@ -31,11 +32,7 @@ export default function StoryTeller() {
 							{story[currStoryIndex].content}
 						</div>
 						<div className="w-2/4 h-full rounded-lg overflow-hidden border-2 border-stone-400">
-							<img
-								className="h-full"
-								src="/map.png"
-								alt={story[currStoryIndex].topic}
-							/>
+							<StoryMap />
 						</div>
 					</div>
 					<div className="p-2 flex justify-end gap-2">
