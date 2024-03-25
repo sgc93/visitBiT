@@ -101,3 +101,9 @@
 	background-size: cover;
 	background-repeat: no-repeat;
 }
+
+/* hide blinking cursor of typed js */
+
+.typed-cursor {
+	display: none;
+}
