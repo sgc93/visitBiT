@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoIosCloseCircle, IoMdArrowBack } from "react-icons/io";
 import Button from "../components/Button";
 import StoryMap from "../components/story/StoryMap";
@@ -7,6 +7,11 @@ import { story } from "../services/bitStory";
 export default function StoryTeller() {
 	const [isOpen, setIsOpen] = useState(true);
 	const [currStoryIndex, setCurrStoryIndex] = useState(0);
+	const [currStory, setCurrStory] = useState(story[0]);
+
+	useEffect(() => {
+		setCurrStory(story[currStoryIndex]);
+	}, [currStoryIndex]);
 
 	// handle close
 	function handleClosing(index) {
@@ -39,7 +44,7 @@ export default function StoryTeller() {
 						<span className="w-5 h-5 rounded-full bg-green-600"></span> */}
 						</div>
 						<div className="text-xl font-semibold text-stone-600 uppercase">
-							{story[currStoryIndex].topic}
+							{currStory.topic}
 						</div>
 						<IoIosCloseCircle
 							className="text-2xl text-red-700 transition-all duration-300 hover:text-red-400"
@@ -49,10 +54,10 @@ export default function StoryTeller() {
 					<span className="h-[1px] bg-stone-600 mx-2"></span>
 					<div className=" h-3/4 p-6 flex items-center gap-5 w-full">
 						<div className="w-2/4 h-full pr-2 flex flex-col items-center text-stone-400 overflow-scroll overflow-x-hidden story-scroll">
-							{story[currStoryIndex].content}
+							{currStory.content}
 						</div>
 						<div className="w-2/4 h-full rounded-lg overflow-hidden border-2 border-stone-400">
-							<StoryMap />
+							<StoryMap story={currStory} />
 						</div>
 					</div>
 					<div
@@ -72,10 +77,10 @@ export default function StoryTeller() {
 							<div className="text-sm ">
 								<span className=" text-stone-500">see more @ </span>
 								<a
-									href={story[currStoryIndex].link}
+									href={currStory.link}
 									className="text-blue-900 transition-all duration-300 hover:text-blue-600"
 								>
-									{story[currStoryIndex].link}
+									{currStory.link}
 								</a>
 							</div>
 						)}
