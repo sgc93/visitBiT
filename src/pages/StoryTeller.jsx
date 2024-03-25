@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { IoIosCloseCircle, IoMdArrowBack } from "react-icons/io";
 import Button from "../components/Button";
 import StoryMap from "../components/story/StoryMap";
+import Typing from "../components/story/Typing";
 import { story } from "../services/bitStory";
 
 export default function StoryTeller() {
@@ -39,9 +40,6 @@ export default function StoryTeller() {
 					<div className="flex items-center justify-between p-2">
 						<div className="flex gap-[0.4rem] ">
 							<span className="text-sm text-stone-500">visit_BiT</span>
-							{/* <span className="w-5 h-5 rounded-full bg-red-600"></span>
-						<span className="w-5 h-5 rounded-full bg-yellow-600"></span>
-						<span className="w-5 h-5 rounded-full bg-green-600"></span> */}
 						</div>
 						<div className="text-xl font-semibold text-stone-600 uppercase">
 							{currStory.topic}
@@ -53,8 +51,8 @@ export default function StoryTeller() {
 					</div>
 					<span className="h-[1px] bg-stone-600 mx-2"></span>
 					<div className=" h-3/4 p-6 flex items-center gap-5 w-full">
-						<div className="w-2/4 h-full pr-2 flex flex-col items-center text-stone-400 overflow-scroll overflow-x-hidden story-scroll">
-							{currStory.content}
+						<div className="w-2/4 h-full pr-2 flex flex-col text-stone-400 overflow-scroll overflow-x-hidden story-scroll">
+							<Typing text={currStory.content} />
 						</div>
 						<div className="w-2/4 h-full rounded-lg overflow-hidden border-2 border-stone-400">
 							<StoryMap story={currStory} />
