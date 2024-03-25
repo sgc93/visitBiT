@@ -51,9 +51,7 @@ export default function StoryTeller() {
 					</div>
 					<span className="h-[1px] bg-stone-600 mx-2"></span>
 					<div className=" h-3/4 p-6 flex items-center gap-5 w-full">
-						<div className="w-2/4 h-full pr-2 flex flex-col text-stone-400 overflow-scroll overflow-x-hidden story-scroll">
-							<Typing text={currStory.content} />
-						</div>
+						<Typing text={currStory.content} />
 						<div className="w-2/4 h-full rounded-lg overflow-hidden border-2 border-stone-400">
 							<StoryMap story={currStory} />
 						</div>
