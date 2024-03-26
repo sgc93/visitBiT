@@ -95,15 +95,32 @@
 
 /* set bg for story tellers bg */
 
-.storyTeller {
-	background-image: url("/map.png");
+.home {
+	background-image: url("/map_bg.png");
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
+	overflow-x: auto;
 }
 
 /* hide blinking cursor of typed js */
 
 .typed-cursor {
 	display: none;
+}
+
+/* navigation */
+
+.list li svg {
+	@apply text-lg opacity-80;
+}
+
+.list li span {
+	@apply text-sm;
+}
+
+/* animated text */
+
+.animated {
+	line-height: 17rem;
 }
