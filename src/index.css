@@ -103,6 +103,10 @@
 	overflow-x: auto;
 }
 
+.home-overlay {
+	background-color: #001f3b7c;
+}
+
 /* hide blinking cursor of typed js */
 
 .typed-cursor {
