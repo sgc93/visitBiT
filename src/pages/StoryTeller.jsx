@@ -5,8 +5,7 @@ import StoryMap from "../components/story/StoryMap";
 import Typing from "../components/story/Typing";
 import { story } from "../services/bitStory";
 
-export default function StoryTeller() {
-	const [isOpen, setIsOpen] = useState(true);
+export default function StoryTeller({ isOpen, setIsOpen }) {
 	const [currStoryIndex, setCurrStoryIndex] = useState(0);
 	const [currStory, setCurrStory] = useState(story[0]);
 
