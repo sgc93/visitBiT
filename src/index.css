@@ -7,6 +7,10 @@
 	margin: 0;
 }
 
+body {
+	background-color: rgba(56, 56, 56, 0.956);
+}
+
 :root {
 	--color-bg-btn: #0084ff37;
 	--color-border: #0084ff;
@@ -42,6 +46,7 @@
 /* scroll bar customizing */
 
 .scroll::-webkit-scrollbar,
+body::-webkit-scrollbar,
 .story-scroll::-webkit-scrollbar {
 	@apply bg-transparent w-3 rounded-lg;
 }
@@ -50,6 +55,7 @@
 	@apply bg-blue-400 rounded-md;
 }
 
+body::-webkit-scrollbar-thumb,
 .story-scroll::-webkit-scrollbar-thumb {
 	@apply bg-stone-700 rounded-md;
 }
@@ -100,11 +106,21 @@
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
-	overflow-x: auto;
 }
 
 .home-overlay {
 	background-color: #001f3b7c;
+}
+
+.temp {
+	background-image: url("/map.png");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.temp-overlay {
+	background-color: #011a3269;
 }
 
 /* hide blinking cursor of typed js */
