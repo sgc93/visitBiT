@@ -121,6 +121,26 @@
 
 /* animated text */
 
-.animated {
-	line-height: 17rem;
+.year {
+	color: rgba(255, 255, 255, 0.215);
+	-webkit-text-stroke-color: #fffdfd;
+	-webkit-text-stroke-width: 2px;
+
+	font-size: 15rem;
+}
+
+/* age */
+
+.age:first-child {
+	background-color: #0084ff52;
+	border: 1px solid #98caf9ef;
+}
+
+.age:nth-child(2) {
+	background-color: rgba(15, 197, 67, 0.326);
+	border: 1px solid rgb(155, 255, 183);
+}
+.age:nth-child(3) {
+	background-color: rgba(255, 166, 0, 0.33);
+	border: 1px solid rgb(255, 221, 157);
 }
