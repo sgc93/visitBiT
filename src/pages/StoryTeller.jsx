@@ -35,8 +35,8 @@ export default function StoryTeller() {
 
 	return (
 		isOpen && (
-			<div className="storyTeller w-full h-full absolute top-0 left-0 ">
-				<div className="w-full h-full flex items-center justify-center backdrop-blur-[5px]">
+			<div className="storyTeller w-screen h-screen absolute top-0 left-0">
+				<div className="w-full h-full flex items-center justify-center backdrop-blur-[10px]">
 					<div className=" w-1/2 h-1/2 bg-stone-900 rounded-xl flex flex-col">
 						<div className="flex items-center justify-between p-2">
 							<div className="flex gap-[0.4rem] ">
