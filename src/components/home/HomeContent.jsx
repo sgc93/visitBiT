@@ -45,7 +45,7 @@ function Hero() {
 				<span className="text-6xl text-stone-50 font-thin">
 					Decide to join BiT
 				</span>
-				<span className="text-lg text-stone-300 flex gap-4 capitalize tracking-widest">
+				<span className="text-lg text-stone-300 font-semibold flex gap-4 capitalize tracking-widest">
 					<span className="bg-blue-600 px-3 py-1 rounded-lg">technology</span>
 					<span className="bg-green-600 px-3 py-1 rounded-lg">nurture</span>
 					<span className="bg-yellow-600 px-3 py-1 rounded-lg">
