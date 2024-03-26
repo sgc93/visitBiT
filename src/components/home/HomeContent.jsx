@@ -2,18 +2,18 @@ import { useState } from "react";
 import { homeTabs } from "../../services/tabs";
 import Animated from "./Animated";
 
-export default function HomeContent() {
+export default function HomeContent({ isOpen, setIsOpen }) {
 	return (
-		<div className="w-full h-full flex items-center px-20">
+		<div className="w-full h-full flex items-center p-20">
 			<NavContent />
-			<Animated />
+			<Animated isOpen={isOpen} setIsOpen={setIsOpen} />
 		</div>
 	);
 }
 
 function NavContent() {
 	return (
-		<div className="w-1/2 h-full flex flex-col justify-center gap-32">
+		<div className="w-1/2 h-full flex flex-col justify-between">
 			<ul className="list ml-5 text-stone-300 flex flex-col gap-2">
 				{homeTabs.map((tab, key) => (
 					<Tab tab={tab} key={key} />
