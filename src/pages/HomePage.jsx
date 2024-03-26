@@ -7,7 +7,7 @@ export default function HomePage() {
 
 	return (
 		<section className="home w-screen h-screen story-scroll ">
-			<div className="relative w-full h-full backdrop-blur-[4px] ">
+			<div className="home-overlay relative w-full h-full backdrop-blur-[4px] ">
 				<HomeContent isOpen={isOpen} setIsOpen={setIsOpen} />
 				<StoryTeller isOpen={isOpen} setIsOpen={setIsOpen} />
 			</div>
