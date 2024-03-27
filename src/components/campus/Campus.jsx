@@ -34,6 +34,29 @@ export default function Campus() {
 		setSelectedTab(updatedTab);
 	}
 
+	function handlePrevious() {
+		let updatedTab;
+		let currI;
+		let updatedTabs = tabs.filter((tab, index) => {
+			if (tab.name === selectedTab.name) {
+				const nexTab = { ...tabs[index - 1], selected: true };
+				updatedTab = nexTab;
+				currI = index - 1;
+				return tab;
+			} else {
+				return tab;
+			}
+		});
+		updatedTabs.splice(currI, 1);
+		updatedTabs = updatedTabs.map((tab) => {
+			return { ...tab, selected: false };
+		});
+
+		updatedTabs.splice(currI, 0, updatedTab);
+		setTabs(updatedTabs);
+		setSelectedTab(updatedTab);
+	}
+
 	return (
 		<div
 			id="campuses"
@@ -50,6 +73,7 @@ export default function Campus() {
 						selectedTab={selectedTab}
 						tabs={tabs}
 						handleNext={handleNext}
+						handlePrevious={handlePrevious}
 					/>
 					<div className="w-full h-full flex items-center gap-4">
 						<CampusData campus={selectedTab} />
