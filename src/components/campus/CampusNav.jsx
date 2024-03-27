@@ -5,6 +5,7 @@ export default function CampusNav({
 	setTabs,
 	setSelectedTab,
 	handleClose,
+	settingTabs,
 }) {
 	const hasLength = tabs.length > 1;
 
@@ -32,6 +33,7 @@ export default function CampusNav({
 						handleClick={handleClick}
 						handleClose={handleClose}
 						hasLength={hasLength}
+						settingTabs={settingTabs}
 					/>
 				))}
 			</ul>
@@ -43,10 +45,17 @@ export default function CampusNav({
 const className =
 	" w-[11rem] px-2 py-[2px] flex items-center justify-between rounded-lg cursor-pointer text-center font-semibold transition-all duration-300 ";
 
-function Tab({ campus, handleClick, index, handleClose, hasLength }) {
+function Tab({
+	campus,
+	handleClick,
+	index,
+	handleClose,
+	hasLength,
+	settingTabs,
+}) {
 	function closeTab(e) {
 		e.stopPropagation();
-		if (hasLength) {
+		if (hasLength && settingTabs[0].isOn) {
 			handleClose();
 		}
 	}
@@ -63,7 +72,11 @@ function Tab({ campus, handleClick, index, handleClose, hasLength }) {
 			<span>{campus.name}</span>
 			{campus.selected && hasLength && (
 				<MdClose
-					className="text-lg rounded-full transition-all duration-300 hover:bg-blue-800 hover:text-stone-100"
+					className={`text-lg ${
+						settingTabs[0].isOn
+							? "rounded-full transition-all duration-300 hover:bg-blue-800 hover:text-stone-100"
+							: "text-stone-500"
+					}`}
 					onClick={closeTab}
 				/>
 			)}

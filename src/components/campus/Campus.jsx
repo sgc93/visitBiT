@@ -98,6 +98,7 @@ export default function Campus() {
 					setTabs={setTabs}
 					setSelectedTab={setSelectedTab}
 					handleClose={handleClosingTab}
+					settingTabs={settingTabs}
 				/>
 				<div className="flex flex-col gap-1 w-[calc(100%-1rem)] h-full m-2 rounded-lg bg-stone-900">
 					<CampusWindowTab
