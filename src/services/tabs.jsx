@@ -1,9 +1,10 @@
-import { FaTemperatureHigh } from "react-icons/fa";
+import { FaRegWindowClose, FaTemperatureHigh } from "react-icons/fa";
 import { GrContact } from "react-icons/gr";
 import { HiOutlineInformationCircle } from "react-icons/hi";
+import { IoMdRefresh } from "react-icons/io";
 import { MdOutlineAddLocationAlt } from "react-icons/md";
-import { PiAppWindowBold } from "react-icons/pi";
-import { RiRoadMapLine } from "react-icons/ri";
+import { PiAppWindowBold, PiBracketsAngleBold } from "react-icons/pi";
+import { RiEyeCloseFill, RiRoadMapLine } from "react-icons/ri";
 
 export const homeTabs = [
 	{
@@ -87,5 +88,28 @@ export const campusTabs = [
 		content:
 			"abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z",
 		selected: false,
+	},
+];
+
+export const campusSettingTabs = [
+	{
+		icon: <FaRegWindowClose />,
+		text: "enable tab closing",
+		isOn: true,
+	},
+	{
+		icon: <PiBracketsAngleBold />,
+		text: "enable button navigation",
+		isOn: true,
+	},
+	{
+		icon: <IoMdRefresh />,
+		text: "enable button refreshing",
+		isOn: true,
+	},
+	{
+		icon: <RiEyeCloseFill />,
+		text: "hide this tab",
+		isOn: false,
 	},
 ];
