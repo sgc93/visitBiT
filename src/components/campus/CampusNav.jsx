@@ -6,6 +6,8 @@ export default function CampusNav({
 	setSelectedTab,
 	handleClose,
 }) {
+	const hasLength = tabs.length > 1;
+
 	function handleClick(key) {
 		const updatedTabs = tabs.map((tab, index) => {
 			if (key === index) {
@@ -29,6 +31,7 @@ export default function CampusNav({
 						index={index}
 						handleClick={handleClick}
 						handleClose={handleClose}
+						hasLength={hasLength}
 					/>
 				))}
 			</ul>
@@ -40,10 +43,12 @@ export default function CampusNav({
 const className =
 	" w-[11rem] px-2 py-[2px] flex items-center justify-between rounded-lg cursor-pointer text-center font-semibold transition-all duration-300 ";
 
-function Tab({ campus, handleClick, index, handleClose }) {
+function Tab({ campus, handleClick, index, handleClose, hasLength }) {
 	function closeTab(e) {
 		e.stopPropagation();
-		handleClose();
+		if (hasLength) {
+			handleClose();
+		}
 	}
 
 	return (
@@ -56,7 +61,7 @@ function Tab({ campus, handleClick, index, handleClose }) {
 			onClick={() => handleClick(index)}
 		>
 			<span>{campus.name}</span>
-			{campus.selected && (
+			{campus.selected && hasLength && (
 				<MdClose
 					className="text-lg rounded-full transition-all duration-300 hover:bg-blue-800 hover:text-stone-100"
 					onClick={closeTab}
