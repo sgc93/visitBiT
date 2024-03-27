@@ -42,49 +42,49 @@ export const homeTabs = [
 export const campusTabs = [
 	{
 		name: "Wisdom Tower",
-		position: [],
+		position: [11.587023661576392, 37.39566922187806],
 		content:
 			"abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z",
 		selected: true,
 	},
 	{
 		name: "Peda Campus",
-		position: [],
+		position: [11.576764, 37.395184],
 		content:
 			"abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z",
 		selected: false,
 	},
 	{
 		name: "Poly Campus",
-		position: [],
+		position: [11.597621756651337, 37.39551835806901],
 		content:
 			"abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z",
 		selected: false,
 	},
 	{
 		name: "Sebatamit Campus",
-		position: [],
+		position: [11.52690623269073, 37.401044368743904],
 		content:
 			"abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z",
 		selected: false,
 	},
 	{
 		name: "Selam Campus",
-		position: [],
+		position: [11.5829545898627, 37.39617347717286],
 		content:
 			"abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z",
 		selected: false,
 	},
 	{
 		name: "Yibab Campus",
-		position: [],
+		position: [11.57109058919408, 37.32939720153809],
 		content:
 			"abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z",
 		selected: false,
 	},
 	{
 		name: "Zenzelma Campus",
-		position: [],
+		position: [11.62104699753215, 37.45878159999848],
 		content:
 			"abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z",
 		selected: false,
