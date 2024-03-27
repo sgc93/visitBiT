@@ -22,7 +22,7 @@ export default function Campus() {
 					setSelectedTab={setSelectedTab}
 				/>
 				<div className="flex flex-col gap-1 w-[calc(100%-1rem)] h-full m-2 rounded-lg bg-stone-900">
-					<CampusWindowTab selectedTab={selectedTab} />
+					<CampusWindowTab selectedTab={selectedTab} tabs={tabs} />
 					<div className="w-full h-full flex items-center gap-4">
 						<CampusData campus={selectedTab} />
 						<span className="bg-stone-900 h-[95%] w-[1px]"></span>
