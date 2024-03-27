@@ -14,7 +14,7 @@ export default function CampusWindowSetting({ tabs, setTabs }) {
 	}
 
 	return (
-		<div className="absolute top-0 right-8 w-full h-fit p-2 bg-stone-950 text-stone-400 rounded-lg border-2 border-stone-800 flex flex-col gap-1">
+		<div className="absolute top-0 z-[500] right-8 w-full h-fit p-2 bg-stone-950 text-stone-400 rounded-lg border-2 border-stone-800 flex flex-col gap-1">
 			{tabs.map((tab, key) => (
 				<Tab key={key} tab={tab} handleToggle={handleToggle} index={key} />
 			))}
