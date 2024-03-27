@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { IoCopy } from "react-icons/io5";
 
-export default function Copy({ value }) {
+export default function Copy({ value, className }) {
+	const style = className
+		? className
+		: "relative text-md transition-all rounded-full p-1 duration-300 hover:text-stone-100 hover:bg-blue-950 cursor-pointer";
 	const [status, setStatus] = useState("");
 	async function handleCopy() {
 		try {
@@ -22,10 +25,7 @@ export default function Copy({ value }) {
 	return (
 		<>
 			{status === "" && (
-				<span
-					className="relative text-md transition-all rounded-full p-1 duration-300 hover:text-stone-100 hover:bg-blue-950 cursor-pointer"
-					onClick={() => handleCopy()}
-				>
+				<span className={style} onClick={() => handleCopy()}>
 					<IoCopy />
 				</span>
 			)}
