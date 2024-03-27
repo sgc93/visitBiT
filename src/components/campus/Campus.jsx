@@ -68,8 +68,13 @@ export default function Campus() {
 		let currI;
 		const updatedTabs = tabs.filter((tab, index) => {
 			if (tab.name === selectedTab.name) {
-				currTab = { ...tabs[index + 1], selected: true };
-				currI = index;
+				if (index === tabs.length - 1) {
+					currTab = { ...tabs[index - 1], selected: true };
+					currI = index - 1;
+				} else {
+					currTab = { ...tabs[index + 1], selected: true };
+					currI = index;
+				}
 			} else {
 				return tab;
 			}
