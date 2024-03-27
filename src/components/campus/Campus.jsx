@@ -57,6 +57,11 @@ export default function Campus() {
 		setSelectedTab(updatedTab);
 	}
 
+	function handleRefreshing() {
+		setTabs(campusTabs);
+		setSelectedTab[tabs[0]];
+	}
+
 	return (
 		<div
 			id="campuses"
@@ -74,6 +79,7 @@ export default function Campus() {
 						tabs={tabs}
 						handleNext={handleNext}
 						handlePrevious={handlePrevious}
+						handleRefreshing={handleRefreshing}
 					/>
 					<div className="w-full h-full flex items-center gap-4">
 						<CampusData campus={selectedTab} />
