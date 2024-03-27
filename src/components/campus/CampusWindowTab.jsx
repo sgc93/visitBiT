@@ -13,10 +13,17 @@ import CampusWindowSetting from "./CampusWindowSetting";
 const btnClass =
 	"p-[2px] text-center rounded-full transition-all duration-300 ";
 
-export default function CampusWindowTab({ selectedTab, tabs }) {
+export default function CampusWindowTab({ selectedTab, tabs, handleNext }) {
 	const [settingTabs, setSettingTabs] = useState(campusSettingTabs);
 	const isLastTab = tabs[tabs.length - 1].name === selectedTab.name;
 	const isFirstTab = tabs[0].name === selectedTab.name;
+
+	function next() {
+		if (settingTabs[0].isOn && !isLastTab) {
+			handleNext();
+		}
+	}
+
 	return (
 		<div className="pl-4 py-2 w-full flex items-center justify-between ">
 			<div className="w-[70%] flex items-center gap-4">
@@ -34,6 +41,7 @@ export default function CampusWindowTab({ selectedTab, tabs }) {
 								? "text-stone-500"
 								: "hover:bg-stone-700 hover:text-stone-200"
 						}`}
+						onClick={() => next()}
 					/>
 					<IoMdRefresh
 						className={`${btnClass} hover:bg-stone-700 hover:text-stone-200`}
