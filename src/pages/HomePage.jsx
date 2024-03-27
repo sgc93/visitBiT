@@ -13,12 +13,16 @@ export default function HomePage() {
 				<HomeContent isOpen={isOpen} setIsOpen={setIsOpen} />
 			</div>
 			<StoryTeller isOpen={isOpen} setIsOpen={setIsOpen} />
-			<div className="temp relative w-screen h-screen ">
-				<Temperature />
-			</div>
-			<div className="campus relative w-screen h-screen ">
-				<Campus />
-			</div>
+			{!isOpen && (
+				<>
+					<div className="temp relative w-screen h-screen ">
+						<Temperature />
+					</div>
+					<div className="campus relative w-screen h-screen ">
+						<Campus />
+					</div>
+				</>
+			)}
 		</section>
 	);
 }
