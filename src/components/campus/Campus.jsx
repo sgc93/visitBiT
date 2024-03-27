@@ -13,13 +13,13 @@ export default function Campus() {
 			id="campuses"
 			className="overlay w-full h-full backdrop-blur-[4px] flex flex-col items-center gap-3 p-10"
 		>
-			<CampusNav
-				tabs={tabs}
-				setTabs={setTabs}
-				selectedTab={selectedTab}
-				setSelectedTab={setSelectedTab}
-			/>
-			<div className="flex flex-col gap-1 w-full h-[95%] bg-stone-950 rounded-xl">
+			<div className="flex flex-col gap-1 w-full h-full bg-stone-950 rounded-xl">
+				<CampusNav
+					tabs={tabs}
+					setTabs={setTabs}
+					selectedTab={selectedTab}
+					setSelectedTab={setSelectedTab}
+				/>
 				<CampusWindowTab selectedTab={selectedTab} />
 				<span className="h-[1px] w-full bg-stone-900"></span>
 				<div className="w-full h-full flex items-center gap-4">
