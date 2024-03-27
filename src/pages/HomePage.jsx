@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Campus from "../components/campus/Campus";
 import HomeContent from "../components/home/HomeContent";
 import Temperature from "../components/temperature/Temperature";
 import StoryTeller from "./StoryTeller";
@@ -14,6 +15,9 @@ export default function HomePage() {
 			<StoryTeller isOpen={isOpen} setIsOpen={setIsOpen} />
 			<div className="temp relative w-screen h-screen ">
 				<Temperature />
+			</div>
+			<div className="campus relative w-screen h-screen ">
+				<Campus />
 			</div>
 		</section>
 	);
