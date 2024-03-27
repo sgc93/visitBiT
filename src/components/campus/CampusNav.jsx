@@ -20,7 +20,7 @@ export default function CampusNav({
 	}
 
 	return (
-		<div className="w-full h-fit flex flex-col gap-2 py-2">
+		<div className="w-full h-fit flex flex-col gap-2 pt-2">
 			<ul className="flex gap-4 px-2">
 				{tabs.map((campus, index) => (
 					<Tab
