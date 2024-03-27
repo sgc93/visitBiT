@@ -110,10 +110,10 @@ export default function Campus() {
 						handlePrevious={handlePrevious}
 						handleRefreshing={handleRefreshing}
 					/>
-					<div className="w-full h-full flex items-center gap-4">
+					<div className="w-full h-[75dvh] flex items-center gap-4">
 						<CampusData campus={selectedTab} />
-						<span className="bg-stone-900 h-[95%] w-[1px]"></span>
-						<CampusMap />
+						<span className="bg-stone-700 h-[95%] w-[1px]"></span>
+						<CampusMap campus={selectedTab} />
 					</div>
 				</div>
 			</div>
