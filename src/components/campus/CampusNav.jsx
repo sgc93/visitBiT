@@ -1,3 +1,5 @@
+import { MdClose } from "react-icons/md";
+
 export default function CampusNav({
 	tabs,
 	setTabs,
@@ -35,7 +37,7 @@ export default function CampusNav({
 }
 
 const className =
-	" w-40 px-2 py-[2px] rounded-lg cursor-pointer text-center font-semibold transition-all duration-300 ";
+	" w-[11rem] px-2 py-[2px] flex items-center justify-between rounded-lg cursor-pointer text-center font-semibold transition-all duration-300 ";
 
 function Tab({ campus, handleClick, index }) {
 	return (
@@ -47,7 +49,10 @@ function Tab({ campus, handleClick, index }) {
 			} ${className}`}
 			onClick={() => handleClick(index)}
 		>
-			{campus.name}
+			<span>{campus.name}</span>
+			{campus.selected && (
+				<MdClose className="text-lg rounded-full transition-all duration-300 hover:bg-blue-800 hover:text-stone-100" />
+			)}
 		</li>
 	);
 }
