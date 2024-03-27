@@ -59,7 +59,7 @@ export default function Campus() {
 
 	function handleRefreshing() {
 		setTabs(campusTabs);
-		setSelectedTab[tabs[0]];
+		setSelectedTab(tabs[0]);
 	}
 
 	return (
