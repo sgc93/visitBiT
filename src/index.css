@@ -171,9 +171,3 @@ body::-webkit-scrollbar-thumb,
 	background-color: rgba(255, 166, 0, 0.33);
 	border: 1px solid rgb(255, 221, 157);
 }
-
-/* campus header */
-
-.campus_header {
-	@apply glassmorphism-white rounded-lg p-1;
-}
