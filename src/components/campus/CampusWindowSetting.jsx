@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { FaToggleOff, FaToggleOn } from "react-icons/fa";
-import { campusSettingTabs } from "../../services/tabs";
 
 export default function CampusWindowSetting({ tabs, setTabs }) {
 	function handleToggle(index) {
