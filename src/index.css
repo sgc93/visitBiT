@@ -15,9 +15,9 @@ body {
 	--color-bg-btn: #0084ff37;
 	--color-border: #0084ff;
 	--color-shadow: #03244386;
-	/* --color-bg-btn: #ffffff67;
-	--color-border: #ffffff;
-	--color-shadow: #7595b386; */
+	--color-bg-btn-white: #ffffff3e;
+	--color-border-white: #ffffff8d;
+	--color-shadow-white: #5c667086;
 }
 
 @layer components {
@@ -25,7 +25,7 @@ body {
 		@apply bg-[var(--color-bg-btn)] border-[1px] border-[var(--color-border)] backdrop-blur-sm shadow-lg;
 	}
 	.glassmorphism-white {
-		@apply bg-stone-50 border-[1px] border-[var(--color-border)] backdrop-blur-sm shadow-lg;
+		@apply bg-[var(--color-bg-btn-white)] border-[1px] border-[var(--color-border-white)] backdrop-blur-sm shadow-lg;
 	}
 }
 
@@ -170,4 +170,10 @@ body::-webkit-scrollbar-thumb,
 .age:nth-child(3) {
 	background-color: rgba(255, 166, 0, 0.33);
 	border: 1px solid rgb(255, 221, 157);
+}
+
+/* campus header */
+
+.campus_header {
+	@apply glassmorphism-white rounded-lg p-1;
 }
