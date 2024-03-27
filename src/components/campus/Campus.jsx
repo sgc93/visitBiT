@@ -60,26 +60,26 @@ export default function Campus() {
 
 	function handleRefreshing() {
 		setTabs(campusTabs);
-		setSelectedTab(tabs[0]);
+		setSelectedTab(campusTabs[0]);
 	}
 
 	function handleClosingTab() {
-		let nextTab;
-		let nextI;
+		let currTab;
+		let currI;
 		const updatedTabs = tabs.filter((tab, index) => {
 			if (tab.name === selectedTab.name) {
-				nextTab = { ...tabs[index + 1], selected: true };
-				nextI = index;
+				currTab = { ...tabs[index + 1], selected: true };
+				currI = index;
 			} else {
 				return tab;
 			}
 		});
 
-		updatedTabs.splice(nextI, 1);
-		updatedTabs.splice(nextI, 0, nextTab);
+		updatedTabs.splice(currI, 1);
+		updatedTabs.splice(currI, 0, currTab);
 
 		setTabs(updatedTabs);
-		setSelectedTab(nextTab);
+		setSelectedTab(currTab);
 	}
 
 	return (
