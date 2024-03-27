@@ -18,8 +18,8 @@ export default function CampusNav({
 	}
 
 	return (
-		<div className="w-full h-[5%] flex flex-col gap-2">
-			<ul className="flex gap-4">
+		<div className="w-full h-fit flex flex-col gap-2 py-2">
+			<ul className="flex gap-4 px-2">
 				{tabs.map((campus, index) => (
 					<Tab
 						key={index}
@@ -29,20 +29,21 @@ export default function CampusNav({
 					/>
 				))}
 			</ul>
+			<span className="w-full h-[2px] bg-stone-800"></span>
 		</div>
 	);
 }
 
 const className =
-	"px-2 py-[2px] rounded-lg cursor-pointer text-blue-950 font-semibold transition-all duration-300 hover:bg-blue-600 hover:border-blue-400 hover:text-stone-100";
+	" w-40 px-2 py-[2px] rounded-lg cursor-pointer text-center font-semibold transition-all duration-300 ";
 
 function Tab({ campus, handleClick, index }) {
 	return (
 		<li
 			className={`${
 				campus.selected
-					? "bg-blue-800 text-stone-100 border-[1px] border-blue-800"
-					: "glassmorphism-white"
+					? "bg-stone-400 text-blue-800 "
+					: "bg-stone-800 text-stone-400 hover:bg-stone-600  hover:text-stone-300 "
 			} ${className}`}
 			onClick={() => handleClick(index)}
 		>
