@@ -13,7 +13,12 @@ import CampusWindowSetting from "./CampusWindowSetting";
 const btnClass =
 	"p-[2px] text-center rounded-full transition-all duration-300 ";
 
-export default function CampusWindowTab({ selectedTab, tabs, handleNext }) {
+export default function CampusWindowTab({
+	selectedTab,
+	tabs,
+	handleNext,
+	handlePrevious,
+}) {
 	const [settingTabs, setSettingTabs] = useState(campusSettingTabs);
 	const isLastTab = tabs[tabs.length - 1].name === selectedTab.name;
 	const isFirstTab = tabs[0].name === selectedTab.name;
@@ -21,6 +26,12 @@ export default function CampusWindowTab({ selectedTab, tabs, handleNext }) {
 	function next() {
 		if (settingTabs[0].isOn && !isLastTab) {
 			handleNext();
+		}
+	}
+
+	function previous() {
+		if (settingTabs[0].isOn && !isFirstTab) {
+			handlePrevious();
 		}
 	}
 
@@ -34,6 +45,7 @@ export default function CampusWindowTab({ selectedTab, tabs, handleNext }) {
 								? "text-stone-500"
 								: "hover:bg-stone-700 hover:text-stone-200"
 						}`}
+						onClick={() => previous()}
 					/>
 					<IoIosArrowForward
 						className={`${btnClass} ${
