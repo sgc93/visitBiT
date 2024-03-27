@@ -101,11 +101,16 @@ body::-webkit-scrollbar-thumb,
 
 /* set bg for story tellers bg */
 
-.home {
-	background-image: url("/map_bg.png");
+.home,
+.temp,
+.campus {
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
+}
+
+.home {
+	background-image: url("/map_bg.png");
 }
 
 .home-overlay {
@@ -114,13 +119,15 @@ body::-webkit-scrollbar-thumb,
 
 .temp {
 	background-image: url("/map.png");
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
 }
 
-.temp-overlay {
+.temp-overlay,
+.overlay {
 	background-color: #011a3269;
+}
+
+.campus {
+	background-image: url("/map_bg.png");
 }
 
 /* hide blinking cursor of typed js */
