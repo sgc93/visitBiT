@@ -18,20 +18,28 @@ export default function CampusWindowTab({
 	tabs,
 	handleNext,
 	handlePrevious,
+	handleRefreshing,
 }) {
 	const [settingTabs, setSettingTabs] = useState(campusSettingTabs);
 	const isLastTab = tabs[tabs.length - 1].name === selectedTab.name;
 	const isFirstTab = tabs[0].name === selectedTab.name;
 
 	function next() {
-		if (settingTabs[0].isOn && !isLastTab) {
+		if (settingTabs[1].isOn && !isLastTab) {
 			handleNext();
 		}
 	}
 
 	function previous() {
-		if (settingTabs[0].isOn && !isFirstTab) {
+		if (settingTabs[1].isOn && !isFirstTab) {
 			handlePrevious();
+		}
+	}
+
+	function refreshing() {
+		if (settingTabs[2].isOn) {
+			handleRefreshing();
+			setSettingTabs(campusSettingTabs);
 		}
 	}
 
@@ -41,7 +49,7 @@ export default function CampusWindowTab({
 				<div className="flex items-center gap-2 text-xl text-stone-400">
 					<IoIosArrowBack
 						className={`${btnClass} ${
-							isFirstTab
+							isFirstTab || !settingTabs[1].isOn
 								? "text-stone-500"
 								: "hover:bg-stone-700 hover:text-stone-200"
 						}`}
@@ -49,14 +57,19 @@ export default function CampusWindowTab({
 					/>
 					<IoIosArrowForward
 						className={`${btnClass} ${
-							isLastTab
+							isLastTab || !settingTabs[1].isOn
 								? "text-stone-500"
 								: "hover:bg-stone-700 hover:text-stone-200"
 						}`}
 						onClick={() => next()}
 					/>
 					<IoMdRefresh
-						className={`${btnClass} hover:bg-stone-700 hover:text-stone-200`}
+						className={`${btnClass} ${
+							!settingTabs[2].isOn
+								? "text-stone-500"
+								: "hover:bg-stone-700 hover:text-stone-200"
+						}`}
+						onClick={() => refreshing()}
 					/>
 				</div>
 				<div className=" w-[80%] px-2 py-1 flex items-center justify-between text-md bg-stone-950 rounded-md lowercase">
