@@ -62,6 +62,25 @@ export default function Campus() {
 		setSelectedTab(tabs[0]);
 	}
 
+	function handleClosingTab() {
+		let nextTab;
+		let nextI;
+		const updatedTabs = tabs.filter((tab, index) => {
+			if (tab.name === selectedTab.name) {
+				nextTab = { ...tabs[index + 1], selected: true };
+				nextI = index;
+			} else {
+				return tab;
+			}
+		});
+
+		updatedTabs.splice(nextI, 1);
+		updatedTabs.splice(nextI, 0, nextTab);
+
+		setTabs(updatedTabs);
+		setSelectedTab(nextTab);
+	}
+
 	return (
 		<div
 			id="campuses"
@@ -72,6 +91,7 @@ export default function Campus() {
 					tabs={tabs}
 					setTabs={setTabs}
 					setSelectedTab={setSelectedTab}
+					handleClose={handleClosingTab}
 				/>
 				<div className="flex flex-col gap-1 w-[calc(100%-1rem)] h-full m-2 rounded-lg bg-stone-900">
 					<CampusWindowTab
