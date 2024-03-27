@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { FaToggleOn } from "react-icons/fa";
 import {
 	IoIosArrowBack,
 	IoIosArrowForward,
@@ -7,17 +6,38 @@ import {
 	IoMdSettings,
 } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
-import { RiEyeCloseLine } from "react-icons/ri";
+import { campusSettingTabs } from "../../services/tabs";
 import Copy from "../Copy";
+import CampusWindowSetting from "./CampusWindowSetting";
 
-export default function CampusWindowTab({ selectedTab }) {
+const btnClass =
+	"p-[2px] text-center rounded-full transition-all duration-300 ";
+
+export default function CampusWindowTab({ selectedTab, tabs }) {
+	const [settingTabs, setSettingTabs] = useState(campusSettingTabs);
+	const isLastTab = tabs[tabs.length - 1].name === selectedTab.name;
+	const isFirstTab = tabs[0].name === selectedTab.name;
 	return (
 		<div className="pl-4 py-2 w-full flex items-center justify-between ">
 			<div className="w-[70%] flex items-center gap-4">
 				<div className="flex items-center gap-2 text-xl text-stone-400">
-					<IoIosArrowBack />
-					<IoIosArrowForward />
-					<IoMdRefresh />
+					<IoIosArrowBack
+						className={`${btnClass} ${
+							isFirstTab
+								? "text-stone-500"
+								: "hover:bg-stone-700 hover:text-stone-200"
+						}`}
+					/>
+					<IoIosArrowForward
+						className={`${btnClass} ${
+							isLastTab
+								? "text-stone-500"
+								: "hover:bg-stone-700 hover:text-stone-200"
+						}`}
+					/>
+					<IoMdRefresh
+						className={`${btnClass} hover:bg-stone-700 hover:text-stone-200`}
+					/>
 				</div>
 				<div className=" w-[80%] px-2 py-1 flex items-center justify-between text-md bg-stone-950 rounded-md lowercase">
 					<span>
@@ -32,7 +52,7 @@ export default function CampusWindowTab({ selectedTab }) {
 					/>
 				</div>
 			</div>
-			<Setting />
+			<Setting tabs={settingTabs} setTabs={setSettingTabs} />
 		</div>
 	);
 }
@@ -40,35 +60,12 @@ export default function CampusWindowTab({ selectedTab }) {
 const className =
 	"text-xl text-stone-400 transition-all duration-300 hover:text-stone-300 cursor-pointer";
 
-function Setting() {
+function Setting({ tabs, setTabs }) {
 	const [isOpen, setIsOpen] = useState(false);
-	const [isHidden, setIsHidden] = useState(false);
 
 	return (
 		<div className="w-[20%] relative pr-1 flex items-center justify-end gap-2">
-			{isOpen && (
-				<div className="absolute top-0 right-8 w-full h-44 p-2 bg-stone-950 text-stone-400 rounded-lg border-2 border-stone-800">
-					<div className="w-[calc(100% - 1.5rem)] px-1 flex items-center justify-between bg-stone-800 rounded-md transition-all duration-300 hover:bg-stone-700 cursor-pointer">
-						<div className="flex items-center gap-2 text-md ">
-							<RiEyeCloseLine />
-							<span>enable tab closing</span>
-						</div>
-						<FaToggleOn />
-					</div>
-					<div className="flex items-center gap-2">
-						<span>enable btn navigation</span>
-						<FaToggleOn />
-					</div>
-					<div className="flex items-center gap-2">
-						<span>enable refreshing</span>
-						<FaToggleOn />
-					</div>
-					<div className="flex items-center gap-2">
-						<span>hide tab bar</span>
-						<FaToggleOn />
-					</div>
-				</div>
-			)}
+			{isOpen && <CampusWindowSetting tabs={tabs} setTabs={setTabs} />}
 			{!isOpen ? (
 				<IoMdSettings onClick={() => setIsOpen(true)} className={className} />
 			) : (
