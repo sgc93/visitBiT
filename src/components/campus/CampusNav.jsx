@@ -1,6 +1,11 @@
 import { MdClose } from "react-icons/md";
 
-export default function CampusNav({ tabs, setTabs, setSelectedTab }) {
+export default function CampusNav({
+	tabs,
+	setTabs,
+	setSelectedTab,
+	handleClose,
+}) {
 	function handleClick(key) {
 		const updatedTabs = tabs.map((tab, index) => {
 			if (key === index) {
@@ -23,6 +28,7 @@ export default function CampusNav({ tabs, setTabs, setSelectedTab }) {
 						campus={campus}
 						index={index}
 						handleClick={handleClick}
+						handleClose={handleClose}
 					/>
 				))}
 			</ul>
@@ -34,7 +40,12 @@ export default function CampusNav({ tabs, setTabs, setSelectedTab }) {
 const className =
 	" w-[11rem] px-2 py-[2px] flex items-center justify-between rounded-lg cursor-pointer text-center font-semibold transition-all duration-300 ";
 
-function Tab({ campus, handleClick, index }) {
+function Tab({ campus, handleClick, index, handleClose }) {
+	function closeTab(e) {
+		e.stopPropagation();
+		handleClose();
+	}
+
 	return (
 		<li
 			className={`${
@@ -46,7 +57,10 @@ function Tab({ campus, handleClick, index }) {
 		>
 			<span>{campus.name}</span>
 			{campus.selected && (
-				<MdClose className="text-lg rounded-full transition-all duration-300 hover:bg-blue-800 hover:text-stone-100" />
+				<MdClose
+					className="text-lg rounded-full transition-all duration-300 hover:bg-blue-800 hover:text-stone-100"
+					onClick={closeTab}
+				/>
 			)}
 		</li>
 	);
