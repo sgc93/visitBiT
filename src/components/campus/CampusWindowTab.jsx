@@ -19,8 +19,9 @@ export default function CampusWindowTab({
 	handleNext,
 	handlePrevious,
 	handleRefreshing,
+	settingTabs,
+	setSettingTabs,
 }) {
-	const [settingTabs, setSettingTabs] = useState(campusSettingTabs);
 	const isLastTab = tabs[tabs.length - 1].name === selectedTab.name;
 	const isFirstTab = tabs[0].name === selectedTab.name;
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { campusTabs } from "../../services/tabs";
+import { campusSettingTabs, campusTabs } from "../../services/tabs";
 import CampusData from "./CampusData";
 import CampusMap from "./CampusMap";
 import CampusNav from "./CampusNav";
@@ -8,6 +8,7 @@ import CampusWindowTab from "./CampusWindowTab";
 export default function Campus() {
 	const [tabs, setTabs] = useState(campusTabs);
 	const [selectedTab, setSelectedTab] = useState(tabs[0]);
+	const [settingTabs, setSettingTabs] = useState(campusSettingTabs);
 
 	function handleNext() {
 		let updatedTab;
@@ -97,6 +98,8 @@ export default function Campus() {
 					<CampusWindowTab
 						selectedTab={selectedTab}
 						tabs={tabs}
+						settingTabs={settingTabs}
+						setSettingTabs={setSettingTabs}
 						handleNext={handleNext}
 						handlePrevious={handlePrevious}
 						handleRefreshing={handleRefreshing}
