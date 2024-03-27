@@ -1,11 +1,6 @@
 import { MdClose } from "react-icons/md";
 
-export default function CampusNav({
-	tabs,
-	setTabs,
-	selectedTab,
-	setSelectedTab,
-}) {
+export default function CampusNav({ tabs, setTabs, setSelectedTab }) {
 	function handleClick(key) {
 		const updatedTabs = tabs.map((tab, index) => {
 			if (key === index) {
