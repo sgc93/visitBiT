@@ -1,10 +1,9 @@
-import { useState } from "react";
-import { campusTabs } from "../../services/tabs";
-
-export default function CampusNav() {
-	const [tabs, setTabs] = useState(campusTabs);
-	const [selectedTab, setSelectedTab] = useState(tabs[0]);
-
+export default function CampusNav({
+	tabs,
+	setTabs,
+	selectedTab,
+	setSelectedTab,
+}) {
 	function handleClick(key) {
 		const updatedTabs = tabs.map((tab, index) => {
 			if (key === index) {
@@ -13,12 +12,13 @@ export default function CampusNav() {
 				return { ...tab, selected: false };
 			}
 		});
+
 		setTabs(updatedTabs);
 		setSelectedTab(tabs[key]);
 	}
 
 	return (
-		<div className="w-full h-[8%] flex flex-col gap-2">
+		<div className="w-full h-[5%] flex flex-col gap-2">
 			<ul className="flex gap-4">
 				{tabs.map((campus, index) => (
 					<Tab
@@ -29,12 +29,6 @@ export default function CampusNav() {
 					/>
 				))}
 			</ul>
-			<span className="text-md text-stone-400 lowercase">
-				<span className="text-blue-600">&gt;</span>{" "}
-				<span className="text-stone-400">bahir Dar University </span>
-				<span className="text-blue-600">/ </span>
-				<span className="text-stone-300">{selectedTab.name}</span>
-			</span>
 		</div>
 	);
 }
