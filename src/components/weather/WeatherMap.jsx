@@ -13,8 +13,7 @@ import { getCurrentPos } from "../../services/helpers";
 const mapUrl = "http://{s}.google.com/vt?lyrs=s&x={x}&y={y}&z={z}";
 const subdomains = ["mt0", "mt1", "mt2", "mt3"];
 
-export default function WeatherMap() {
-	const [place, setPlace] = useState(bit[0]);
+export default function WeatherMap({ place, setPlace }) {
 	return (
 		<div className="relative w-3/6 h-[90%] rounded-lg border-2 border-purple-500 overflow-hidden">
 			<MapBox place={place} />
