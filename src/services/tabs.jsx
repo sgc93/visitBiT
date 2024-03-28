@@ -43,9 +43,15 @@ export const campusTabs = [
 	{
 		name: "Wisdom Tower",
 		position: [11.587023661576392, 37.39566922187806],
-		content:
-			"abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z",
+		content: `Bahir Dar University was established by merging two former higher education institutions; namely the Bahir Dar Polytechnic and Bahir Dar Teachers’ College. The Bahir Dar Polytechnic Institute, which has transformed itself into Technology and Textile institutes, was established in 1963 under the technical cooperation between the Government of USSR and the Imperial Government of Ethiopia. The institute was a premier institute in producing technicians for the nation. The Bahir Dar Teachers’ College, by then known as the Academy of Pedagogy, was established in 1972 by the tripartite agreement of the Imperial Government of Ethiopia, UNESCO and UNDP and started actual work in the following year under the auspices of the Ministry of Education and Fine Arts. Its general objective was to train multipurpose primary education professionals capable of adopting primary education to rural life and rural development. Its specific objectives were to train primary school teacher trainers, supervisors, educational leaders, adult education organizers and community development agents.
+			The two institutions of higher learning were integrated to form the Bahir Dar University following the Council of Ministers regulation no. 60/1999 GC. The University was inaugurated on May 6, 2000. Bahir Dar University is now among the largest universities in the Federal Democratic Republic of Ethiopia, with more than 52,830 students in its 219 academic programs; 69 undergraduate, 118 masters, and 32 PhD programs; Bahir Dar University has Five colleges, four institutes, two faculties and one school. The academic units of the University include College of Science, College of Agriculture and Environmental Sciences, College of Medical and Health Sciences, College of Business and Economics, College of Education and Behavioral Sciences, Bahir Dar Institute of Technology, Ethiopia Institute of Textile and Fashion Technology, Institute of Land Administration, Institute of Disaster Risk Management and Food Security Studies, Faculty of Humanities, Faculty of Social Sciences, School of Law, Sport academy and Maritime academy. The research centers of the university are Blue Nile water Institute, Biotechnology research Institute, Pedagogy and Education research Institute, Energy research Institute, Textile, garment and fashion design, Abay culture and development research center, Geospatial data and technology center, Institute of Economics research and Demographic surveillance`,
 		link: "https://www.bdu.edu.et/",
+		contacts: {
+			post: "P.O. Box 79",
+			email: "bduinfo@bdu.edu.et",
+			fax: "+251 583 20 60 94 ",
+			phone: "+251 583 20 9653 / +251 583 20 6059 / +251 582 20 5934",
+		},
 		selected: true,
 	},
 	{
