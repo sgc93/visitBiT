@@ -74,15 +74,18 @@ export default function CampusWindowTab({
 					/>
 				</div>
 				<div className=" w-[80%] px-2 py-1 flex items-center justify-between text-md bg-stone-950 rounded-md lowercase">
-					<span>
-						<span className="text-stone-400">bahir Dar University </span>
-						<span className="text-blue-400">/ </span>
-						<span className="text-stone-400">{selectedTab.name}</span>
-					</span>
+					<a
+						href={selectedTab.link}
+						target="_blank"
+						className="text-stone-400 transition-all duration-300 hover:text-stone-300"
+					>
+						{selectedTab.link}
+					</a>
 					<Copy
 						className={
 							"p-1 rounded-full text-stone-400 transition-all duration-300 hover:bg-stone-700 hover:text-stone-300 cursor-pointer"
 						}
+						value={selectedTab.link}
 					/>
 				</div>
 			</div>
