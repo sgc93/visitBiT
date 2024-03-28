@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { MapContainer, Marker, Popup, TileLayer, Tooltip } from "react-leaflet";
+import {
+	MapContainer,
+	Marker,
+	Popup,
+	TileLayer,
+	Tooltip,
+	useMap,
+} from "react-leaflet";
 import { bit } from "../../services/data";
 import { getCurrentPos } from "../../services/helpers";
 
@@ -63,7 +70,7 @@ function PositionChoicer({ place, setPlace }) {
 			{isLoading ? (
 				<div className="w-full h-full flex flex-col items-center justify-center gap-2">
 					<span className="small-loader border-4 w-5"></span>
-					<span className="text-sm text-blue-900">loading</span>
+					<span className="text-sm text-blue-900">locating your location</span>
 				</div>
 			) : error !== "" ? (
 				<span className="text-stone-200 text-semibold text-center">
@@ -126,8 +133,17 @@ function MapBox({ place }) {
 							</div>
 						</Popup>
 					</Marker>
+					<FlyTo center={place.position} />
 				</MapContainer>
 			)}
 		</div>
 	);
+}
+
+function FlyTo({ center }) {
+	const map = useMap();
+
+	useEffect(() => {
+		map.flyTo(center, map.getZoom());
+	}, [center, map]);
 }
