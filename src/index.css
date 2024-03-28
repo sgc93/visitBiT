@@ -8,7 +8,7 @@
 }
 
 body {
-	background-color: rgba(56, 56, 56, 0.956);
+	background-color: rgba(34, 27, 51, 0.956);
 }
 
 :root {
@@ -55,9 +55,12 @@ body::-webkit-scrollbar,
 	@apply bg-blue-400 rounded-md;
 }
 
-body::-webkit-scrollbar-thumb,
 .story-scroll::-webkit-scrollbar-thumb {
 	@apply bg-stone-700 rounded-md;
+}
+
+body::-webkit-scrollbar-thumb {
+	@apply bg-stone-400 rounded-md;
 }
 
 /* customize popup */
