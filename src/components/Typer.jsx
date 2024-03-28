@@ -1,16 +1,16 @@
 import { useEffect } from "react";
 import Typed from "typed.js";
 
-export default function Typer({ text }) {
+export default function Typer({ text, speed }) {
 	useEffect(() => {
 		const typed = new Typed("#typed-content", {
 			strings: [text],
-			typeSpeed: 10,
+			typeSpeed: speed ? speed : 10,
 			loop: false,
 		});
 
 		return () => typed.destroy();
-	}, [text]);
+	}, [text, speed]);
 
 	return <span id="typed-content"></span>;
 }
