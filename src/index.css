@@ -124,13 +124,17 @@ body::-webkit-scrollbar-thumb {
 	background-image: url("/map.png");
 }
 
-.temp-overlay,
 .overlay {
+	backdrop-filter: blur(10px);
+	background-color: #011a3269;
+}
+
+.temp-overlay {
 	background-color: #011a3269;
 }
 
 .campus {
-	background-image: url("/map_bg.png");
+	background-image: url("/map.png");
 }
 
 /* hide blinking cursor of typed js */
