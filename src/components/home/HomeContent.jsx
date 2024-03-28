@@ -6,7 +6,7 @@ import Animated from "./Animated";
 
 export default function HomeContent({ isOpen, setIsOpen }) {
 	return (
-		<div className="home-relay backdrop-blur-[4px] w-screen h-screen flex items-center p-20">
+		<div className="home-relay backdrop-blur-[6px] w-screen h-screen flex items-center p-20">
 			<NavContent />
 			<Animated isOpen={isOpen} setIsOpen={setIsOpen} />
 		</div>
