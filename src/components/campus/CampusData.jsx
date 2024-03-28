@@ -6,26 +6,37 @@ import Copy from "../Copy";
 export default function CampusData({ campus }) {
 	return (
 		<div className="w-1/2 h-full rounded-lg bg-stone-800 flex flex-col">
-			<div className="p-2 min-h-12 text-sm flex items-center justify-start gap-1">
-				<span className="text-stone-400">visit_BiT:</span>
-				<span className="text-stone-300">Bahir Dar university /</span>
-				<span className="text-stone-300 font-semibold text-lg bg-stone-700 px-2 rounded-lg">
-					{campus.name}
-				</span>
-				<span className="text-stone-400 ">
-					<AiOutlineEnter />
-				</span>
-			</div>
+			<DataHeader campus={campus} />
 			<span className="w-full h-[1px] bg-stone-700"></span>
-			<div className="m-4 p-1 max-h-48 overflow-x-auto overflow-y-scroll story-scroll">
-				<span className="text-stone-300 ">
-					{/* {campus.content} */}
-					<DataTyper campus={campus} speed={10} />
-				</span>
-			</div>
+			<DataContent campus={campus} />
 			<span className="mx-5 h-[1px] bg-stone-700"></span>
 			<Contact campus={campus} />
 			<span className="mx-2 mt-2 h-[1px] bg-stone-700"></span>
+		</div>
+	);
+}
+
+function DataHeader({ campus }) {
+	return (
+		<div className="p-2 min-h-12 text-sm flex items-center justify-start gap-1">
+			<span className="text-stone-400">visit_BiT:</span>
+			<span className="text-stone-300">Bahir Dar university /</span>
+			<span className="text-stone-300 font-semibold text-lg bg-stone-700 px-2 rounded-lg">
+				{campus.name}
+			</span>
+			<span className="text-stone-400 ">
+				<AiOutlineEnter />
+			</span>
+		</div>
+	);
+}
+
+function DataContent({ campus }) {
+	return (
+		<div className="m-4 p-1 h-48 overflow-x-auto overflow-y-scroll story-scroll">
+			<span className="text-stone-300 ">
+				<DataTyper campus={campus} speed={10} />
+			</span>
 		</div>
 	);
 }
