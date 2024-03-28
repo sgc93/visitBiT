@@ -59,14 +59,32 @@ export const campusTabs = [
 		position: [11.576764, 37.395184],
 		content:
 			"abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z",
+		contacts: {
+			post: "P.O. Box 79",
+			email: "bduinfo@bdu.edu.et",
+			fax: "+251 583 20 60 94 ",
+			phone: "+251 583 20 9653 / +251 583 20 6059 / +251 582 20 5934",
+		},
 		link: "https://www.bdu.edu.et/cobe/",
 		selected: false,
 	},
 	{
 		name: "Poly Campus",
 		position: [11.597621756651337, 37.39551835806901],
-		content:
-			"abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z",
+		content: `Bahir Dar University is one of the largest and well-known public universities in Ethiopia. The university was established on May 6, 2000 by merging two public higher institutions namely Bahir Dar Polytechnic and Bahir Dar Teachers’ College. Currently, the university has five institutes, five colleges, two academies, six faculties and two schools. Bahir Dar Institute of Technology, which is one of the institutes in Bahir Dar University, is among the oldest and well-known technology institutes in Ethiopia. The institute was founded by a bilateral agreement between the Ethiopian and former Soviet Union governments in 1963. It was planned to admit top ranked students who successfully passed the eighth-grade national examination. Following its establishment as polytechnic institute, it admitted 232 students for four-year programs. Since then, the institute had undergone several program changes within the area of technology (Agro-mechanics, Industrial Chemistry, Metal, Textile, Electrical and Wood Technologies). In 2011, the institute was upgraded to Bahir Dar Institute of Technology (BiT).  
+
+The institute has been contributing to the labor market with graduates who are now running most of the businesses in the industrial, educational, agricultural and other economic development sectors in Ethiopia and working abroad. Since its establishment, it became a pioneer institute of technology offering higher education in the field of engineering and technology. The institute aspires to become a leading institute in engineering and technology programs that prepare students to become entrepreneurs, and innovators through a distinct education. Currently, 4675 students are enrolled in 18 undergraduate programs and about 1869 postgraduate students in 38 Msc programs and 138 students in 26 PhD programs. It has well equipped 44 laboratories supporting research and practical teaching and to deliver different technical support to partners and our main stakeholders in the region. 
+
+The institute is working towards solving practical problems of community and teaching practically oriented courses through an ample experience in teaching, research and community service. Furthermore, it is also envisioned to have a national impact through the dissemination of technologies focused on the need of the local community and industrial sector. The institute has many international and national partners which are working towards facilitating teaching, research and community service activities. The teaching, research and community service activities are supported by high qualified instructors, technical assistants, and administrative staff.`,
+		contacts: {
+			post: "P.o.Box: 26",
+			email: "polybit1955@gmail.com",
+			fax: "(+251) 58-226-4471 ",
+			phone: "(+251)58-222 1953",
+			facebook: "https://www.facebook.com/bitpoly",
+			telegram: "https://t.me/bitpoly",
+			hours: "8 AM - 5PM Eastern Time (Mon - Fri)",
+		},
 		link: "https://bit.bdu.edu.et/",
 		selected: false,
 	},
@@ -74,7 +92,13 @@ export const campusTabs = [
 		name: "Sebatamit Campus",
 		position: [11.52690623269073, 37.401044368743904],
 		content:
-			"abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z",
+			'The Bahir Dar Polytechnic Institute, which has transformed itself into Technology and Textile institutes, was established in 1963 under the technical cooperation between the Government of USSR and the Imperial Government of Ethiopia. The institute was a premier institute in producing technicians for the nation. The institute started its first training program in Textile Technology in collaboration with the Russian Government at advanced diploma level under Bahir Dar Polytechnic Institute, which eventually grew to become Bahir Dar University in 2000. For about 33 years the training program was in the level of Advance Diploma in the field of Textile Technology. Shortly afterwards, the Advanced Diploma program was upgraded to B.Sc. program in Textile Engineering in 1997. Considering the importance of the textile, garment, and fashion sector to the economic well-being and industrialization of Ethiopia, the Government of Ethiopia has upgraded the Department of Textile Engineering to Institute level with the name "Institute of Textile and Clothing Technology" from July, 2009. Later in 2010, the Engineering Capacity Building Program (ECBP) started operating in Ethiopia with the collaboration of the German government and the institute was renamed as "Institute of Technology for Textile, Garment, and Fashion Design (IoTEX)" and functioning separately under Bahir Dar University. Shortly afterwards, as of March 2014, it was renamed as "Ethiopian Institute of Textile and Fashion Technology (EiTEX).',
+		contacts: {
+			post: "P.O. Box: 1037",
+			email: "tamrat_tsfy@yahoo.com",
+			fax: "+251 582 26 62 46",
+			phone: "+251 582 26 62 46",
+		},
 		link: "https://www.bdu.edu.et/cmhs/",
 		selected: false,
 	},
@@ -83,6 +107,12 @@ export const campusTabs = [
 		position: [11.5829545898627, 37.39617347717286],
 		content:
 			"abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z",
+		contacts: {
+			post: "P.O. Box 79",
+			email: "bduinfo@bdu.edu.et",
+			fax: "+251 583 20 60 94 ",
+			phone: "+251 583 20 9653 / +251 583 20 6059 / +251 582 20 5934",
+		},
 		link: "https://eitex.bdu.edu.et/",
 		selected: false,
 	},
@@ -91,6 +121,12 @@ export const campusTabs = [
 		position: [11.57109058919408, 37.32939720153809],
 		content:
 			"abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z",
+		contacts: {
+			post: "P.O. Box 79",
+			email: "bduinfo@bdu.edu.et",
+			fax: "+251 583 20 60 94 ",
+			phone: "+251 583 20 9653 / +251 583 20 6059 / +251 582 20 5934",
+		},
 		link: "https://www.bdu.edu.et/ila/",
 		selected: false,
 	},
@@ -99,6 +135,12 @@ export const campusTabs = [
 		position: [11.62104699753215, 37.45878159999848],
 		content:
 			"abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z abc def ghi jkl mno qrs tuv wxy z",
+		contacts: {
+			post: "P.O. Box 79",
+			email: "bduinfo@bdu.edu.et",
+			fax: "+251 583 20 60 94 ",
+			phone: "+251 583 20 9653 / +251 583 20 6059 / +251 582 20 5934",
+		},
 		link: "https://www.bdu.edu.et/caes/",
 		selected: false,
 	},
