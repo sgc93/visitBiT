@@ -9,6 +9,7 @@
 
 body {
 	background-color: rgba(34, 27, 51, 0.956);
+	overflow-x: hidden;
 }
 
 :root {
