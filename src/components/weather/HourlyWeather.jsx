@@ -4,7 +4,7 @@ import LoaderBlock from "../LoaderBlock";
 export default function HourlyWeather({ forecastDay, isLoading }) {
 	return (
 		<>
-			{isLoading ? (
+			{isLoading || !forecastDay ? (
 				<LoaderBlock width={"75%"} height={"100%"} />
 			) : (
 				<div className="w-[75%] h-full rounded-lg glassmorphism-white p-2 flex flex-col gap-2">
@@ -28,14 +28,15 @@ function HourlyHeader({ forecastDay }) {
 }
 
 function HourlyDetail({ forecastDay }) {
+	const hour = forecastDay.hour;
+
 	return (
 		<div className="flex">
-			<div>{forecastDay.date}</div>
-			<DetailTable />
+			<DetailTable hourlyData={hour} />
 		</div>
 	);
 }
 
-function DetailTable({ data }) {
-	return <div>hourly data</div>;
+function DetailTable({ hourlyData }) {
+	return <div>hourlyData</div>;
 }
