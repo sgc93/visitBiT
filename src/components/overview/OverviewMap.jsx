@@ -2,21 +2,23 @@ import { MapContainer, Marker, Polygon, Popup, TileLayer } from "react-leaflet";
 import { bitParts } from "../../services/data";
 import { getCenter } from "../../services/helpers";
 
-const mapUrl = "http://{s}.google.com/vt?lyrs=s&x={x}&y={y}&z={z}";
 const subdomains = ["mt0", "mt1", "mt2", "mt3"];
 const center = [11.597370448983153, 37.3976755142212];
 
-export default function OverviewMap() {
+export default function OverviewMap({ type }) {
+	const mapUrl = `http://{s}.google.com/vt?lyrs=${type}&x={x}&y={y}&z={z}`;
 	const parts = bitParts;
-	console.log(parts);
+
 	return (
-		<div className="w-3/4 h-[60dvh] rounded-xl p-4 glassmorphism-white">
-			<MapContainer center={center} zoom={16} className="w-full h-full">
-				<TileLayer url={mapUrl} subdomains={subdomains} />
-				{parts && <PartDrawer parts={parts} />}
-				{parts && <Label part={parts[2]} />}
-				{parts && <PartMarker parts={parts} />}
-			</MapContainer>
+		<div className="w-full flex items-center justify-center">
+			<div className="w-3/4 h-[60dvh] rounded-xl p-2 glassmorphism-white">
+				<MapContainer center={center} zoom={16} className="w-full h-full">
+					<TileLayer url={mapUrl} subdomains={subdomains} />
+					{parts && <PartDrawer parts={parts} />}
+					{parts && <Label part={parts[2]} />}
+					{parts && <PartMarker parts={parts} />}
+				</MapContainer>
+			</div>
 		</div>
 	);
 }
