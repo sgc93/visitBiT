@@ -8,14 +8,15 @@ export default function DayWeather({
 	isToday,
 }) {
 	return (
-		<div className="glassmorphism-white w-2/6 h-full rounded-lg p-2 flex flex-col gap-2">
+		<div className="glassmorphism-white w-[30%] h-full rounded-lg p-2 flex flex-col gap-2">
 			<DayHeader
 				forecastDay={forecastDay}
 				isLoading={isLoading}
 				forecastTo={forecastTo}
 				isToday={isToday}
 			/>
-			<span className="h-[1px] bg-stone-700"></span>
+			<span className="h-[1px] bg-stone-500"></span>
+			<DailyAverage forecastDay={forecastDay} />
 		</div>
 	);
 }
@@ -57,4 +58,14 @@ function DayHeader({ forecastDay, isLoading, forecastTo, isToday }) {
 			</div>
 		</div>
 	);
+}
+
+function DailyAverage({ forecastDay }) {
+	const data = forecastDay ? forecastDay.day : "";
+	console.log(data);
+	return <div>{data ? data.maxtemp_c : "data is empty"}</div>;
+}
+
+function AveTemp({ tempData }) {
+	return <div>temperature</div>;
 }
