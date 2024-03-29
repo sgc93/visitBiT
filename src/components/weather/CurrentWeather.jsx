@@ -1,5 +1,6 @@
 import { MdOutlineNightlightRound, MdSunny } from "react-icons/md";
 import { dateFormatter, timeFormatter } from "../../services/helpers";
+import LoaderBlock from "../LoaderBlock";
 
 export default function CurrentWeather({ current, isLoading }) {
 	return (
@@ -122,14 +123,5 @@ function CurDet({ data, index }) {
 				{data}
 			</span>
 		</div>
-	);
-}
-
-function LoaderBlock({ width, height, className }) {
-	return (
-		<div
-			style={{ height: height, width: width }}
-			className={`loader-block glassmorphism-white my-1 rounded-lg ${className}`}
-		></div>
 	);
 }
