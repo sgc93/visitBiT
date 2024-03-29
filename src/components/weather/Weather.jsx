@@ -54,13 +54,13 @@ export default function Weather() {
 	}
 
 	return (
-		<div id="temp" className="overlay w-full h-screen p-4 flex flex-col gap-4">
+		<div className="overlay w-full h-screen p-4 flex flex-col gap-4">
 			<div className="w-full h-1/2 flex items-center gap-4">
 				<CurrentWeather current={weather.current} isLoading={isLoading} />
 				<WeatherMap place={place} setPlace={setPlace} />
 				<Astronomy forecastDay={forecastDay} isLoading={isLoading} />
 			</div>
-			<div className="w-full h-1/2 flex items-center gap-4">
+			<div className="w-full h-[48%] flex items-center gap-4">
 				<DayWeather
 					forecastDay={forecastDay}
 					forecastTo={changeDayOfForcast}
