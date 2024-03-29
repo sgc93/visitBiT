@@ -119,29 +119,34 @@ function AveTemp({ tempData, isLoading }) {
 }
 
 function AveWeather({ weatherData, isLoading }) {
-	let detail;
-	// if (!isLoading && current) {
-	// 	detail = {
-	// 		maxte: `${current.cloud > 0 ? `${current.cloud}%` : "No Cloud "}`,
-	// 		humidity: `${current.humidity}%`,
-	// 		precipitation: `${
-	// 			current.precip_mm > 0 ? `${current.precip_mm} mm` : "No precipitation "
-	// 		}`,
-	// 		pressure: `${current.pressure_mb} mb`,
-	// 		ultraViolet: current.uv,
-	// 		wind: `${current.wind_dir} ${current.wind_kph} kph`,
-	// 	};
-	// }
+	let summary;
+	if (!isLoading && weatherData) {
+		summary = [
+			`Daily chance of rain is ${weatherData.daily_chance_of_rain}%`,
+			`Daily chance of snow is ${weatherData.daily_chance_of_snow}%`,
+			`Maximum wind speed is ${weatherData.maxwind_kph} kph`,
+		];
+	}
 
 	return (
 		<>
 			{isLoading ? (
 				<LoaderBlock width={"100%"} height={"60%"} />
 			) : (
-				<div className="w-full h-[60%] glassmorphism-bg rounded-xl">
-					weather data
+				<div className="w-full h-[60%] glassmorphism-bg rounded-xl flex flex-col justify-center gap-2 px-4">
+					{summary.map((data, key) => (
+						<Summary data={data} key={key} />
+					))}
 				</div>
 			)}
 		</>
+	);
+}
+
+function Summary({ data }) {
+	return (
+		<span className="text-stone-900 font-sm font-semibold glassmorphism-bg px-2 py-1 rounded-lg">
+			{data}
+		</span>
 	);
 }
