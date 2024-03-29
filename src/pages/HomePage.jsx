@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Campus from "../components/campus/Campus";
 import HomeContent from "../components/home/HomeContent";
+import Overview from "../components/overview/Overview";
 import Weather from "../components/weather/Weather";
 import StoryTeller from "./StoryTeller";
 
@@ -37,8 +38,11 @@ export default function HomePage() {
 						id="overview"
 						className={`${title_style} glassmorphism-bg backdrop-blur-[8px]`}
 					>
-						&gt; Other 6 Campuses
+						&gt; BiT's Map Overview
 					</span>
+					<div className=" relative w-full h-screen ">
+						<Overview />
+					</div>
 				</>
 			)}
 		</section>
