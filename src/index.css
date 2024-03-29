@@ -19,6 +19,7 @@ body {
 	--color-bg-btn-white: #ffffff3e;
 	--color-border-white: #ffffff8d;
 	--color-shadow-white: #5c667086;
+	--color--slight-white: rgba(255, 255, 255, 0.168);
 }
 
 @layer components {
@@ -222,4 +223,35 @@ div.age3:nth-child(2) {
 	100% {
 		transform: translate(-10%);
 	}
+}
+
+/* table */
+table {
+	border-collapse: separate;
+	border-spacing: 0.5rem;
+}
+
+th {
+	@apply glassmorphism-bg rounded-lg px-2 text-center;
+}
+
+td {
+	@apply px-2 text-center transition-all text-stone-800 text-sm font-semibold;
+}
+
+tr {
+	@apply duration-300 hover:bg-[var(--color--slight-white)];
+}
+
+.table-scroll {
+	overflow-x: auto;
+}
+
+.table-scroll::-webkit-scrollbar {
+	@apply bg-transparent w-3;
+}
+
+.table-scroll::-webkit-scrollbar-thumb {
+	background-color: #7b9ebe;
+	@apply rounded-lg;
 }
