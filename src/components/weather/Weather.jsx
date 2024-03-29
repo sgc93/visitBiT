@@ -34,7 +34,7 @@ export default function Weather() {
 			}
 		}
 		fetchWeatherData();
-	}, [place]);
+	}, [place, isToday]);
 
 	function changeDayOfForcast(day) {
 		if (day === 0) {
