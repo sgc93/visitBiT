@@ -1,16 +1,30 @@
 import { allPlaces } from "./data";
 
-export default function getCurrentMonthYear() {
-	const date = new Date();
-	const options = {
+export function timeFormatter(time) {
+	const toTime = new Date(time);
+	const formatter = new Intl.DateTimeFormat("en-US", {
+		hour: "numeric",
+		minute: "numeric",
+		hour12: true,
+	});
+
+	return formatter.format(toTime);
+}
+
+export function dateFormatter(date) {
+	const toDate = new Date(date);
+	const formatter = new Intl.DateTimeFormat("en-US", {
+		year: "numeric",
 		month: "long",
 		day: "numeric",
-		year: "numeric",
-	};
+	});
 
-	const today = date.toLocaleString("en-US", options);
+	return formatter.format(toDate);
+}
 
-	return today;
+export default function getCurrentMonthYear() {
+	const date = new Date();
+	return dateFormatter(date);
 }
 
 export function getCurrentPos() {
