@@ -52,7 +52,7 @@ export default function Animated({ isOpen }) {
 						name={"age1"}
 					/>
 					<Attr
-						show={age > a / 2}
+						show={age > a / 1.7}
 						desc={"structured updated qualified education"}
 						att={"Proven"}
 						name={"age2"}
