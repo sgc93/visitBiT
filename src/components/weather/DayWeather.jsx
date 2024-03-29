@@ -16,14 +16,14 @@ export default function DayWeather({
 				isToday={isToday}
 			/>
 			<span className="h-[1px] bg-stone-500"></span>
-			<DailyAverage forecastDay={forecastDay} />
+			<DailyAverage forecastDay={forecastDay} isLoading={isLoading} />
 		</div>
 	);
 }
 
 function DayHeader({ forecastDay, isLoading, forecastTo, isToday }) {
 	return (
-		<div className="flex items-center justify-between">
+		<div className="flex items-center justify-between w-full h-[8%]">
 			<div className="flex items-center gap-1">
 				<span className="text-blue-950 font-semibold">Daily Weather</span>
 				{isLoading || !forecastDay ? (
@@ -60,12 +60,41 @@ function DayHeader({ forecastDay, isLoading, forecastTo, isToday }) {
 	);
 }
 
-function DailyAverage({ forecastDay }) {
+function DailyAverage({ forecastDay, isLoading }) {
 	const data = forecastDay ? forecastDay.day : "";
 	console.log(data);
-	return <div>{data ? data.maxtemp_c : "data is empty"}</div>;
+	return (
+		<div className="flex flex-col w-full h-[92%] gap-2">
+			<AveTemp tempData={data} isLoading={isLoading} />
+			<AveWeather weatherData={data} isLoading={isLoading} />
+		</div>
+	);
 }
 
-function AveTemp({ tempData }) {
-	return <div>temperature</div>;
+function AveTemp({ tempData, isLoading }) {
+	return (
+		<>
+			{isLoading ? (
+				<LoaderBlock width={"100%"} height={"50%"} />
+			) : (
+				<div className="w-full h-1/2 glassmorphism-bg rounded-xl">
+					temp data
+				</div>
+			)}
+		</>
+	);
+}
+
+function AveWeather({ weatherData, isLoading }) {
+	return (
+		<>
+			{isLoading ? (
+				<LoaderBlock width={"100%"} height={"50%"} />
+			) : (
+				<div className="w-full h-1/2 glassmorphism-bg rounded-xl">
+					weather data
+				</div>
+			)}
+		</>
+	);
 }
