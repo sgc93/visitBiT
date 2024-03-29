@@ -117,9 +117,17 @@ body::-webkit-scrollbar-thumb {
 	background-image: url("/map_bg.png");
 }
 
+.home::-webkit-scrollbar {
+	background-color: #001f3b8d;
+	width: 12px;
+}
+
+.home::-webkit-scrollbar-thumb {
+	@apply bg-stone-400 rounded-lg;
+}
+
 .overlay {
 	background: #001f3b8d;
-
 	backdrop-filter: blur(5px);
 }
 
