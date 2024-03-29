@@ -3,6 +3,7 @@ import { bit } from "../../services/data";
 import Astronomy from "./Astronomy";
 import CurrentWeather from "./CurrentWeather";
 import DayWeather from "./DayWeather";
+import HourlyWeather from "./HourlyWeather";
 import WeatherMap from "./WeatherMap";
 
 const API = "e2b3350b4ad94eec94e91829242803";
@@ -66,7 +67,7 @@ export default function Weather() {
 					isLoading={isLoading}
 					isToday={isToday}
 				/>
-				<div className="w-[75%] h-full rounded-lg bg-red-500"></div>
+				<HourlyWeather forecastDay={forecastDay} isLoading={isLoading} />
 			</div>
 		</div>
 	);
