@@ -66,7 +66,7 @@ export default function Weather() {
 					isLoading={isLoading}
 					isToday={isToday}
 				/>
-				<div className="w-4/6 h-full rounded-lg bg-red-500"></div>
+				<div className="w-[75%] h-full rounded-lg bg-red-500"></div>
 			</div>
 		</div>
 	);
