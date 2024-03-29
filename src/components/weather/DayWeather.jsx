@@ -62,7 +62,6 @@ function DayHeader({ forecastDay, isLoading, forecastTo, isToday }) {
 
 function DailyAverage({ forecastDay, isLoading }) {
 	const data = forecastDay ? forecastDay.day : "";
-	console.log(data);
 	return (
 		<div className="flex flex-col w-full h-[92%] gap-2">
 			<AveTemp tempData={data} isLoading={isLoading} />
