@@ -73,7 +73,7 @@ function DailyAverage({ forecastDay, isLoading }) {
 function AveTemp({ tempData, isLoading }) {
 	return (
 		<>
-			{isLoading ? (
+			{isLoading || !tempData ? (
 				<LoaderBlock width={"100%"} height={"40%"} />
 			) : (
 				<div className="w-full h-[40%] glassmorphism-bg rounded-xl flex items-center justify-center gap-4">
@@ -129,7 +129,7 @@ function AveWeather({ weatherData, isLoading }) {
 
 	return (
 		<>
-			{isLoading ? (
+			{isLoading || !weatherData ? (
 				<LoaderBlock width={"100%"} height={"60%"} />
 			) : (
 				<div className="w-full h-[60%] glassmorphism-bg rounded-xl flex flex-col justify-center gap-2 px-4">
