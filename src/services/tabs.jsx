@@ -13,9 +13,19 @@ export const homeTabs = [
 		href: "hint",
 	},
 	{
+		text: "other campuses",
+		icon: <MdOutlineAddLocationAlt />,
+		href: "campuses",
+	},
+	{
 		text: "current temperature",
 		icon: <FaTemperatureHigh />,
 		href: "temp",
+	},
+	{
+		text: "BiT map overview",
+		icon: <RiRoadMapLine />,
+		href: "overview",
 	},
 	{
 		text: "about BiT",
@@ -26,16 +36,6 @@ export const homeTabs = [
 		text: "BiT contacts",
 		icon: <GrContact />,
 		href: "contact",
-	},
-	{
-		text: "BiT map overview",
-		icon: <RiRoadMapLine />,
-		href: "overview",
-	},
-	{
-		text: "other campuses",
-		icon: <MdOutlineAddLocationAlt />,
-		href: "campuses",
 	},
 ];
 
