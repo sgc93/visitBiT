@@ -84,13 +84,33 @@ function AveTemp({ tempData, isLoading }) {
 							{tempData.condition.text}
 						</span>
 					</div>
-					<div className="flex items-end gap-1">
-						<span className="text-blue-900 text-4xl">
-							{tempData.avgtemp_c}°C
-						</span>
-						<span className="text-sm font-semibold text-blue-900">
-							/ {tempData.avgtemp_f}°F
-						</span>
+					<div>
+						<div className="flex items-end gap-1">
+							<span className="text-blue-900 text-4xl">
+								{tempData.avgtemp_c}°C
+							</span>
+							<span className="text-sm font-semibold text-blue-900">
+								/ {tempData.avgtemp_f}°F
+							</span>
+						</div>
+						<div>
+							<div>
+								<span className="text-red-900 text-xl">
+									max: {tempData.maxtemp_c}°C
+								</span>
+								<span className="text-sm font-semibold text-red-900">
+									/ {tempData.maxtemp_f}°F
+								</span>
+							</div>
+							<div>
+								<span className="text-green-900 text-xl">
+									min: {tempData.mintemp_c}°C
+								</span>
+								<span className="text-sm font-semibold text-green-900">
+									/ {tempData.mintemp_f}°F
+								</span>
+							</div>
+						</div>
 					</div>
 				</div>
 			)}
@@ -99,6 +119,20 @@ function AveTemp({ tempData, isLoading }) {
 }
 
 function AveWeather({ weatherData, isLoading }) {
+	let detail;
+	// if (!isLoading && current) {
+	// 	detail = {
+	// 		maxte: `${current.cloud > 0 ? `${current.cloud}%` : "No Cloud "}`,
+	// 		humidity: `${current.humidity}%`,
+	// 		precipitation: `${
+	// 			current.precip_mm > 0 ? `${current.precip_mm} mm` : "No precipitation "
+	// 		}`,
+	// 		pressure: `${current.pressure_mb} mb`,
+	// 		ultraViolet: current.uv,
+	// 		wind: `${current.wind_dir} ${current.wind_kph} kph`,
+	// 	};
+	// }
+
 	return (
 		<>
 			{isLoading ? (
