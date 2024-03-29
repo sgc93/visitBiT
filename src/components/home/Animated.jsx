@@ -31,10 +31,14 @@ export default function Animated({ isOpen }) {
 	return (
 		<div className=" w-1/2 h-full flex flex-col text-stone-100">
 			<div className="h-2/5 relative flex flex-col">
-				{year !== currYear && (
-					<span className="absolute top-10 left-5 text-2xl">since</span>
-				)}
-				<span className="year font-bold  ">{currYear}</span>
+				<span
+					className={`absolute top-10 left-5 text-2xl transition-all duration-600 glassmorphism-bg px-2 py-[2px] rounded-lg ${
+						currYear < year ? "opacity-100" : "opacity-0"
+					}`}
+				>
+					since
+				</span>
+				<span className="year font-bold ">{currYear}</span>
 			</div>
 			<div
 				className={`flex relative transition-all duration-500 w-full h-3/5 ${
@@ -63,7 +67,11 @@ export default function Animated({ isOpen }) {
 						att={"Fruitful"}
 						name={"age3"}
 					/>
-					<span className="flex flex-col items-center justify-end pb-10">
+					<span
+						className={`flex flex-col items-center justify-end pb-10 transition-all duration-300 ${
+							age === a ? "opacity-100" : "opacity-0"
+						}`}
+					>
 						years
 					</span>
 				</div>
@@ -75,7 +83,7 @@ export default function Animated({ isOpen }) {
 function Attr({ show, desc, att, name }) {
 	return (
 		<div
-			className={`w-1/4 h-full flex flex-col items-center justify-end gap-3 transition-all duration-500 ${
+			className={`w-1/4 h-full flex flex-col items-center justify-end gap-3 transition-all duration-700 ${
 				show ? "opacity-100 " : "opacity-0"
 			}`}
 		>

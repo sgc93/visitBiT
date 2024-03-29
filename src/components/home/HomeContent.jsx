@@ -7,18 +7,21 @@ import Animated from "./Animated";
 export default function HomeContent({ isOpen, setIsOpen }) {
 	return (
 		<div className="overlay  w-full h-full flex items-center p-20">
-			<NavContent />
+			<NavContent setIsOpen={setIsOpen} />
 			<Animated isOpen={isOpen} setIsOpen={setIsOpen} />
 		</div>
 	);
 }
 
-function NavContent() {
+function NavContent({ setIsOpen }) {
+	function openHitBox() {
+		setIsOpen(true);
+	}
 	return (
 		<div className="w-1/2 h-full flex flex-col justify-between">
 			<ul className="list ml-5 text-stone-300 flex flex-col gap-2">
 				{homeTabs.map((tab, key) => (
-					<Tab tab={tab} key={key} />
+					<Tab tab={tab} key={key} index={key} openHitBox={openHitBox} />
 				))}
 			</ul>
 			<Hero />
@@ -26,13 +29,19 @@ function NavContent() {
 	);
 }
 
-function Tab({ tab }) {
+function Tab({ tab, index, openHitBox }) {
 	const [isOpen, setIsOpen] = useState(false);
+	function handleClick() {
+		if (index === 0) {
+			openHitBox();
+		}
+	}
 	return (
 		<li
 			className="glassmorphism w-fit h-8 flex items-center gap-2 rounded-lg px-2 py-[2px] transition-all duration-300 hover:text-blue-950 hover:bg-stone-300 hover:border-stone-300"
 			onMouseEnter={() => setIsOpen(true)}
 			onMouseLeave={() => setIsOpen(false)}
+			onClick={() => handleClick()}
 		>
 			{tab.icon}
 			{isOpen && <a href={`#${tab.href}`}>{tab.text}</a>}
