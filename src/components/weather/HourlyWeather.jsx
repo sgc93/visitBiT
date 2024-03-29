@@ -7,8 +7,9 @@ export default function HourlyWeather({ forecastDay, isLoading }) {
 			{isLoading ? (
 				<LoaderBlock width={"75%"} height={"100%"} />
 			) : (
-				<div className="w-[75%] h-full rounded-lg glassmorphism-white p-2">
+				<div className="w-[75%] h-full rounded-lg glassmorphism-white p-2 flex flex-col gap-2">
 					<HourlyHeader forecastDay={forecastDay} />
+					<HourlyDetail forecastDay={forecastDay} />
 				</div>
 			)}
 		</>
@@ -24,4 +25,17 @@ function HourlyHeader({ forecastDay }) {
 			</span>
 		</div>
 	);
+}
+
+function HourlyDetail({ forecastDay }) {
+	return (
+		<div className="flex">
+			<div>{forecastDay.date}</div>
+			<DetailTable />
+		</div>
+	);
+}
+
+function DetailTable({ data }) {
+	return <div>hourly data</div>;
 }
