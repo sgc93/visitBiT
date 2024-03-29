@@ -22,7 +22,6 @@ export default function Astronomy({ forecastDay, isLoading }) {
 }
 
 function AstronomyHeader({ date }) {
-	console.log(date);
 	return (
 		<div className="w-full h-[8%] flex items-center justify-between ">
 			<span className="text-blue-900 font-semibold capitalize">Astronomy</span>
