@@ -179,3 +179,38 @@ body::-webkit-scrollbar-thumb {
 	background-color: rgba(255, 166, 0, 0.33);
 	border: 1px solid rgb(255, 221, 157);
 }
+
+/* glassmophism bg */
+
+.glassmorphism-bg {
+	background-color: rgba(255, 255, 255, 0.168);
+}
+
+/* loader block */
+
+.loader-block {
+	position: relative;
+	overflow: hidden;
+}
+.loader-block::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 200%;
+	height: 100%;
+	background: linear-gradient(to right, transparent, #1001e27a, transparent);
+	animation-name: waiting;
+	animation-duration: 0.5s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+@keyframes waiting {
+	0% {
+		transform: translate(-50%);
+	}
+	100% {
+		transform: translate(-10%);
+	}
+}
