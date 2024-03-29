@@ -75,10 +75,23 @@ function AveTemp({ tempData, isLoading }) {
 	return (
 		<>
 			{isLoading ? (
-				<LoaderBlock width={"100%"} height={"50%"} />
+				<LoaderBlock width={"100%"} height={"40%"} />
 			) : (
-				<div className="w-full h-1/2 glassmorphism-bg rounded-xl">
-					temp data
+				<div className="w-full h-[40%] glassmorphism-bg rounded-xl flex items-center justify-center gap-4">
+					<div className=" h-full px-4 py-2 flex flex-col gap-1 items-center">
+						<img src={tempData.condition.icon} alt={tempData.condition.text} />
+						<span className="text-3xl font-semibold text-stone-100">
+							{tempData.condition.text}
+						</span>
+					</div>
+					<div className="flex items-end gap-1">
+						<span className="text-blue-900 text-4xl">
+							{tempData.avgtemp_c}°C
+						</span>
+						<span className="text-sm font-semibold text-blue-900">
+							/ {tempData.avgtemp_f}°F
+						</span>
+					</div>
 				</div>
 			)}
 		</>
@@ -89,9 +102,9 @@ function AveWeather({ weatherData, isLoading }) {
 	return (
 		<>
 			{isLoading ? (
-				<LoaderBlock width={"100%"} height={"50%"} />
+				<LoaderBlock width={"100%"} height={"60%"} />
 			) : (
-				<div className="w-full h-1/2 glassmorphism-bg rounded-xl">
+				<div className="w-full h-[60%] glassmorphism-bg rounded-xl">
 					weather data
 				</div>
 			)}
