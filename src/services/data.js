@@ -173,6 +173,51 @@ export const bitParts = [
 			opacity: 1,
 		},
 	},
+	{
+		label: "workshops",
+		bounds: [
+			[11.596180749943244, 37.39680051551327],
+			[11.597074424249366, 37.39590487307525],
+			[11.596753256302392, 37.39536322908328],
+			[11.595727876954664, 37.396087327620485],
+		],
+		style: {
+			color: "brown",
+			fillColor: "brown",
+			weight: 1.2,
+			opacity: 1,
+		},
+	},
+	{
+		label: "registerer office",
+		bounds: [
+			[11.597132876116037, 37.395942398828],
+			[11.59695308525752, 37.39615677416148],
+			[11.597089538055753, 37.396258653351204],
+			[11.597283999086637, 37.3961246044356],
+		],
+		style: {
+			color: "stone",
+			fillColor: "stone",
+			weight: 1.2,
+			opacity: 1,
+		},
+	},
+	{
+		label: "Cafes : mother and sister cafes",
+		bounds: [
+			[11.597885568284806, 37.39586769275843],
+			[11.597635824938944, 37.39602503564455],
+			[11.598258756161506, 37.39689330319225],
+			[11.598480841012, 37.3967315142082],
+		],
+		style: {
+			color: "orange",
+			fillColor: "orange",
+			weight: 1.2,
+			opacity: 1,
+		},
+	},
 ];
 
 export const allPlaces = [...dormitories, ...launches, ...cafes];
