@@ -90,7 +90,7 @@ export default function Campus() {
 	return (
 		<div
 			id="campuses"
-			className="overlay w-full h-full backdrop-blur-[4px] flex flex-col items-center gap-3 p-10"
+			className=" w-full h-full backdrop-blur-[8px] flex flex-col items-center gap-3 p-10"
 		>
 			<div className="flex flex-col w-full h-full bg-stone-950 rounded-xl">
 				<CampusNav
