@@ -37,15 +37,17 @@ export default function Weather() {
 	}, [place]);
 
 	function changeDayOfForcast(day) {
-		if (!day) {
+		if (day === 0) {
 			if (!isToday) {
 				setIsToday(true);
-				setForecastDay(weather.forecast.forecastday[day]);
+				setForecastDay(weather.forecast.forecastday[0]);
+				console.log(forecastDay);
 			}
 		} else {
 			if (isToday) {
+				console.log(forecastDay);
 				setIsToday(false);
-				setForecastDay(weather.forecast.forecastday[day]);
+				setForecastDay(weather.forecast.forecastday[1]);
 			}
 		}
 	}

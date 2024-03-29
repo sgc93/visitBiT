@@ -3,16 +3,18 @@ import { dateFormatter } from "../../services/helpers";
 import LoaderBlock from "../LoaderBlock";
 
 export default function Astronomy({ forecastDay, isLoading }) {
-	console.log(forecastDay);
+	const date = forecastDay ? dateFormatter(forecastDay.date) : "";
+	const astro = forecastDay ? forecastDay.astro : {};
+
 	return (
 		<>
 			{isLoading || !forecastDay ? (
 				<LoaderBlock width={"16%"} height={"100%"} />
 			) : (
 				<div className="glassmorphism-white w-1/6 h-full rounded-lg flex flex-col p-2 gap-2">
-					<AstronomyHeader date={forecastDay.date} />
+					<AstronomyHeader date={date} />
 					<span className="h-[1px] bg-stone-600 mb-2"></span>
-					<AstronomyDetail astro={forecastDay.astro} />
+					<AstronomyDetail astro={astro} />
 				</div>
 			)}
 		</>
@@ -20,10 +22,11 @@ export default function Astronomy({ forecastDay, isLoading }) {
 }
 
 function AstronomyHeader({ date }) {
+	console.log(date);
 	return (
 		<div className="w-full h-[8%] flex items-center justify-between ">
 			<span className="text-blue-900 font-semibold capitalize">Astronomy</span>
-			<span className="text-stone-900 text-sm">{dateFormatter(date)}</span>
+			<span className="text-stone-900 text-sm">{date}</span>
 		</div>
 	);
 }

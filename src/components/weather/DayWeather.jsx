@@ -7,7 +7,6 @@ export default function DayWeather({
 	forecastTo,
 	isToday,
 }) {
-	console.log(forecastDay);
 	return (
 		<div className="glassmorphism-white w-2/6 h-full rounded-lg p-2 flex flex-col gap-2">
 			<DayHeader
@@ -29,7 +28,7 @@ function DayHeader({ forecastDay, isLoading, forecastTo, isToday }) {
 				{isLoading || !forecastDay ? (
 					<LoaderBlock width={"7rem"} height={"1.3rem"} />
 				) : (
-					<span className="w-28 flex justify-center underline underline-offset-2 text-sm font-semibold text-stone-600">
+					<span className="w-28 flex justify-center underline underline-offset-2 text-sm text-stone-400">
 						{dateFormatter(forecastDay.date)}
 					</span>
 				)}
