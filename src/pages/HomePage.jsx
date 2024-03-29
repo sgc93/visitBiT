@@ -4,6 +4,8 @@ import HomeContent from "../components/home/HomeContent";
 import Weather from "../components/weather/Weather";
 import StoryTeller from "./StoryTeller";
 
+const title_style = "w-full text-2xl px-4 pt-2 text-stone-50 font-semibold";
+
 export default function HomePage() {
 	const [isOpen, setIsOpen] = useState(true);
 
@@ -12,18 +14,31 @@ export default function HomePage() {
 			<div className=" relative w-full h-screen ">
 				<HomeContent isOpen={isOpen} setIsOpen={setIsOpen} />
 			</div>
-			<span className="mx-2 h-1 bg-stone-300"></span>
 			<StoryTeller isOpen={isOpen} setIsOpen={setIsOpen} />
 			{!isOpen && (
 				<>
+					<span
+						id="campuses"
+						className={`${title_style} glassmorphism-bg backdrop-blur-[8px]`}
+					>
+						&gt; Other 6 Campuses
+					</span>
 					<div className="glassmorphism-bg relative w-full h-screen ">
 						<Campus />
 					</div>
-					<span className="mx-2 h-1 bg-stone-300"></span>
+					<span id="temp" className={`${title_style} overlay`}>
+						&gt; BiT Weather Data
+					</span>
 
 					<div className=" relative w-full h-screen ">
 						<Weather />
 					</div>
+					<span
+						id="overview"
+						className={`${title_style} glassmorphism-bg backdrop-blur-[8px]`}
+					>
+						&gt; Other 6 Campuses
+					</span>
 				</>
 			)}
 		</section>
