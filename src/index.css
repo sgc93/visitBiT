@@ -131,23 +131,6 @@ body::-webkit-scrollbar-thumb {
 	backdrop-filter: blur(5px);
 }
 
-/* .temp {
-	background-image: url("/map.png");
-}
-
-.overlay {
-	backdrop-filter: blur(10px);
-	background-color: #011a3269;
-}
-
-.temp-overlay {
-	background-color: #011a3269;
-}
-
-.campus {
-	background-image: url("/map.png");
-} */
-
 /* hide blinking cursor of typed js */
 
 .typed-cursor {
@@ -176,18 +159,34 @@ body::-webkit-scrollbar-thumb {
 
 /* age */
 
-.age:first-child {
+.age1 {
 	background-color: #0084ff52;
 	border: 1px solid #98caf9ef;
 }
 
-.age:nth-child(2) {
+div.age1:nth-child(2) {
+	background-color: #0084ff36;
+	border: 1px solid #98caf971;
+}
+
+.age2 {
 	background-color: rgba(15, 197, 67, 0.326);
 	border: 1px solid rgb(155, 255, 183);
 }
-.age:nth-child(3) {
+
+div.age2:nth-child(1) {
+	background-color: rgba(15, 197, 67, 0.149);
+	border: 1px solid rgba(155, 255, 183, 0.485);
+}
+
+.age3 {
 	background-color: rgba(255, 166, 0, 0.33);
 	border: 1px solid rgb(255, 221, 157);
+}
+
+div.age3:nth-child(2) {
+	background-color: rgba(255, 166, 0, 0.166);
+	border: 1px solid rgba(255, 221, 157, 0.564);
 }
 
 /* glassmophism bg */
