@@ -6,6 +6,25 @@ import { MdOutlineAddLocationAlt } from "react-icons/md";
 import { PiAppWindowBold, PiBracketsAngleBold } from "react-icons/pi";
 import { RiEyeCloseFill, RiRoadMapLine } from "react-icons/ri";
 
+export const layerTabs = [
+	{
+		text: "default",
+		code: "m",
+	},
+	{
+		text: "hybrid",
+		code: "s,h",
+	},
+	{
+		text: "satellite",
+		code: "s",
+	},
+	{
+		text: "terrain",
+		code: "p",
+	},
+];
+
 export const homeTabs = [
 	{
 		text: "historical hints",
