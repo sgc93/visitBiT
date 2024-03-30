@@ -11,11 +11,11 @@ export function timeFormatter(time) {
 	return formatter.format(toTime);
 }
 
-export function dateFormatter(date) {
+export function dateFormatter(date, mLength) {
 	const toDate = new Date(date);
 	const formatter = new Intl.DateTimeFormat("en-US", {
 		year: "numeric",
-		month: "long",
+		month: mLength ? "short" : "long",
 		day: "numeric",
 	});
 
