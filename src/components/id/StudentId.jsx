@@ -1,22 +1,40 @@
+import { useEffect, useState } from "react";
 import Barcode from "react-barcode";
 import { IoCloseCircle } from "react-icons/io5";
+import { getRandomLetter } from "../../services/helpers";
 
 export default function StudentId({ setIsOpen }) {
+	const [name, setName] = useState("Smachew Gedefaw Chekol");
+	const [dept, setDept] = useState("Software Engineering");
+	const [id, setId] = useState("1308736");
+	const [img, setImg] = useState("/sgc.jpg");
+
 	function closeSimulator() {
 		setIsOpen(false);
 	}
 
 	return (
-		<div className=" w-1/2 h-1/2 bg-stone-900 rounded-xl flex flex-col">
+		<div className=" w-1/2 h-3/4 bg-stone-900 rounded-xl flex flex-col">
 			<SimulatorHeader handleClose={closeSimulator} />
-			<IdCard />
+			<div className="h-[92%] w-full flex flex-col items-center pt-6 gap-10">
+				<IdCard name={name} dept={dept} id={id} img={img} />
+				<DataField
+					name={name}
+					setName={setName}
+					dept={dept}
+					setDept={setDept}
+					id={id}
+					setId={setId}
+					setImg={setImg}
+				/>
+			</div>
 		</div>
 	);
 }
 
 function SimulatorHeader({ handleClose }) {
 	return (
-		<div className="flex flex-col">
+		<div className="flex flex-col h-[8%] w-full">
 			<div className="flex items-center justify-between px-2 py-[2px]">
 				<span className="text-stone-500">
 					BSC student digital Id card simulator
@@ -31,13 +49,52 @@ function SimulatorHeader({ handleClose }) {
 	);
 }
 
-function IdCard() {
+function IdCard({ name, dept, id, img }) {
 	return (
-		<div className="glassmorphism-white w-[55%] h-[68%] flex items-center justify-center rounded-xl p-[0.7rem]">
+		<div className="glassmorphism-white w-[55%] h-[52%] flex items-center justify-center rounded-xl p-[0.7rem]">
 			<div className="w-[400px] h-full bg-stone-50 rounded-lg overflow-hidden">
 				<IdCardHeader />
-				<IdCardBody />
-				<BarCode />
+				<IdCardBody name={name} dept={dept} id={id} img={img} />
+				<BarCode id={id} />
+			</div>
+		</div>
+	);
+}
+
+function DataField({ name, setName, dept, setDept, id, setId, setImg }) {
+	return (
+		<div className="flex flex-col gap-3">
+			<span className="text-stone-400 text-center">
+				Import the following data
+			</span>
+			<div className="text-stone-400 flex flex-col gap-2">
+				<div className="field_box">
+					<span>Full Name:</span>
+					<input
+						type="text"
+						placeholder="full name"
+						value={name}
+						onChange={(e) => setName(e.target.value)}
+					/>
+				</div>
+				<div className="field_box">
+					<span>Department:</span>
+					<input
+						type="text"
+						placeholder="department"
+						value={dept}
+						onChange={(e) => setDept(e.target.value)}
+					/>
+				</div>
+				<div className="field_box">
+					<span>ID No:</span>
+					<input
+						type="text"
+						placeholder="id number"
+						value={id}
+						onChange={(e) => setId(e.target.value)}
+					/>
+				</div>
 			</div>
 		</div>
 	);
@@ -55,11 +112,11 @@ function IdCardHeader() {
 	);
 }
 
-function IdCardBody() {
+function IdCardBody({ name, dept, id, img }) {
 	return (
 		<div className="w-full h-[122px] flex">
 			<div className="w-[122px] h-[122px] flex items-center justify-center">
-				<img className="w-full h-full" src="/sgc.jpg" alt="" />
+				<img src={img} alt="sgc" />
 			</div>
 			<div className="w-[calc(100%-122px)] h-full flex flex-col">
 				<span className="w-full bg-black text-white text-center text-[.8rem]">
@@ -68,15 +125,15 @@ function IdCardBody() {
 				<div className="id_data flex flex-col px-2 font-bold">
 					<div className="flex items-end gap-1">
 						<span>Name:</span>
-						<span>Smachew Gedefaw Chekol</span>
+						<span>{name}</span>
 					</div>
 					<div className="flex items-end gap-3">
 						<span>Dept: </span>
-						<span>Software Engineering</span>
+						<span>{dept}</span>
 					</div>
 					<div className="flex items-end gap-6">
 						<span>ID:</span>
-						<span>BDU1308736</span>
+						<span>BDU{id}</span>
 					</div>
 					<div className="flex items-end gap-3">
 						<span>Issue Date:</span>
@@ -88,12 +145,19 @@ function IdCardBody() {
 	);
 }
 
-function BarCode() {
+function BarCode({ id }) {
+	const [value, setValue] = useState(`${id}S`);
+	useEffect(() => {
+		if (id) {
+			setValue(`${id}${getRandomLetter()}`);
+		}
+	}, [id]);
+
 	return (
 		<div className="flex items-center justify-center">
 			<Barcode
 				format="CODE39"
-				value="1308736S"
+				value={value}
 				height={43}
 				width={2.2}
 				marginTop={2}
