@@ -1,6 +1,5 @@
-import { FaRegWindowClose, FaTemperatureHigh } from "react-icons/fa";
+import { FaIdCard, FaRegWindowClose, FaTemperatureHigh } from "react-icons/fa";
 import { GrContact } from "react-icons/gr";
-import { HiOutlineInformationCircle } from "react-icons/hi";
 import { IoMdRefresh } from "react-icons/io";
 import { MdOutlineAddLocationAlt } from "react-icons/md";
 import { PiAppWindowBold, PiBracketsAngleBold } from "react-icons/pi";
@@ -27,9 +26,14 @@ export const layerTabs = [
 
 export const homeTabs = [
 	{
-		text: "historical hints",
+		text: "BiT hints and abouts",
 		icon: <PiAppWindowBold />,
 		href: "hint",
+	},
+	{
+		text: "Id Card Simulator",
+		icon: <FaIdCard />,
+		href: "idCard",
 	},
 	{
 		text: "other campuses",
@@ -45,11 +49,6 @@ export const homeTabs = [
 		text: "BiT map overview",
 		icon: <RiRoadMapLine />,
 		href: "overview",
-	},
-	{
-		text: "about BiT",
-		icon: <HiOutlineInformationCircle />,
-		href: "about",
 	},
 	{
 		text: "BiT contacts",
