@@ -255,3 +255,17 @@ tr {
 	background-color: #7b9ebe;
 	@apply rounded-lg;
 }
+
+/* data field */
+
+.field_box {
+	@apply flex items-center gap-3;
+}
+
+.field_box span {
+	@apply font-semibold text-stone-200 w-[30%];
+}
+
+.field_box input[type="text"] {
+	@apply bg-stone-200 px-2 py-1 rounded-lg text-stone-950 font-bold border-none outline-none transition-all duration-300 hover:bg-blue-300 hover:placeholder:text-stone-600 hover:translate-y-[-2px] focus:bg-blue-300 focus:translate-y-0;
+}
