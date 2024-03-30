@@ -15,7 +15,7 @@ export default function OverviewMap() {
 
 	return (
 		<div className="w-full flex flex-col items-center justify-center gap-2">
-			<div className="relative w-3/4 h-[60dvh] rounded-xl p-2 glassmorphism-white ">
+			<div className="relative w-3/4 h-[72dvh] rounded-xl p-2 glassmorphism-white ">
 				<MapContainer center={center} zoom={16} className="w-full h-full">
 					<TileLayer url={mapUrl} subdomains={subdomains} />
 					{parts && <PartDrawer parts={parts} />}
@@ -109,7 +109,7 @@ function LayerTab({ layer, changeLayerTypeTo, type }) {
 							? "opacity-50 transition-all duration-300 hover:opacity-100 hover:border-2 hover:border-stone-700"
 							: "opacity-100 border-2 border-stone-700"
 					}`}
-					src={`/public/${layer.text}_layer.png`}
+					src={`/${layer.text}_layer.png`}
 					alt={layer.text}
 					onClick={() => changeLayerTypeTo(layer)}
 				/>
