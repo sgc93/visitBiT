@@ -3,20 +3,32 @@ import Campus from "../components/campus/Campus";
 import HomeContent from "../components/home/HomeContent";
 import Overview from "../components/overview/Overview";
 import Weather from "../components/weather/Weather";
+import IdSimulator from "./IdSimulator";
 import StoryTeller from "./StoryTeller";
 
 const title_style = "w-full text-2xl px-4 pt-2 text-stone-50 font-semibold";
 
 export default function HomePage() {
-	const [isOpen, setIsOpen] = useState(true);
+	const [isStoryBoxOpened, setIsStoryBoxOpen] = useState(true);
+	const [isIdBoxOpened, setIsIdBoxOpened] = useState(false);
+	const isBoxOpened = isStoryBoxOpened || isIdBoxOpened;
+	console.log(isBoxOpened);
 
 	return (
 		<section className="home overflow-x-hidden flex flex-col w-screen h-[100dvh]">
 			<div className=" relative w-full h-screen ">
-				<HomeContent isOpen={isOpen} setIsOpen={setIsOpen} />
+				<HomeContent
+					isBoxOpened={isBoxOpened}
+					setIsHintBoxOpened={setIsStoryBoxOpen}
+					setIsIdBoxOpened={setIsIdBoxOpened}
+				/>
 			</div>
-			<StoryTeller isOpen={isOpen} setIsOpen={setIsOpen} />
-			{!isOpen && (
+			<StoryTeller isOpen={isStoryBoxOpened} setIsOpen={setIsStoryBoxOpen} />
+			<IdSimulator
+				isIdBoxOpened={isIdBoxOpened}
+				setIsIdBoxOpened={setIsIdBoxOpened}
+			/>
+			{!isBoxOpened && (
 				<>
 					<span
 						id="campuses"
