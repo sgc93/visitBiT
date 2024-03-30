@@ -175,9 +175,9 @@ function BarCode({ id }) {
 				<Barcode
 					format="CODE39"
 					value={value}
-					height={45}
+					height={47}
 					width={2.2}
-					margin={2}
+					margin={1}
 					displayValue={false}
 				/>
 			) : (
