@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Barcode from "react-barcode";
 import { IoCloseCircle } from "react-icons/io5";
-import { getRandomLetter } from "../../services/helpers";
+import { dateFormatter, getRandomLetter } from "../../services/helpers";
 
 export default function StudentId({ setIsOpen }) {
 	const [name, setName] = useState("Smachew Gedefaw Chekol");
@@ -78,6 +78,7 @@ function DataField({ name, setName, dept, setDept, id, setId, setImg }) {
 			setId(e.target.value);
 		}
 	}
+
 	return (
 		<div className="flex flex-col gap-3">
 			<span className="text-stone-400 text-center">
@@ -129,6 +130,15 @@ function IdCardHeader() {
 }
 
 function IdCardBody({ name, dept, id, img }) {
+	const date = dateFormatter(new Date(), "short")
+		.split(",")
+		.join(" ")
+		.split(" ");
+	date.splice(2, 1);
+	const issueDate = date.join("-");
+
+	console.log(issueDate);
+
 	return (
 		<div className="w-full h-[122px] flex">
 			<div className="w-[122px] h-[122px] flex items-center justify-center">
@@ -153,7 +163,7 @@ function IdCardBody({ name, dept, id, img }) {
 					</div>
 					<div className="flex items-end gap-3">
 						<span>Issue Date:</span>
-						<span>Apr-15-2022</span>
+						<span>{issueDate}</span>
 					</div>
 				</div>
 			</div>
