@@ -6,6 +6,7 @@ export default function Animated({ isOpen }) {
 	const a = year - origin;
 	const [currYear, setCurrYear] = useState(year);
 	const [age, setAge] = useState(0);
+	console.log(isOpen);
 
 	useEffect(() => {
 		let intervalId;
