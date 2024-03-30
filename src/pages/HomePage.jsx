@@ -50,7 +50,7 @@ export default function HomePage() {
 						id="overview"
 						className={`${title_style} glassmorphism-bg backdrop-blur-[8px]`}
 					>
-						&gt; BiT's Map Overview
+						&gt; BiT&apos;s Map Overview
 					</span>
 					<div className=" relative w-full h-screen ">
 						<Overview />
