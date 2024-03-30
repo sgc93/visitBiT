@@ -123,17 +123,46 @@ function DataField({ name, setName, dept, setDept, id, setId, setImg }) {
 }
 
 function ImageLoader({ setImg }) {
+	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState("");
+	const [imgName, setImgName] = useState("");
+
 	async function handleUploading(e) {
-		const url = await readFile(e.target.files[0]);
-		setImg(url);
+		const file = e.target.files[0];
+		try {
+			setIsLoading(true);
+			const url = await readFile(file);
+			setImg(url);
+			setImgName(file.name);
+		} catch (error) {
+			setError(error.message);
+		} finally {
+			setIsLoading(false);
+		}
 	}
 
 	return (
-		<div className="">
+		<div className="bg-stone-200 rounded-lg flex overflow-hidden transition-all duration-300 hover:bg-blue-300">
+			<label
+				htmlFor="imgInput"
+				className="w-full h-full cursor-pointer py-1 text-center text-stone-800 font-semibold "
+			>
+				{isLoading ? (
+					"uploading..."
+				) : error !== "" ? (
+					<span>error</span>
+				) : imgName !== "" ? (
+					imgName
+				) : (
+					"upload your image"
+				)}
+			</label>
 			<input
 				type="file"
 				accept="image/.png, image/.jpg, image/jpeg"
 				onChange={handleUploading}
+				id="imgInput"
+				className="absolute z-[-1]"
 			/>
 		</div>
 	);
@@ -158,8 +187,6 @@ function IdCardBody({ name, dept, id, img }) {
 		.split(" ");
 	date.splice(2, 1);
 	const issueDate = date.join("-");
-
-	console.log("new Image: ", img);
 
 	return (
 		<div className="w-full h-[122px] flex">
