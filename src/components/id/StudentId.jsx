@@ -1,3 +1,4 @@
+import Barcode from "react-barcode";
 import { IoCloseCircle } from "react-icons/io5";
 
 export default function StudentId({ setIsOpen }) {
@@ -32,8 +33,8 @@ function SimulatorHeader({ handleClose }) {
 
 function IdCard() {
 	return (
-		<div className="glassmorphism-white w-[72%] h-[68%] flex items-center justify-center rounded-xl p-[0.7rem]">
-			<div className="w-[400px] h-full bg-stone-100 rounded-lg overflow-hidden">
+		<div className="glassmorphism-white w-[55%] h-[68%] flex items-center justify-center rounded-xl p-[0.7rem]">
+			<div className="w-[400px] h-full bg-stone-50 rounded-lg overflow-hidden">
 				<IdCardHeader />
 				<IdCardBody />
 				<BarCode />
@@ -57,17 +58,17 @@ function IdCardHeader() {
 function IdCardBody() {
 	return (
 		<div className="w-full h-[122px] flex">
-			<div className="w-[122px] h-[122px] glassmorphism flex items-center justify-center">
-				student <br /> avatar
+			<div className="w-[122px] h-[122px] flex items-center justify-center">
+				<img className="w-full h-full" src="/sgc.jpg" alt="" />
 			</div>
 			<div className="w-[calc(100%-122px)] h-full flex flex-col">
 				<span className="w-full bg-black text-white text-center text-[.8rem]">
 					BSC STUDENT ID
 				</span>
-				<div className="font-bold flex flex-col px-2">
+				<div className="id_data flex flex-col px-2 font-bold">
 					<div className="flex items-end gap-1">
 						<span>Name:</span>
-						<span>Tadele Workie Mihretu</span>
+						<span>Smachew Gedefaw Chekol</span>
 					</div>
 					<div className="flex items-end gap-3">
 						<span>Dept: </span>
@@ -88,5 +89,17 @@ function IdCardBody() {
 }
 
 function BarCode() {
-	return <div className="flex items-center justify-center">BarCode</div>;
+	return (
+		<div className="flex items-center justify-center">
+			<Barcode
+				format="CODE39"
+				value="1308736S"
+				height={43}
+				width={2.2}
+				marginTop={2}
+				marginLeft={2}
+				marginRight={2}
+			/>
+		</div>
+	);
 }
