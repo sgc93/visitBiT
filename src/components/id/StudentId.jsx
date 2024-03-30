@@ -62,6 +62,22 @@ function IdCard({ name, dept, id, img }) {
 }
 
 function DataField({ name, setName, dept, setDept, id, setId, setImg }) {
+	function isValid(num) {
+		const stringId = num.toString();
+		return stringId.length < 8;
+	}
+
+	function isNegative(num) {
+		return num < 0;
+	}
+
+	function handleChangeInId(e) {
+		if (isNegative(e.target.value) || !isValid(e.target.value)) {
+			setId(0);
+		} else {
+			setId(e.target.value);
+		}
+	}
 	return (
 		<div className="flex flex-col gap-3">
 			<span className="text-stone-400 text-center">
@@ -89,10 +105,10 @@ function DataField({ name, setName, dept, setDept, id, setId, setImg }) {
 				<div className="field_box">
 					<span>ID No:</span>
 					<input
-						type="text"
+						type="number"
 						placeholder="id number"
 						value={id}
-						onChange={(e) => setId(e.target.value)}
+						onChange={handleChangeInId}
 					/>
 				</div>
 			</div>
@@ -154,16 +170,33 @@ function BarCode({ id }) {
 	}, [id]);
 
 	return (
-		<div className="flex items-center justify-center">
-			<Barcode
-				format="CODE39"
-				value={value}
-				height={43}
-				width={2.2}
-				marginTop={2}
-				marginLeft={2}
-				marginRight={2}
-			/>
+		<div className="w-full h-[22%] flex items-center justify-center">
+			{id ? (
+				<Barcode
+					format="CODE39"
+					value={value}
+					height={45}
+					width={2.2}
+					margin={2}
+					displayValue={false}
+				/>
+			) : (
+				<PlaceHolder />
+			)}
+		</div>
+	);
+}
+
+function PlaceHolder() {
+	return (
+		<div className="flex flex-col items-center text-blue-700">
+			<span className="font-semibold">
+				enter <span className="font-bold text-red-500">Valid</span> Id number
+				please
+			</span>
+			<span className="text-sm ">
+				Id should be a numerical string with length &lt; 8
+			</span>
 		</div>
 	);
 }
