@@ -221,3 +221,34 @@ export const bitParts = [
 ];
 
 export const allPlaces = [...dormitories, ...launches, ...cafes];
+
+// ALPHABETS
+
+export const letters = [
+	"A",
+	"B",
+	"C",
+	"D",
+	"E",
+	"F",
+	"G",
+	"H",
+	"I",
+	"J",
+	"K",
+	"L",
+	"M",
+	"N",
+	"O",
+	"P",
+	"Q",
+	"R",
+	"S",
+	"T",
+	"U",
+	"v",
+	"W",
+	"X",
+	"Y",
+	"Z",
+];
