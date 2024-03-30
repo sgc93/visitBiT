@@ -33,10 +33,10 @@ function SimulatorHeader({ handleClose }) {
 function IdCard() {
 	return (
 		<div className="glassmorphism-white w-[72%] h-[68%] flex items-center justify-center rounded-xl p-[0.7rem]">
-			<div className="w-full h-full bg-stone-100 rounded-lg overflow-hidden">
+			<div className="w-[400px] h-full bg-stone-100 rounded-lg overflow-hidden">
 				<IdCardHeader />
-				<div>student data</div>
-				<div>barcode</div>
+				<IdCardBody />
+				<BarCode />
 			</div>
 		</div>
 	);
@@ -46,7 +46,7 @@ function IdCardHeader() {
 	return (
 		<div className="h-[70px] bg-[#0066cc] flex items-center gap-4">
 			<img className="h-full" src="/bitLogo.png" alt="bitLogo" />
-			<div className="w-full flex flex-col items-center font-semibold text-stone-50 text-xl">
+			<div className="w-full flex flex-col items-center text-stone-50 text-xl">
 				<span className="">Bahir Dar Institute of Technology</span>
 				<span>Bahir Dar University</span>
 			</div>
@@ -54,6 +54,39 @@ function IdCardHeader() {
 	);
 }
 
-function BiTLogo() {
-	return null;
+function IdCardBody() {
+	return (
+		<div className="w-full h-[122px] flex">
+			<div className="w-[122px] h-[122px] glassmorphism flex items-center justify-center">
+				student <br /> avatar
+			</div>
+			<div className="w-[calc(100%-122px)] h-full flex flex-col">
+				<span className="w-full bg-black text-white text-center text-[.8rem]">
+					BSC STUDENT ID
+				</span>
+				<div className="font-bold flex flex-col px-2">
+					<div className="flex items-end gap-1">
+						<span>Name:</span>
+						<span>Tadele Workie Mihretu</span>
+					</div>
+					<div className="flex items-end gap-3">
+						<span>Dept: </span>
+						<span>Software Engineering</span>
+					</div>
+					<div className="flex items-end gap-6">
+						<span>ID:</span>
+						<span>BDU1308736</span>
+					</div>
+					<div className="flex items-end gap-3">
+						<span>Issue Date:</span>
+						<span>Apr-15-2022</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+}
+
+function BarCode() {
+	return <div className="flex items-center justify-center">BarCode</div>;
 }
