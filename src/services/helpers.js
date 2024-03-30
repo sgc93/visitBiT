@@ -1,4 +1,4 @@
-import { allPlaces } from "./data";
+import { allPlaces, letters } from "./data";
 
 export function timeFormatter(time) {
 	const toTime = new Date(time);
@@ -178,4 +178,11 @@ function sortPlaces(place1, place2) {
 	const name1 = place1.name.toLowerCase();
 	const name2 = place2.name.toLowerCase();
 	return name1.localeCompare(name2);
+}
+
+// random  a-z uppercase letter provider
+export function getRandomLetter() {
+	const i = Math.random();
+	const letter = letters[Math.round(i * letters.length - 1)];
+	return letter;
 }
