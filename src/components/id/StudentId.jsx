@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import Barcode from "react-barcode";
 import { IoCloseCircle } from "react-icons/io5";
-import { dateFormatter, getRandomLetter } from "../../services/helpers";
+import {
+	dateFormatter,
+	getRandomLetter,
+	readFile,
+} from "../../services/helpers";
 
 export default function StudentId({ setIsOpen }) {
 	const [name, setName] = useState("Smachew Gedefaw Chekol");
@@ -112,7 +116,25 @@ function DataField({ name, setName, dept, setDept, id, setId, setImg }) {
 						onChange={handleChangeInId}
 					/>
 				</div>
+				<ImageLoader setImg={setImg} />
 			</div>
+		</div>
+	);
+}
+
+function ImageLoader({ setImg }) {
+	async function handleUploading(e) {
+		const url = await readFile(e.target.files[0]);
+		setImg(url);
+	}
+
+	return (
+		<div className="">
+			<input
+				type="file"
+				accept="image/.png, image/.jpg, image/jpeg"
+				onChange={handleUploading}
+			/>
 		</div>
 	);
 }
@@ -137,12 +159,12 @@ function IdCardBody({ name, dept, id, img }) {
 	date.splice(2, 1);
 	const issueDate = date.join("-");
 
-	console.log(issueDate);
+	console.log("new Image: ", img);
 
 	return (
 		<div className="w-full h-[122px] flex">
 			<div className="w-[122px] h-[122px] flex items-center justify-center">
-				<img src={img} alt="sgc" />
+				<img className="w-full h-full" src={img} alt={name.split(" ")[0]} />
 			</div>
 			<div className="w-[calc(100%-122px)] h-full flex flex-col">
 				<span className="w-full bg-black text-white text-center text-[.8rem]">
