@@ -266,6 +266,12 @@ tr {
 	@apply font-semibold text-stone-200 w-[30%];
 }
 
-.field_box input[type="text"] {
+.field_box input[type="text"],
+input[type="number"] {
 	@apply bg-stone-200 px-2 py-1 rounded-lg text-stone-950 font-bold border-none outline-none transition-all duration-300 hover:bg-blue-300 hover:placeholder:text-stone-600 hover:translate-y-[-2px] focus:bg-blue-300 focus:translate-y-0;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	display: none;
 }
