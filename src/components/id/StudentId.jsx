@@ -194,25 +194,30 @@ function IdCardBody({ name, dept, id, img }) {
 				<img className="w-full h-full" src={img} alt={name.split(" ")[0]} />
 			</div>
 			<div className="w-[calc(100%-122px)] h-full flex flex-col">
-				<span className="w-full bg-black text-white text-center text-[.8rem]">
+				<span className="w-full h-[1.3rem] bg-black text-white text-center text-[.8rem]">
 					BSC STUDENT ID
 				</span>
-				<div className="id_data flex flex-col px-2 font-bold">
-					<div className="flex items-end gap-1">
-						<span>Name:</span>
-						<span>{name}</span>
+				<div className="relative w-full h-[calc(100%-1.3rem)]">
+					<div className="absolute top-0 left-0 opacity-45 h-full w-full flex items-center justify-center py-1">
+						<img src="/bitLogo.png" className="h-full" />
 					</div>
-					<div className="flex items-end gap-3">
-						<span>Dept: </span>
-						<span>{dept}</span>
-					</div>
-					<div className="flex items-end gap-6">
-						<span>ID:</span>
-						<span>BDU{id}</span>
-					</div>
-					<div className="flex items-end gap-3">
-						<span>Issue Date:</span>
-						<span>{issueDate}</span>
+					<div className="absolute top-0 left-0 w-full h-full px-2 font-bold flex flex-col">
+						<div className="flex items-end gap-1">
+							<span>Name:</span>
+							<span>{name}</span>
+						</div>
+						<div className="flex items-end gap-3">
+							<span>Dept: </span>
+							<span>{dept}</span>
+						</div>
+						<div className="flex items-end gap-6">
+							<span>ID:</span>
+							<span>BDU{id}</span>
+						</div>
+						<div className="flex items-end gap-3">
+							<span>Issue Date:</span>
+							<span>{issueDate}</span>
+						</div>
 					</div>
 				</div>
 			</div>
