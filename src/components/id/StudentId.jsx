@@ -11,6 +11,7 @@ export default function StudentId({ setIsOpen }) {
 	const [name, setName] = useState("Smachew Gedefaw Chekol");
 	const [dept, setDept] = useState("Software Engineering");
 	const [id, setId] = useState("1308736");
+	const [letter, setLetter] = useState("S");
 	const [img, setImg] = useState("/sgc.jpg");
 
 	function closeSimulator() {
@@ -21,7 +22,7 @@ export default function StudentId({ setIsOpen }) {
 		<div className=" w-1/2 h-3/4 bg-stone-900 rounded-xl flex flex-col">
 			<SimulatorHeader handleClose={closeSimulator} />
 			<div className="h-[92%] w-full flex flex-col items-center pt-6 gap-10">
-				<IdCard name={name} dept={dept} id={id} img={img} />
+				<IdCard name={name} dept={dept} id={id} img={img} letter={letter} />
 				<DataField
 					name={name}
 					setName={setName}
@@ -29,6 +30,8 @@ export default function StudentId({ setIsOpen }) {
 					setDept={setDept}
 					id={id}
 					setId={setId}
+					letter={letter}
+					setLetter={setLetter}
 					setImg={setImg}
 				/>
 			</div>
@@ -53,19 +56,29 @@ function SimulatorHeader({ handleClose }) {
 	);
 }
 
-function IdCard({ name, dept, id, img }) {
+function IdCard({ name, dept, id, letter, img }) {
 	return (
 		<div className="glassmorphism-white w-[55%] h-[52%] flex items-center justify-center rounded-xl p-[0.7rem]">
 			<div className="w-[400px] h-full bg-stone-50 rounded-lg overflow-hidden">
 				<IdCardHeader />
 				<IdCardBody name={name} dept={dept} id={id} img={img} />
-				<BarCode id={id} />
+				<BarCode id={id} letter={letter} />
 			</div>
 		</div>
 	);
 }
 
-function DataField({ name, setName, dept, setDept, id, setId, setImg }) {
+function DataField({
+	name,
+	setName,
+	dept,
+	setDept,
+	id,
+	setId,
+	letter,
+	setLetter,
+	setImg,
+}) {
 	function isValid(num) {
 		const stringId = num.toString();
 		return stringId.length < 8;
@@ -80,6 +93,13 @@ function DataField({ name, setName, dept, setDept, id, setId, setImg }) {
 			setId(0);
 		} else {
 			setId(e.target.value);
+		}
+	}
+
+	function enterLetter(e) {
+		const letValue = e.target.value;
+		if (letValue.length <= 1) {
+			setLetter(letValue.toUpperCase());
 		}
 	}
 
@@ -116,7 +136,18 @@ function DataField({ name, setName, dept, setDept, id, setId, setImg }) {
 						onChange={handleChangeInId}
 					/>
 				</div>
-				<ImageLoader setImg={setImg} />
+				<div className="field_box flex justify-between w-81">
+					<ImageLoader setImg={setImg} />
+					{id.length > 1 && (
+						<input
+							type="text"
+							placeholder="letter"
+							className="w-16"
+							value={letter}
+							onChange={enterLetter}
+						/>
+					)}
+				</div>
 			</div>
 		</div>
 	);
@@ -142,7 +173,7 @@ function ImageLoader({ setImg }) {
 	}
 
 	return (
-		<div className="bg-stone-200 rounded-lg flex overflow-hidden transition-all duration-300 hover:bg-blue-300">
+		<div className="w-full bg-stone-200 rounded-lg flex overflow-hidden transition-all duration-300 hover:bg-blue-300">
 			<label
 				htmlFor="imgInput"
 				className="w-full h-full cursor-pointer py-1 text-center text-stone-800 font-semibold "
@@ -225,13 +256,17 @@ function IdCardBody({ name, dept, id, img }) {
 	);
 }
 
-function BarCode({ id }) {
-	const [value, setValue] = useState(`${id}S`);
+function BarCode({ id, letter }) {
+	const [value, setValue] = useState(`${id}${letter}`);
 	useEffect(() => {
 		if (id) {
-			setValue(`${id}${getRandomLetter()}`);
+			if (letter !== "") {
+				setValue(`${id}${letter}`);
+			} else {
+				setValue(`${id}${getRandomLetter()}`);
+			}
 		}
-	}, [id]);
+	}, [id, letter]);
 
 	return (
 		<div className="w-full h-[22%] flex items-center justify-center">
