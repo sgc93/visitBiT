@@ -179,7 +179,7 @@ export default function NavBar({ dragConstraint, setMarkedPlace }) {
 				) : (
 					<li key={tab.text}>
 						<Button
-							className="flex items-center gap-2"
+							className="bg-stone-50 border-none flex items-center gap-2 transition-all duration-300 hover:bg-blue-950 hover:text-stone-50 font-semibold"
 							handleClick={() => handleClick(tab)}
 						>
 							{tab.icon}
