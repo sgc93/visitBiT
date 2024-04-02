@@ -3,6 +3,7 @@ import { bit } from "../../services/data";
 import Astronomy from "./Astronomy";
 import CurrentWeather from "./CurrentWeather";
 import DayWeather from "./DayWeather";
+import Error from "./Error";
 import HourlyWeather from "./HourlyWeather";
 import WeatherMap from "./WeatherMap";
 
@@ -29,7 +30,7 @@ export default function Weather() {
 				setWeather(data);
 				setForecastDay(data.forecast.forecastday[isToday ? 0 : 1]);
 			} catch (error) {
-				setError(error.message);
+				setError("Unable to get weather data : please check you connection!");
 			} finally {
 				setIsLoading(false);
 			}
@@ -46,14 +47,13 @@ export default function Weather() {
 			}
 		} else {
 			if (isToday) {
-				console.log(forecastDay);
 				setIsToday(false);
 				setForecastDay(weather.forecast.forecastday[1]);
 			}
 		}
 	}
 
-	return (
+	return error === "" ? (
 		<div className="overlay w-full h-screen px-10 py-4 flex flex-col gap-4">
 			<div className="w-full h-1/2 flex items-center gap-4">
 				<CurrentWeather current={weather.current} isLoading={isLoading} />
@@ -70,5 +70,7 @@ export default function Weather() {
 				<HourlyWeather forecastDay={forecastDay} isLoading={isLoading} />
 			</div>
 		</div>
+	) : (
+		<Error error={error} />
 	);
 }
