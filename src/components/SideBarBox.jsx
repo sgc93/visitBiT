@@ -127,7 +127,7 @@ export default function SideBarBox({ setShowShareBox, setDetailedPlace }) {
 
 	return (
 		<section className=" flex items-center gap-1 justify-between">
-			<div className="glassmorphism rounded-r-lg h-[88.4dvh] flex flex-col items-center justify-between">
+			<div className="glassmorphism-white rounded-r-lg h-[88.4dvh] flex flex-col items-center justify-between">
 				<div className=" w-full flex flex-col gap-2 p-1">
 					<Tab tab={tabs[0]}>
 						<span className="w-full h-[1px] bg-blue-600 opacity-70"></span>

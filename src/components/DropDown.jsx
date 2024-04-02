@@ -10,7 +10,7 @@ export default function DropDown({ tab, handleClick }) {
 			onMouseLeave={() => setIsOpen(false)}
 		>
 			<div
-				className={`bg-stone-50  px-[0.5rem] py-[0.1rem] lowercase font-semibold text-lg flex items-center gap-1 ${
+				className={`white-btn px-[0.5rem] py-[0.1rem] lowercase font-semibold text-lg flex items-center gap-1 ${
 					isOpen
 						? "rounded-t-lg transition-all duration-300 bg-blue-950 text-stone-50"
 						: "rounded-lg"

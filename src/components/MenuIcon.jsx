@@ -1,6 +1,6 @@
 import { MdClose, MdMenu } from "react-icons/md";
 const className =
-	" glassmorphism w-7 h-6 mt-1 text-2xl rounded-md opacity-80 transition-all duration-300 hover:bg-blue-900 hover:text-stone-100";
+	"white-btn cursor-pointer w-8 h-7 mt-1 text-2xl rounded-md opacity-80 ";
 
 export default function MenuIcon({ showSideBar, setShowSideBar }) {
 	return (
