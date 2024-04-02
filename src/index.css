@@ -29,6 +29,9 @@ body {
 	.glassmorphism-white {
 		@apply bg-[var(--color-bg-btn-white)] border-[1px] border-[var(--color-border-white)] backdrop-blur-sm shadow-lg;
 	}
+	.white-btn {
+		@apply bg-stone-50 text-stone-950 border-stone-50 transition-all duration-300 hover:bg-blue-900 hover:text-stone-50;
+	}
 }
 
 /* customize zoom controller */
