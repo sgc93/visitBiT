@@ -57,12 +57,11 @@ export default function QuickSearch({ setMarkedPlace }) {
 function SearchBtn({ setIsOpen }) {
 	return (
 		<div
-			className=" bg-blue-700 text-stone-100 font-thin flex items-center gap-3 py-1 rounded-lg px-2 cursor-pointer transition-all duration-300 hover:bg-blue-900"
+			className="w-52 bg-blue-300 border-2 border-stone-100 text-stone-950 font-bold flex items-center gap-3 py-[3px] rounded-lg px-2 cursor-pointer transition-all duration-300 hover:bg-blue-900 hover:text-stone-50 hover:border-blue-300 capitalize"
 			onClick={() => setIsOpen(true)}
 		>
 			<MdSearch className="text-xl" />
-			<span>quick search</span>
-			<span className=" hidden sm:inline">ctrl k</span>
+			<span>quick search ...</span>
 		</div>
 	);
 }
