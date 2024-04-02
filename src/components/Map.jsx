@@ -51,7 +51,7 @@ export default function Map({
 	setShowShareBox,
 }) {
 	const [mapUrl, setMapUrl] = useState(
-		"http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}"
+		"http://{s}.google.com/vt?lyrs=s&x={x}&y={y}&z={z}"
 	);
 	const [center, setCenter] = useState([11.597621756651337, 37.39551835806901]);
 	const zoom = 17;
