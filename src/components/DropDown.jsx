@@ -10,9 +10,9 @@ export default function DropDown({ tab, handleClick }) {
 			onMouseLeave={() => setIsOpen(false)}
 		>
 			<div
-				className={`glassmorphism  px-[0.5rem] py-[0.1rem] lowercase font-sans text-lg flex items-center gap-1 ${
+				className={`bg-stone-50  px-[0.5rem] py-[0.1rem] lowercase font-semibold text-lg flex items-center gap-1 ${
 					isOpen
-						? "rounded-t-lg transition-all duration-300 bg-blue-900 text-stone-100"
+						? "rounded-t-lg transition-all duration-300 bg-blue-950 text-stone-50"
 						: "rounded-lg"
 				}`}
 			>
@@ -25,12 +25,12 @@ export default function DropDown({ tab, handleClick }) {
 				/>
 			</div>
 			{isOpen && (
-				<div className="glassmorphism p-1 rounded-b-lg flex flex-col gap-2">
+				<div className="glassmorphism-white p-1 rounded-b-lg flex flex-col gap-2">
 					{tab &&
 						tab.dropdowns.map((dropdown) => (
 							<div key={dropdown.text} className="flex flex-col gap-1">
 								<button
-									className=" flex items-center gap-1 rounded-md border-b-[1px] border-blue-300 hover:bg-blue-300"
+									className="bg-stone-50 flex items-center gap-1 rounded-md border-b-[1px] border-blue-900 hover:bg-blue-900 hover:text-stone-50 px-1 py-[2px]"
 									onClick={() => handleClick(dropdown)}
 								>
 									{dropdown.icon}
