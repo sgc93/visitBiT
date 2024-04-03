@@ -29,7 +29,7 @@ function Tab({ tab, handleClick }) {
 		<Button
 			key={tab.text}
 			className={
-				"flex items-center gap-2 transition-all duration-500 hover:bg-blue-900 hover:text-stone-100"
+				"white-btn flex items-center gap-2 transition-all duration-500 hover:bg-blue-900 hover:text-stone-100"
 			}
 			handleClick={handleClick}
 		>
@@ -86,14 +86,14 @@ export default function CurrentLoc({ setMarkedPlace, setConnectedPositions }) {
 			onMouseLeave={() => setIsOpen(false)}
 		>
 			{isOpen && (
-				<div className="glassmorphism p-1 rounded-t-lg flex flex-col gap-1">
+				<div className="glassmorphism-white p-1 rounded-t-lg flex flex-col gap-1">
 					<Tab tab={tabs[0]} handleClick={() => handleLocatingUser()} />
 					<Tab tab={tabs[1]} handleClick={() => locateNearest(dormitories)} />
 					<Tab tab={tabs[2]} handleClick={() => locateNearest(launches)} />
 				</div>
 			)}
 			<div
-				className={`glassmorphism p-1 text-xl text-blue-900 transition-all duration-300 hover:border-blue-900 hover:bg-blue-900 hover:text-stone-200 ${
+				className={`white-btn p-1 text-xl text-blue-900 border-[1px] ${
 					isOpen ? "rounded-b-lg" : "rounded-t-lg"
 				}`}
 			>
