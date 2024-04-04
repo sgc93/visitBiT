@@ -98,6 +98,10 @@ body::-webkit-scrollbar-thumb {
 	animation-iteration-count: infinite;
 }
 
+.current:hover .small-loader {
+	@apply border-stone-50;
+}
+
 @keyframes rotate {
 	0% {
 		transform: rotate(0deg) scale(1);
