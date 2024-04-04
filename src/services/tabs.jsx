@@ -28,32 +28,32 @@ export const homeTabs = [
 	{
 		text: "BiT hints and abouts",
 		icon: <PiAppWindowBold />,
-		href: "hint",
+		href: "",
 	},
 	{
 		text: "Id Card Simulator",
 		icon: <FaIdCard />,
-		href: "idCard",
+		href: "https://bitId.netlify.app",
 	},
 	{
 		text: "other campuses",
 		icon: <MdOutlineAddLocationAlt />,
-		href: "campuses",
+		href: "#campuses",
 	},
 	{
 		text: "current temperature",
 		icon: <FaTemperatureHigh />,
-		href: "temp",
+		href: "#temp",
 	},
 	{
 		text: "BiT map overview",
 		icon: <RiRoadMapLine />,
-		href: "overview",
+		href: "#overview",
 	},
 	{
-		text: "BiT contacts",
+		text: "contacts",
 		icon: <GrContact />,
-		href: "contact",
+		href: "#contact",
 	},
 ];
 

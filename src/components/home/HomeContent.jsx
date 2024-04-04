@@ -4,42 +4,25 @@ import { homeTabs } from "../../services/tabs";
 import Button from "../Button";
 import Animated from "./Animated";
 
-export default function HomeContent({
-	isBoxOpened,
-	setIsHintBoxOpened,
-	setIsIdBoxOpened,
-}) {
+export default function HomeContent({ isBoxOpened, setIsHintBoxOpened }) {
 	return (
 		<div className="overlay  w-full h-full flex items-center p-20">
-			<NavContent
-				setIsHintBoxOpened={setIsHintBoxOpened}
-				setIsIdBoxOpened={setIsIdBoxOpened}
-			/>
+			<NavContent setIsHintBoxOpened={setIsHintBoxOpened} />
 			<Animated isOpen={isBoxOpened} />
 		</div>
 	);
 }
 
-function NavContent({ setIsHintBoxOpened, setIsIdBoxOpened }) {
+function NavContent({ setIsHintBoxOpened }) {
 	function openHintBox() {
 		setIsHintBoxOpened(true);
-	}
-
-	function openIdSimulator() {
-		setIsIdBoxOpened(true);
 	}
 
 	return (
 		<div className="w-1/2 h-full flex flex-col justify-between">
 			<ul className="list ml-5 text-stone-300 flex flex-col gap-2">
 				{homeTabs.map((tab, key) => (
-					<Tab
-						tab={tab}
-						key={key}
-						index={key}
-						openHintBox={openHintBox}
-						openIdSimulator={openIdSimulator}
-					/>
+					<Tab tab={tab} key={key} index={key} openHintBox={openHintBox} />
 				))}
 			</ul>
 			<Hero />
@@ -47,24 +30,24 @@ function NavContent({ setIsHintBoxOpened, setIsIdBoxOpened }) {
 	);
 }
 
-function Tab({ tab, index, openHintBox, openIdSimulator }) {
+function Tab({ tab, index, openHintBox }) {
 	const [isOpen, setIsOpen] = useState(false);
 	function handleClick() {
 		if (index === 0) {
 			openHintBox();
-		} else if (index === 1) {
-			openIdSimulator();
 		}
 	}
 	return (
 		<li
-			className="glassmorphism w-fit h-8 flex items-center gap-2 rounded-lg px-2 py-[2px] transition-all duration-300 hover:text-blue-950 hover:bg-stone-300 hover:border-stone-300"
+			className="glassmorphism w-fit h-8 flex items-center gap-2 rounded-lg px-2 py-[2px] transition-all duration-300 hover:text-blue-950 hover:bg-stone-300 hover:border-stone-300 cursor-pointer"
 			onMouseEnter={() => setIsOpen(true)}
 			onMouseLeave={() => setIsOpen(false)}
 			onClick={() => handleClick()}
 		>
 			{tab.icon}
-			{isOpen && <a href={`#${tab.href}`}>{tab.text}</a>}
+			{index === 0
+				? isOpen && <span>{tab.text}</span>
+				: isOpen && <a href={`${tab.href}`}>{tab.text}</a>}
 		</li>
 	);
 }
