@@ -4,7 +4,13 @@ import { layerTabs } from "../services/tabs";
 import Button from "./Button";
 
 function LayerImg({ src }) {
-	return <img className="w-5 h-5" src={`/${src}_layer.png`} alt={src} />;
+	return (
+		<img
+			className="w-5 h-5 border-2 border-blue-900"
+			src={`/${src}_layer.png`}
+			alt={src}
+		/>
+	);
 }
 
 export default function MapLayer({ setMapUrl }) {
@@ -23,12 +29,12 @@ export default function MapLayer({ setMapUrl }) {
 			onMouseLeave={() => setIsOpen(false)}
 		>
 			{isOpen && (
-				<div className="glassmorphism p-1 rounded-l-lg rounded-t-lg flex flex-col gap-1">
+				<div className="glassmorphism-white p-1 rounded-l-lg rounded-t-lg flex flex-col gap-1">
 					{layerTabs.map((tab) => (
 						<Button
 							key={tab.text}
 							className={
-								"flex items-center gap-2 transition-all duration-500 hover:bg-blue-900 hover:text-stone-100"
+								"white-btn flex items-center gap-2 transition-all duration-500 hover:bg-blue-900 hover:text-stone-100"
 							}
 							handleClick={() => selectLayer(tab.code, tab.text)}
 						>
@@ -39,18 +45,12 @@ export default function MapLayer({ setMapUrl }) {
 				</div>
 			)}
 			<div
-				className={`glassmorphism h-8 px-2 py-1  flex items-center gap-2 text-blue-900 transition-all duration-300 hover:bg-blue-900 hover:text-stone-100 ${
+				className={`white-btn h-8 px-2 py-1  flex items-center gap-2 ${
 					isOpen ? "rounded-r-lg" : "rounded-l-lg rounded-b-lg "
 				}`}
 			>
 				<GrLayer />
-				<span
-					className={`transition-all duration-1000 ${
-						!isOpen ? "inline" : "hidden"
-					}`}
-				>
-					{layer}
-				</span>
+				<span className={`${!isOpen ? "inline" : "hidden"}`}>{layer}</span>
 			</div>
 		</div>
 	);
