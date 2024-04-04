@@ -79,7 +79,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .leaflet-popup-content {
-	@apply text-blue-950 bg-stone-200 rounded-lg py-[2px] text-center;
+	@apply text-blue-950 bg-stone-200 rounded-lg px-[2px] py-[2px] text-center;
 }
 
 /* customize tooltips */
