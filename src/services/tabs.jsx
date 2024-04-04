@@ -1,3 +1,4 @@
+import L from "leaflet";
 import { FaIdCard, FaRegWindowClose, FaTemperatureHigh } from "react-icons/fa";
 import { GrContact } from "react-icons/gr";
 import { IoMdRefresh } from "react-icons/io";
@@ -186,3 +187,11 @@ export const campusSettingTabs = [
 		isOn: false,
 	},
 ];
+
+export const icon = L.icon({
+	iconUrl: "icon.svg",
+	shadowUrl: "iconShadow.svg",
+
+	iconSize: 40, // size of the icon
+	shadowSize: 41,
+});

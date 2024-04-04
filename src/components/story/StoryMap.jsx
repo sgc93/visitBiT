@@ -1,4 +1,5 @@
 import { MapContainer, Marker, TileLayer, Tooltip } from "react-leaflet";
+import { icon } from "../../services/tabs";
 import FlyTo from "./FlyTo";
 
 const mapUrl = "http://{s}.google.com/vt?lyrs=s&x={x}&y={y}&z={z}";
@@ -13,7 +14,7 @@ export default function StoryMap({ story }) {
 				className="h-full w-full"
 			>
 				<TileLayer url={mapUrl} subdomains={subdomains} />
-				<Marker position={story.mark.center}>
+				<Marker position={story.mark.center} icon={icon}>
 					<Tooltip position={story.mark.center}>{story.topic}</Tooltip>
 				</Marker>
 				<FlyTo center={story.mark.center} />

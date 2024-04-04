@@ -1,4 +1,5 @@
 import { Marker, Popup, Tooltip } from "react-leaflet";
+import { icon } from "../services/tabs";
 import Button from "./Button";
 
 function CustomTip({ props }) {
@@ -15,7 +16,7 @@ export default function PositionMarker({
 		<>
 			{positions[0].length > 0 &&
 				positions[0].map((pos, key) => (
-					<Marker position={pos.position} key={key}>
+					<Marker position={pos.position} key={key} icon={icon}>
 						<Tooltip tip={CustomTip}>
 							{pos.name ? pos.name : pos.position}
 						</Tooltip>

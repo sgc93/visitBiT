@@ -9,6 +9,7 @@ import {
 } from "react-leaflet";
 import { bit } from "../../services/data";
 import { getCurrentPos } from "../../services/helpers";
+import { icon } from "../../services/tabs";
 
 const mapUrl = "http://{s}.google.com/vt?lyrs=s&x={x}&y={y}&z={z}";
 const subdomains = ["mt0", "mt1", "mt2", "mt3"];
@@ -124,7 +125,7 @@ function MapBox({ place }) {
 							{place.name}
 						</div>
 					</Popup>
-					<Marker position={place.position}>
+					<Marker position={place.position} icon={icon}>
 						<Tooltip position={place.position}>{place.name}</Tooltip>
 						<Popup position={place.position}>
 							<div className="bg-stone-200 px-2 py-1 rounded-lg text-sm">

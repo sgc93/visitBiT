@@ -8,6 +8,7 @@ import {
 	useMap,
 } from "react-leaflet";
 import { useNavigate } from "react-router-dom";
+import { icon } from "../../services/tabs";
 import Copy from "../Copy";
 const mapUrl = "http://{s}.google.com/vt?lyrs=s&x={x}&y={y}&z={z}";
 const subdomains = ["mt0", "mt1", "mt2", "mt3"];
@@ -59,9 +60,9 @@ function GbiMap({ campus }) {
 			>
 				<TileLayer url={mapUrl} subdomains={subdomains} />
 				<Popup position={campus.position}>
-					<div className="glassmorphism">{campus.name}</div>
+					<div className="">{campus.name}</div>
 				</Popup>
-				<Marker position={campus.position}>
+				<Marker position={campus.position} icon={icon}>
 					<Tooltip position={campus.position}>{campus.name}</Tooltip>
 				</Marker>
 				<FlyTo center={campus.position} />
