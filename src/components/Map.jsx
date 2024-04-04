@@ -31,9 +31,9 @@ const bit_borders = [
 
 const border_style = {
 	color: "blue",
-	fillColor: "#0084ff66",
+	fillColor: "#0084ff",
 	weight: 1.2,
-	opacity: 0.7,
+	opacity: 0.8,
 };
 
 const line_style = {
