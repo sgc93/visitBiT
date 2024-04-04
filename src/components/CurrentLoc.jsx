@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { useState } from "react";
 import { FaHandHoldingWater, FaRestroom } from "react-icons/fa";
 import { GrLocation } from "react-icons/gr";
@@ -78,12 +77,18 @@ export default function CurrentLoc({ setMarkedPlace, setConnectedPositions }) {
 	}
 
 	return (
-		<motion.div
-			drag
-			dragElastic={0.3}
+		<div
 			className="absolute bottom-[8.4rem] right-5 z-[998] flex flex-col items-end gap-1"
-			onMouseEnter={() => setIsOpen(true)}
-			onMouseLeave={() => setIsOpen(false)}
+			onMouseEnter={() => {
+				if (!isLoading) {
+					setIsOpen(true);
+				}
+			}}
+			onMouseLeave={() => {
+				if (isLoading) {
+					setIsOpen(false);
+				}
+			}}
 		>
 			{isOpen && (
 				<div className="glassmorphism-white p-1 rounded-t-lg flex flex-col gap-1">
@@ -93,16 +98,18 @@ export default function CurrentLoc({ setMarkedPlace, setConnectedPositions }) {
 				</div>
 			)}
 			<div
-				className={`w-[1.8] h-[1.8rem] white-btn p-1 text-xl text-blue-900 border-[1px] flex items-center justify-center${
+				className={`current p-1 w-[1.8] h-[1.8rem] white-btn text-xl text-blue-900 border-[1px] flex items-center justify-center founded-full ${
 					isOpen ? "rounded-b-lg" : "rounded-t-lg"
 				}`}
 			>
 				{isLoading ? (
-					<span className="small-loader "></span>
+					<span
+						className={`small-loader ${isLoading && "hover:border-stone-50"}`}
+					></span>
 				) : (
 					<MdOutlineMyLocation />
 				)}
 			</div>
-		</motion.div>
+		</div>
 	);
 }
