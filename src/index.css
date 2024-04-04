@@ -45,7 +45,7 @@ body {
 }
 
 .leaflet-bar a {
-	@apply text-stone-900 bg-[var(--color-bg-btn)] rounded-lg border-[1px] border-[var(--color-border)] backdrop-blur-sm shadow-lg transition-all duration-300 hover:bg-blue-900 hover:text-stone-200;
+	@apply text-stone-900 white-btn rounded-lg border-[1px] backdrop-blur-sm shadow-lg;
 }
 
 /* scroll bar customizing */
