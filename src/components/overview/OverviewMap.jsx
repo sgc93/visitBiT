@@ -2,7 +2,7 @@ import { useState } from "react";
 import { MapContainer, Marker, Polygon, Popup, TileLayer } from "react-leaflet";
 import { bitParts } from "../../services/data";
 import { getCenter } from "../../services/helpers";
-import { layerTabs } from "../../services/tabs";
+import { icon, layerTabs } from "../../services/tabs";
 
 const subdomains = ["mt0", "mt1", "mt2", "mt3"];
 const center = [11.597370448983153, 37.3976755142212];
@@ -46,7 +46,7 @@ function Label({ part }) {
 
 function PartMarker({ parts }) {
 	return parts.map((part, key) => (
-		<Marker key={key} position={getCenter(part.bounds, "bounds")}>
+		<Marker key={key} position={getCenter(part.bounds, "bounds")} icon={icon}>
 			<Popup>
 				<div className="bg-stone-200 text-blue-900 text-lg font-bold px-2 py-[2px] rounded-lg">
 					{part.label}
