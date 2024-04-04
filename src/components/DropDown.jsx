@@ -10,7 +10,7 @@ export default function DropDown({ tab, handleClick }) {
 			onMouseLeave={() => setIsOpen(false)}
 		>
 			<div
-				className={`white-btn px-[0.5rem] py-[0.1rem] lowercase font-semibold text-lg flex items-center gap-1 ${
+				className={`border-[1px] white-btn px-[0.5rem] py-[0.1rem] lowercase font-semibold text-lg flex items-center gap-1 ${
 					isOpen
 						? "rounded-t-lg transition-all duration-300 bg-blue-950 text-stone-50"
 						: "rounded-lg"
@@ -30,7 +30,7 @@ export default function DropDown({ tab, handleClick }) {
 						tab.dropdowns.map((dropdown) => (
 							<div key={dropdown.text} className="flex flex-col gap-1">
 								<button
-									className="bg-stone-50 flex items-center gap-1 rounded-md border-b-[1px] border-blue-900 hover:bg-blue-900 hover:text-stone-50 px-1 py-[2px]"
+									className="white-btn flex items-center gap-1 rounded-md border-b-[1px] px-1 py-[2px]"
 									onClick={() => handleClick(dropdown)}
 								>
 									{dropdown.icon}
