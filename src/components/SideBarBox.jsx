@@ -49,7 +49,7 @@ function Tab({ tab, handleClick, children, isLoading }) {
 		<div className="flex flex-col items-center gap-3 w-full">
 			<Button
 				className={
-					"w-full flex items-center gap-2 transition-all duration-300 hover:border-blue-900 hover:text-stone-300"
+					"w-full flex items-center gap-2 glassmorphism-bg border-stone-200 transition-all duration-300 hover:border-blue-900 hover:bg-stone-300"
 				}
 				handleClick={handleClick}
 			>
@@ -130,7 +130,7 @@ export default function SideBarBox({ setShowShareBox, setDetailedPlace }) {
 			<div className="glassmorphism-white rounded-r-lg h-[88.4dvh] flex flex-col items-center justify-between">
 				<div className=" w-full flex flex-col gap-2 p-1">
 					<Tab tab={tabs[0]}>
-						<span className="w-full h-[1px] bg-blue-600 opacity-70"></span>
+						<span className="w-full h-[1px] bg-stone-100 opacity-70"></span>
 					</Tab>
 					<Tab
 						tab={tabs[1]}
@@ -141,7 +141,7 @@ export default function SideBarBox({ setShowShareBox, setDetailedPlace }) {
 						tab={tabs[2]}
 						handleClick={() => dispatch({ type: "showModal/print" })}
 					>
-						<span className="w-full h-[1px] bg-blue-600 opacity-70"></span>
+						<span className="w-full h-[1px] bg-stone-100 opacity-70"></span>
 					</Tab>
 					<Tab
 						tab={tabs[3]}
@@ -152,15 +152,17 @@ export default function SideBarBox({ setShowShareBox, setDetailedPlace }) {
 						handleClick={() => dispatch({ type: "showModal/contact" })}
 					/>
 					<Tab tab={tabs[5]}>
-						<span className="w-full h-[1px] bg-blue-600 opacity-70"></span>
+						<span className="w-full h-[1px] bg-stone-100 opacity-70"></span>
 					</Tab>
 				</div>
 				<div className=" flex  flex-col items-center gap-2 pb-4">
-					<span className="w-full h-[1px] bg-blue-600 opacity-70"></span>
-					<span className="text-sm font-thin">since March 2024</span>
+					<span className="w-full h-[1px] bg-stone-100 opacity-70"></span>
+					<span className="text-sm font-thin glassmorphism-bg px-1 rounded-md">
+						since March 2024
+					</span>
 					<span className="flex items-center gap-1">
 						<FaCopyright className="text-blue-800" />
-						<span className="text-blue-900 font-semibold">
+						<span className="text-blue-950 font-semibold">
 							{getCurrentDateTime()}
 						</span>
 					</span>
