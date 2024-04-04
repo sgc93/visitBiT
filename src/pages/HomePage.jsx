@@ -5,7 +5,6 @@ import Campus from "../components/campus/Campus";
 import HomeContent from "../components/home/HomeContent";
 import Overview from "../components/overview/Overview";
 import Weather from "../components/weather/Weather";
-import IdSimulator from "./IdSimulator";
 import StoryTeller from "./StoryTeller";
 
 const title_style = "w-full text-2xl px-4 pt-2 text-stone-50 font-semibold";
@@ -26,10 +25,6 @@ export default function HomePage() {
 				/>
 			</div>
 			<StoryTeller isOpen={isStoryBoxOpened} setIsOpen={setIsStoryBoxOpen} />
-			<IdSimulator
-				isIdBoxOpened={isIdBoxOpened}
-				setIsIdBoxOpened={setIsIdBoxOpened}
-			/>
 			{!isBoxOpened && (
 				<>
 					<span
@@ -68,10 +63,13 @@ const link_style =
 	"glassmorphism-bg p-1 rounded-lg transition-all duration-300 hover:bg-slate-50 hover:text-stone-700";
 
 function Footer() {
-	const [isHovered, setIsHovered] = useState(true);
+	const [isHovered, setIsHovered] = useState(false);
 
 	return (
-		<div className="overlay w-full p-10 flex flex-col items-center gap-9">
+		<div
+			id="contact"
+			className="overlay w-full p-10 flex flex-col items-center gap-9"
+		>
 			<div className="flex justify-evenly">
 				<div className="w-2/5 flex flex-col gap-1">
 					<span className="text-lg font-bold text-slate-200">visit_BiT</span>
@@ -103,11 +101,13 @@ function Footer() {
 							>
 								<MdEmail />
 							</span>
-							{isHovered && (
-								<span className="absolute left-0 glassmorphism-bg px-1 rounded-lg">
-									smachewgedefaw@gmail.com
-								</span>
-							)}
+							<span
+								className={`${
+									!isHovered ? "opacity-0" : "opacity-100"
+								} absolute left-0 glassmorphism-bg px-1 rounded-lg transition-all duration-500`}
+							>
+								smachewgedefaw@gmail.com
+							</span>
 						</a>
 					</div>
 				</div>
