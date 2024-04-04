@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { GrDown } from "react-icons/gr";
-import { IoCloseCircle } from "react-icons/io5";
 import { MdClose, MdSearch } from "react-icons/md";
 import { searchFor } from "../services/helpers";
-import Button from "./Button";
 
 export default function QuickSearch({ setMarkedPlace }) {
 	const [query, setQuery] = useState("");
@@ -80,7 +77,7 @@ function SearchBox({
 			<div
 				className={`absolute left-[50%] top-[10%] translate-x-[-45%]  flex items-start gap-4 pb-6`}
 			>
-				<div className=" w-72 glassmorphism rounded-lg px-2 py-2 flex flex-col items-center">
+				<div className="overflow-hidden w-[40dvw] min-h-[30dvh] bg-slate-500 rounded-lg px-2 py-2 flex flex-col items-center transition-all duration-500">
 					<SearchBar query={query} setQuery={setQuery} />
 					<div className=" w-full flex flex-col pt-2">
 						<div className="py-1 flex items-center justify-between">
@@ -96,23 +93,9 @@ function SearchBox({
 						)}
 					</div>
 					<span className="w-full h-[1px] bg-blue-200 m-4"></span>
-					<div className="flex flex-col gap-1">
-						<Button>
-							<span>nearest rest room</span>
-						</Button>
-						<Button>
-							<span>nearest wifi center </span>
-						</Button>
-						<Button>
-							<span>nearest rest room</span>
-						</Button>
-						<Button className={"flex justify-center"}>
-							<GrDown />
-						</Button>
-					</div>
 				</div>
-				<span className=" text-2xl transition-all duration-300 hover:text-stone-100 hover:bg-blue-900 rounded-full">
-					<IoCloseCircle onClick={() => setIsOpen(false)} />
+				<span className="text-2xl transition-all duration-300 text-stone-950 bg-red-600 hover:text-red-600 hover:bg-red-100 rounded-full">
+					<MdClose onClick={() => setIsOpen(false)} />
 				</span>
 			</div>
 		</div>
@@ -145,8 +128,8 @@ function SearchBar({ query, setQuery }) {
 function NotFound() {
 	return (
 		<div className="w-full flex flex-col items-center">
-			<span className="text-stone-700">Sorry🙏🏻!</span>
-			<span className="text-blue-900">Place Not Found!</span>
+			<span className="text-stone-200 font-semibold">Sorry🙏🏻!</span>
+			<span className="text-red-900 font-semibold">Place Not Found!</span>
 		</div>
 	);
 }
@@ -154,9 +137,9 @@ function NotFound() {
 function QueryIndicator({ query }) {
 	return (
 		query && (
-			<span className="text-stone-600">
-				results for{" "}
-				<span className="text-stone-100 lowercase w-20 overflow-clip">
+			<span className="text-stone-300 text-md font-semibold">
+				results for:{" "}
+				<span className="text-stone-100 font-semibold text-lg lowercase w-20 overflow-clip">
 					{query}
 				</span>
 			</span>
@@ -173,7 +156,7 @@ function SearchResults({ matchPlaces, setMarkedPlace, setIsOpen }) {
 		<div className="flex flex-col pl-3 gap-1">
 			{matchPlaces.map((place, key) => (
 				<button
-					className="flex items-center gap-2 px-2 py-1 opacity-70 bg-blue-900 text-stone-100 font-semibold rounded-md transition-all duration-300 hover:opacity-100"
+					className="flex items-center gap-2 px-2 py-1 opacity-70 bg-blue-950 text-stone-100 font-semibold rounded-md border-[1px] border-transparent transition-all duration-300 hover:opacity-100 hover:border-stone-200"
 					key={key}
 					onClick={() => handleClick(place)}
 				>
