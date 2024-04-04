@@ -71,15 +71,15 @@ body::-webkit-scrollbar-thumb {
 /* customize popup */
 
 .leaflet-popup-content-wrapper {
-	@apply glassmorphism font-semibold text-[0.6rem];
+	@apply glassmorphism-white font-bold text-[0.7rem];
 }
 
 .leaflet-popup-tip {
-	@apply glassmorphism;
+	@apply glassmorphism-white;
 }
 
 .leaflet-popup-content {
-	@apply text-blue-950;
+	@apply text-blue-950 bg-stone-200 rounded-lg py-[2px] text-center;
 }
 
 /* customize tooltips */
