@@ -11,21 +11,25 @@ export default function DetailBox({
 	return (
 		showDetailBox && (
 			<div className="absolute left-4 top-16 z-[998]">
-				<div className="scroll glassmorphism flex flex-col items-start gap-2 w-[18dvw] h-[90dvh] rounded-lg overflow-x-hidden overflow-y-scroll ">
+				<div className="scroll glassmorphism-white flex flex-col items-start gap-2 w-[18dvw] h-[90dvh] rounded-lg overflow-x-hidden overflow-y-scroll ">
 					{place.img && (
 						<img src={place.img[0]} alt={place.name} className="rounded-t-lg" />
 					)}
-					<div className="flex flex-col">
+					<div className="flex flex-col gap-1 px-1">
 						{place.name && (
-							<span className="text-xl font-semibold px-2">{place.name}</span>
+							<span className="glassmorphism-bg rounded-t-lg text-xl font-semibold px-2">
+								{place.name}
+							</span>
 						)}
 						{place.description && (
-							<span className=" font-semibold px-4">{place.description}</span>
+							<span className="glassmorphism-bg rounded-b-lg font-semibold px-4">
+								{place.description}
+							</span>
 						)}
-						<span className="h-[1px] bg-blue-900 m-2"></span>
+						<span className="h-[1px] bg-blue-900 m-2 "></span>
 					</div>
-					<div className="w-full flex flex-col gap-2">
-						<div className="w-full flex items-center justify-between gap-2 px-2 text-blue-900">
+					<div className="w-full flex flex-col gap-2 px-1">
+						<div className="glassmorphism-bg rounded-lg w-full flex items-center justify-between gap-2 px-2 text-blue-900">
 							<div className="flex items-center gap-2">
 								<MdLocationPin className="text-4xl" />
 								<span className="text-sm font-semibold">
@@ -35,7 +39,7 @@ export default function DetailBox({
 							<Copy value={`${place.position[0]}, ${place.position[1]}`} />
 						</div>
 						{place.phone && (
-							<div className="w-full flex items-center justify-between px-2 text-blue-900">
+							<div className="glassmorphism-bg rounded-lg w-full flex items-center justify-between px-2 text-blue-900">
 								<div className="flex items-center gap-2">
 									<MdPhone className="text-2xl" />
 									<span className="text-sm font-semibold">
@@ -61,7 +65,7 @@ export default function DetailBox({
 								</div>
 							</div>
 						)}
-						<div className="w-full flex items-center justify-between px-2 text-blue-900">
+						<div className="glassmorphism-bg rounded-lg py-1 w-full flex items-center justify-between px-2 text-blue-900">
 							<div className="flex items-center gap-2">
 								<RiUserSharedFill className="text-2xl" />
 								<span className="text-lg font-base">share this location</span>
