@@ -11,9 +11,7 @@ const title_style = "w-full text-2xl px-4 pt-2 text-stone-50 font-semibold";
 
 export default function HomePage() {
 	const [isStoryBoxOpened, setIsStoryBoxOpen] = useState(true);
-	const [isIdBoxOpened, setIsIdBoxOpened] = useState(false);
-	const isBoxOpened = isStoryBoxOpened || isIdBoxOpened;
-	console.log(isBoxOpened);
+	const isBoxOpened = isStoryBoxOpened;
 
 	return (
 		<section className="home overflow-x-hidden flex flex-col w-screen h-[100dvh]">
@@ -21,7 +19,6 @@ export default function HomePage() {
 				<HomeContent
 					isBoxOpened={isBoxOpened}
 					setIsHintBoxOpened={setIsStoryBoxOpen}
-					setIsIdBoxOpened={setIsIdBoxOpened}
 				/>
 			</div>
 			<StoryTeller isOpen={isStoryBoxOpened} setIsOpen={setIsStoryBoxOpen} />
