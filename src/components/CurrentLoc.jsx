@@ -93,11 +93,15 @@ export default function CurrentLoc({ setMarkedPlace, setConnectedPositions }) {
 				</div>
 			)}
 			<div
-				className={`white-btn p-1 text-xl text-blue-900 border-[1px] ${
+				className={`w-[1.8] h-[1.8rem] white-btn p-1 text-xl text-blue-900 border-[1px] flex items-center justify-center${
 					isOpen ? "rounded-b-lg" : "rounded-t-lg"
 				}`}
 			>
-				{isLoading ? "..." : <MdOutlineMyLocation />}
+				{isLoading ? (
+					<span className="small-loader "></span>
+				) : (
+					<MdOutlineMyLocation />
+				)}
 			</div>
 		</motion.div>
 	);
